@@ -1,5 +1,5 @@
 
-<h1>Kevin Boller, Sport Tech VP of Product / Consultant</h1>
+<h1>Kevin Boller, Sports Tech VP of Product / Consultant</h1>
 
 <h2>I originally co-founded LeagueCast in 2013 </h2>
 
