@@ -8,5 +8,5 @@
 I'm now focused on my role as a product director of subscription revenue and interested in consulting, advisory and 
 board member work within the sports technology space.</p>
 
-<p>My About page can be accessed using <a href="https://kdboller.github.io/about" >this link </a>
+<p>My About page can be accessed using <a href="https://kdboller.github.io/about" >this link. </a>
 </p>
