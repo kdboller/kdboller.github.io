@@ -1,8 +1,0 @@
-# masthead navigation links
-masthead:
-  - title: "About"
-    url: /about/
-  - title: "Work"
-    url: /work/
-  - title: "Blog"
-    url: /articles/
