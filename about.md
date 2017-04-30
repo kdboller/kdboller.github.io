@@ -23,6 +23,7 @@
 
 <hr>
 
+<center><h3>SUMMARY</h3></center>
 <p> Kevin Boller has broad experience in finance, corporate strategy and software development across industries including sports media, healthcare and technology. Currently, Kevin is VP Product (Revenue and Analytics) at FloSports. He also serves as a strategic consultant to early-stage companies and investment teams who are evaluating pre and post-revenue technology and software-enabled services companies. </p>
 
 <p>Previously, Kevin was a Vice President in Blackstone's Advisory Partners (M&A) group. While at Blackstone, he was a member of the deal team which advised the Los Angeles Dodgers’ former owner and management on the $2.3 billion sale of the team, stadium, media rights and real estate to Magic Johnson and Guggenheim Partners. The deal became the largest sports transaction in history.</p>
