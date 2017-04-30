@@ -1,3 +1,7 @@
+---
+theme: jekyll-theme-slate
+navigation_weight: 1
+---
 
 <h1> Hi, I’m Kevin Boller and thank you for visiting my personal website and blog. </h1>
 
