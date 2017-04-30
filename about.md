@@ -1,6 +1,6 @@
 
 <center>
-<img src="/assets/img/Flo_headshot.png" alt="Kevin Boller" height="42" width="42">
+<img src="/assets/img/Flo_headshot.png" alt="Kevin Boller" height="100" width="100">
 
 <h1>Kevin Boller</h1>
 
