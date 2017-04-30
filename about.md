@@ -6,7 +6,7 @@
 <p> Our mission was to enable amateur sports organizations to leverage software to take full advantage of the digitization of sports.</p>
 
 <p>
-A great deal of our work in the space can now be found at HoopSeen.com.
+A great deal of our work in the space can now be found at <a href="http://www.hoopseen.com/" >HoopSeen.com.</a>
 </p>
 
 <p>
