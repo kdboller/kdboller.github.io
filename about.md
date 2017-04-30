@@ -1,6 +1,6 @@
 
 <center>
-<img src="https://kdboller.github.io/assets/img/Flo Headshot.gif" alt="Kevin Boller" height="42" width="42">
+<img src="/assets/img/Flo_headshot.png" alt="Kevin Boller" height="42" width="42">
 </center>
 
 <h1>Kevin Boller</h1>
