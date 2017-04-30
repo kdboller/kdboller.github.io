@@ -1,14 +1,12 @@
 
-<h1>Kevin Boller, Sports Tech VP of Product / Consultant</h1>
+<center>
+<img src="/assets/img/Flo Headshot.gif" alt="Kevin Boller" height="42" width="42">
+</center>
 
-<h2>I originally co-founded LeagueCast in 2013 </h2>
+<h1>Kevin Boller</h1>
 
-<p> Our mission was to enable amateur sports organizations to leverage software to take full advantage of the digitization of sports.</p>
+<h2>Product, Revenue, Business Intelligence and Analytics Professional</h2>
 
-<p>
-A great deal of our work in the space can now be found at <a href="http://www.hoopseen.com/" >HoopSeen.com.</a>
-</p>
+<p> Kevin Boller has broad experience in finance, corporate strategy and software development across industries including sports media, healthcare and technology. Currently, Kevin is VP Product (Revenue and Analytics) at FloSports. He also serves as a strategic consultant to early-stage companies and investment teams who are evaluating pre and post-revenue technology and software-enabled services companies. </p>
 
-<p>
-HoopSeen has a strong claim as “the most trusted source for news, recruiting information and rankings in prep basketball”.
-</p>
+
