@@ -11,6 +11,8 @@
 <ul>
 <li>Sports Media and Sports Technology</li>
 <li>Financial Modeling and Economic Model Optimization</li>
+<li>Data Warehousing, Business Intelligence and Data Analytics</li>
+<li>Building Data Informed Cultures</li>
 <li>Pricing Strategy Analyses and Advisory</li>
 <li>Corporate Strategy and Business Development</li>
 </ul>
