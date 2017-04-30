@@ -1,7 +1,7 @@
 
 <h1> Hi, I’m Kevin Boller and thank you for visiting my personal website and blog. </h1>
 
-<p>I currently live in Austin, TX, where I am the VP of Product (Revenue and Analytics) for <a href="http://www.flosports.tv/" >FloSports </a>. </p>
+<p>I currently live in Austin, TX, where I am the VP of Product (Revenue and Analytics) for <a href="http://www.flosports.tv/" >FloSports</a>. </p>
 
 <p>I have broad experience in finance, corporate strategy and software development across industries including sports media, healthcare and technology <br />
 
