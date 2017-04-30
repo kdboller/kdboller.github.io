@@ -1,9 +1,6 @@
----
-theme: jekyll-theme-slate
-navigation_weight: 1
----
 
-<h1> Hi, I’m Kevin Boller and thank you for visiting my personal website and blog. </h1>
+
+<h2> Hi, I’m Kevin Boller and thank you for visiting my personal website and blog. </h2>
 
 <p>I currently live in Austin, TX, where I am the VP of Product (Revenue and Analytics) for <a href="http://www.flosports.tv/" >FloSports</a>. </p>
 
