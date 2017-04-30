@@ -7,12 +7,6 @@
 <h2>Product, Revenue, Business Intelligence and Analytics Professional</h2>
 </center>
 
-<center><h3>TECHNICAL SKILLS</h3></center>
-<p><strong>Programming/Analytics:</strong> SQL (Postgres, MySQL), Python (pandas, numpy, scikit-learn), R, Kissmetrics</p>
-<p><strong>Databases/Warehouses:</strong> Periscope Data (Cache/Views), Mode Analytics, Segment (warehouse and platform), Redshift
-
-<hr>
-
 <center><h3>AREAS OF EXPERTISE</h3></center>
 <ul>
 <li>Sports Media and Sports Technology</li>
@@ -20,13 +14,19 @@
 <li>Pricing Strategy Analyses and Advisory</li>
 <li>Corporate Strategy and Business Development</li>
 </ul>
+
 <hr>
 
+<center><h3>TECHNICAL SKILLS</h3></center>
+<p><strong>Programming/Analytics:</strong> SQL (Postgres, MySQL), Python (pandas, numpy, scikit-learn), R, Kissmetrics</p>
+<p><strong>Databases/Warehouses:</strong> Periscope Data (Cache/Views), Mode Analytics, Segment (warehouse and platform), Redshift
+
+<hr>
 
 <p> Kevin Boller has broad experience in finance, corporate strategy and software development across industries including sports media, healthcare and technology. Currently, Kevin is VP Product (Revenue and Analytics) at FloSports. He also serves as a strategic consultant to early-stage companies and investment teams who are evaluating pre and post-revenue technology and software-enabled services companies. </p>
 
 <p>Previously, Kevin was a Vice President in Blackstone's Advisory Partners (M&A) group. While at Blackstone, he was a member of the deal team which advised the Los Angeles Dodgers’ former owner and management on the $2.3 billion sale of the team, stadium, media rights and real estate to Magic Johnson and Guggenheim Partners. The deal became the largest sports transaction in history.</p>
 
-</p>Kevin also worked at Rothschild, where he was a member of the deal team who sold a minority stake in Creative Artists Agency to TPG Capital. Prior to attending business school at the University of Chicago Booth School of Business, Kevin was a healthcare IT consultant. </p>
+<p>Kevin also worked at Rothschild, where he was a member of the deal team who sold a minority stake in Creative Artists Agency to TPG Capital. Prior to attending business school at the University of Chicago Booth School of Business, Kevin was a healthcare IT consultant. </p>
 
 
