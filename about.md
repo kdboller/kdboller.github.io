@@ -6,9 +6,8 @@ permalink: /about/
 
 <center>
 <!-- -->
-<img src="/assets/Flo_headshot.png" alt="Kevin Boller" height="300" width="300" style="border-radius: 50%"> 
-
 <h1>Kevin Boller</h1>
+<img src="/assets/Flo_headshot.png" alt="Kevin Boller" height="300" width="300" style="border-radius: 50%"> 
 
 <h2>Product, Revenue, Business Intelligence and Analytics Professional</h2>
 </center>
