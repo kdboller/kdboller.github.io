@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Building an Analytics Tech Stack</title>
+  <meta name="description" content="In an ongoing attempt to be helpful to and learn from others serving in similar job capacities, I am continuing to review my experiences in building out our ...">
+
+  <link rel="stylesheet" href="/datainformed/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/datainformed/2017/03/22/building-an-analytics-tech-stack.html">
+  <link rel="alternate" type="application/rss+xml" title="Kevin Boller&#39;s Data Informed Blog" href="/datainformed/feed.xml">
+  
+  
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+    
+    
+    <a class="site-title" href="/datainformed/">Kevin Boller&#39;s Data Informed Blog</a>
+  
+    
+      <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          
+            
+            
+            <a class="page-link" href="/datainformed/about/">About</a>
+            
+          
+            
+            
+          
+            
+            
+            <a class="page-link" href="/datainformed/resume/">Resume</a>
+            
+          
+            
+            
+          
+            
+            
+          
+        </div>
+      </nav>
+    
+  </div>
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Building an Analytics Tech Stack</h1>
+    <p class="post-meta">
+      <time datetime="2017-03-22T12:00:00-05:00" itemprop="datePublished">
+        
+        Mar 22, 2017
+      </time>
+      </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>In an ongoing attempt to be helpful to and learn from others serving in similar job capacities, I am continuing to review my experiences in building out our data infrastructure over the past ~12 months and discuss the most helpful applications which currently sit within our analytics tech stack. 
+In my most recent post, Data Informed Experiments, I discussed the difference between being “data informed” and being “data driven”. I also provided some perspective related to building a “data informed” organizational culture – my intent is to share what we have learned along the way and discuss the applications which enable us to take advantage of all of the work we’ve completed to-date.</p>
+
+<p>When I arrived at FloSports a little over a year ago, I joined as a Product Director of Subscription Revenue. The company had great momentum in a market, live sports streaming, which was and continues to experience remarkable growth. However, from a data and analytics standpoint, a data warehouse did not yet exist; reporting was somewhat fragmented and siloed among departments, often living in Google Sheets. Although financial and subscription reporting and KPI monitoring was in place, it was clear that the analytical foundation would have a very challenging time scaling alongside the company’s significant growth trajectory. Among other aspects of our business model, in just a year and a half we’ve grown from producing and selling subscriptions against live events for 5 sports to over 20 sports, and this continues to grow.</p>
+
+<p>For business intelligence (BI), most companies consolidate their key data sources into a centralized data warehouse (DW); the process of extracting data from various sources and loading it into the DW is referred to as ETL; for reporting purposes, a business intelligence / reporting application is connected to the data warehouse, allowing for dashboards to be created with reports that leverage one or more of the DW’s data sources. While the build out of a DW is time consuming and can be challenging at times, the quick highlights of this process for us, which we kicked off less than a year ago, include the following:</p>
+
+<ul>
+  <li>Select where your data warehouse will reside / be hosted; like many other growth, tech companies, we selected Amazon Redshift</li>
+  <li>Identify your most critical data sources and build a roadmap for data source expansion</li>
+  <li>Evaluate build versus buy options along the way for key elements of the warehouse; I’ll discuss Segment in more detail later in this post</li>
+  <li>Outline and document the business rules and logic which will define how data is modeled and how the facts about your data will be reported on</li>
+  <li>Model all data and ensure that you have a ‘source of truth’ which you will use to validate each source loaded into your data warehouse</li>
+  <li>Choose BI visualization and ETL tools which best suit your organization’s requirements, budget and your team’s overall technical sophistication</li>
+</ul>
+
+<p>For the remainder of this post, I’ll highlight a few important tools which we’ve made use of since the second half of last year. These applications are incredibly important to every aspect of the analysis that we conduct and report on – in combination with our data warehouse, they’ve empowered me to be able to leave the world of “CSV extract, read into Jupyter Notebook, extract back to CSV, paste into financial model, and output to powerpoint”; I truly could not be more thankful.</p>
+
+<p><strong>Periscope Data</strong></p>
+
+<p>I was aware of Periscope Data while we were in the process of standing up our data warehouse; however, this post on Medium by Samsun Hu provided tremendous insight into the benefits of Periscope relative to more traditional, and generally costlier, BI tools.</p>
+
+<p>At FloSports, we use Periscope as our ‘consumer facing’ dashboard product – we have permissioned our dashboards by Groups and placed our business users into the Groups which align with their reporting needs and use cases. Here are my primary observations:</p>
+
+<p><strong>Benefits</strong></p>
+
+<ul>
+  <li>Filters: these allow for highly interactive dashboards, where end users can filter on different sports and date ranges to manipulate the returns in the various queries; this assists with scalability -- we can build a single dashboard which can be cut a number of different ways and on demand without data team involvement</li>
+  <li>Views: Views can be added, via directly loading SQL or CSV files, bypassing the need for ETL and enabling quick proof-of-concept dashboards which allow for demos of new data sources / data modeling</li>
+  <li>Data Cache: this ETLs customer databases into Periscope’s Redshift clusters, making queries highly performant and also enabling cross database joins, materialized views, and query-able CSV uploads</li>
+  <li>Outstanding customer support; data scientists are available via chat during business hours, oftentimes reviewing queries you are working on and helping you figure out how to write more complicated queries (or if you’re just stuck and need another set of eyes)</li>
+</ul>
+
+<p><strong>Considerations</strong></p>
+
+<ul>
+<li>Cost: While Periscope Data is very easy to get going, pricing scales by every 1 billion rows; as one example on why this can be frustrating, we point our Staging database to Mode (see below) to avoid being bumped up to the next pricing tier</li>
+<li>Internal research / analytics; creating finalized dashboards for end user consumption is great; however, in terms of internal analysis, creating “burner” dashboards starts to become a maintenance headache</li>
+<li>For this reason, we prefer to use Mode for internal research / collaboration type work (also see below)</li>
+</ul>
+
+<p><strong>Mode Analytics</strong></p>
+
+<p>Mode Analytics markets its product as “a SQL editor, Python notebook, and visualization builder, all rolled into one.” After using it since November, I’m a huge, huge fan and I spend a significant amount of several days per week working in Mode.</p>
+
+<p><strong>Benefits</strong></p>
+
+<ul>
+  <li>Report builder concept; create a report, which includes a series of separate SQL queries and also allows for quick visualizations and an overall dashboard summary of data returns</li>
+  <li>Shareability of reports; similar in concept to Google Drive, share report links with other team members within Mode, who can then edit, add to, or clone your report for further analysis</li>
+  <li>We sometimes conduct analysis in Mode and export the dashboard as a PDF report which we send to business users</li>
+  <li>The ability to read data into a Python notebook; create a dataset via an SQL query and read it directly into the Python Notebook within the same application for more detailed analysis</li>
+  <li>Their blog and tutorials for SQL and Python are some of the best I’ve seen -- and you can create a Mode account and learn the application for FREE on public data sets</li>
+</ul>
+
+<p><strong>Considerations</strong></p>
+
+<ul>
+  <li>Dashboard features; while Mode is generally a great product, the one limitation is the ability to create interactive dashboards, e.g., filterable by attributes, which we make tremendous use of within Periscope Data</li>
+</ul>
+
+<p><strong>Segment</strong></p>
+
+<p>When building out a DW, there will always be a tradeoff between time spent engineering the ETL process / workflow(s) and creating reporting tables, e.g., aggregate fact tables, conducting machine learning, etc. The ETL serves as the plumbing of the DW and it’s obvious that high quality data is requisite to enabling key insights; as Bob Becker from the Kimball Group wrote: “At its foundation, the DW/BI environment must be a repository of high quality data. The biggest challenges for most DW/BI efforts are data-related. In general, the effort to develop the ETL processes required to provide high quality data is typically more demanding than anticipated” (my emphasis added).</p>
+
+<p>At FloSports, we are currently implementing Segment to serve as our customer data platform as well as the ETL-as-a-service for several of our data sources. We initially evaluated Segment’s Sources product earlier this year, which ETLs Zendesk, Salesforce, Stripe and a few other widely used cloud app sources. In the buy versus build scenario, the key question we were asking ourselves was whether or not we wanted to invest the time and resources in figuring out how to best ETL all of the data sources on our roadmap; or could we find a way to short circuit this? If we could bypass certain parts of the ETL, we would free up much more of our engineering time to generate valuable reporting which stitches multiple data sources together.</p>
+
+<p>My personal view is to always maintain focus and to drill on your core competency as much as possible – no off-the-shelf solution can define the logic which our business model dictates, and our user journey and combination of data sources are unique to our business. However, the process by which we ETL the data into a centralized repository does not need to be our core competency; after extensive evaluation, we determined that Segment was a very viable option which enables us to acquire several important, and widely used, data sources.</p>
+
+<p>Further, we want to warehouse all of our data across our applications and all 3rd party integrations and external data sources; and we really need a common identifier approach to tracking anonymous and logged in users across our various properties and platform. As a result, after extensive diligence we decided Segment’s customer data platform seemed to be the most time efficient and productive way to accomplish this, in combination with their Sources product.</p>
+
+<p><strong>Benefits</strong></p>
+
+<ul>
+  <li>Cloud App Sources; the punchline here is this is ETL-as-a-service, point and click data source integration with your existing warehouse</li>
+  <li>200+ native integrations; Segment will send data generated within your apps to 3rd party services; similar in concept to a tag manager, except that Segment stores all data generated...forever</li>
+  <li>Warehouse connection; track data within your app and Segment will send the generated data to your connected data warehouse</li>
+  <li>Extensively helpful during diligence; we diligenced Segment for almost 2 months; our counterparts were knowledgeable and very helpful in assisting us with getting our heads around the benefits of a partnership</li>
+</ul>
+
+<p><strong>Considerations</strong></p>
+
+<ul>
+  <li>If you get the enterprise plan, this will be a material expense line item on your budget; I built a bottoms-up model that projected our Monthly Tracked Users (MTUs) for the next two years in order to discuss volume-based pricing</li>
+  <li>Nevertheless, you can either build this all in-house or leverage Segment for certain elements; there are tradeoffs with any SaaS product versus a build, but if we spend the majority of our time generating insights and drilling on our core competencies, we should generate the high ROI we anticipate</li>
+  <li>** You may want to discount my review here in general, as we are currently implementing Segment, whereas I’ve been working with Periscope and Mode for 6+ months</li>
+</ul>
+
+<p>This concludes my initial review of our journey in building out our data infrastructure over the past ~12 months and an overview of the most helpful applications which currently sit within our analytics tech stack. As our data warehouse product owner, I’ve taken a rather methodical approach in evaluating these applications, and we’ve found them to all be great products with excellent customer support and transparent visibility into their own product roadmaps. Over the course of the next year, we will be in the process of transitioning from smoothing out and expanding our analytics foundation to setting up our analytics stack to scale. I look forward to continuing to share our lessons learned and achieved victories along the way.</p>
+
+<p>If you have any feedback or insights into how you’ve built out and grown your analytics infrastructure, and / or your approach to BI, I would love to hear from you in the comments.</p>
+
+
+  </div>
+
+  
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Kevin Boller&#39;s Data Informed Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              Kevin Boller&#39;s Data Informed Blog
+            
+            </li>
+            
+            <li><a href="mailto:kdboller@gmail.com">kdboller@gmail.com</a></li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/kdboller"><span class="icon icon--github"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">kdboller</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/kevinboller"><span class="icon icon--twitter"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">kevinboller</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>This is a blog created by a sports nut and product guy; my content is focused on building a data informed culture in sports,  media and technology focused startups.  Topics include experimentation, analytics, growth and (attempts at) optimization.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
