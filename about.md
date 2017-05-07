@@ -5,9 +5,7 @@ permalink: /about/
 ---
 
 <center>
-{% comment %} 
 <img src="/_site/assets/Flo_headshot.png" alt="Kevin Boller" height="300" width="300" style="border-radius: 50%">
-{% endcomment %}
 
 <h1>Kevin Boller</h1>
 
