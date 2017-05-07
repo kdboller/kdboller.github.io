@@ -6,7 +6,7 @@ permalink: /about/
 
 <center>
 
-<img src="_site/assets/Flo_headshot.png" alt="Kevin Boller" height="300" width="300" style="border-radius: 50%">
+<img src="https://github.com/kdboller/kdboller.github.io/blob/master/_site/assets/Flo_headshot.png" alt="Kevin Boller" height="300" width="300" style="border-radius: 50%">
 
 <h1>Kevin Boller</h1>
 
