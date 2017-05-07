@@ -10,3 +10,5 @@ layout: home
 <p>As a major sports enthusiast and technologist, I am extremely passionate about the analytical revolution unfolding across sports media and sports technology.</p>
 
 <p>I am interested in consulting, advisory and board member work within the sports technology space, so please feel free to get in touch.</p>
+
+<hr>
