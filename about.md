@@ -6,6 +6,8 @@ permalink: /about/
 
 <center>
 
+![kevin-boller-headshot](_site/assets/Flo_headshot.png){:class="img-responsive"}
+
 <!--<img src="https://github.com/kdboller/kdboller.github.io/blob/master/_site/assets/Flo_headshot.png" alt="Kevin Boller" height="300" width="300" style="border-radius: 50%">-->
 
 <h1>Kevin Boller</h1>
