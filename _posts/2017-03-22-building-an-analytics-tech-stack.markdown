@@ -5,7 +5,7 @@ date:   2017-03-22 12:00:00 -0500
 categories: 
 ---
 
-<img src="/assets/gameday_application.jpg" alt="GameDay Application" style="width: 100%; /> 
+<img src="/assets/gameday_application.jpg" alt="GameDay Application" style="width: 100%"> 
 
 In an ongoing attempt to be helpful to and learn from others serving in similar job capacities, I am continuing to review my experiences in building out our data infrastructure over the past ~12 months and discuss the most helpful applications which currently sit within our analytics tech stack. 
 In my most recent post, Data Informed Experiments, I discussed the difference between being “data informed” and being “data driven”. I also provided some perspective related to building a “data informed” organizational culture -- my intent is to share what we have learned along the way and discuss the applications which enable us to take advantage of all of the work we've completed to-date.
