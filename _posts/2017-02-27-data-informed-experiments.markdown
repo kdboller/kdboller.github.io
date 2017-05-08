@@ -9,26 +9,32 @@ I am presently VP of Product (Revenue and Analytics) at FloSports, a direct-to-c
 
 My goal in this post is primarily to:
 
-Jump start contributing my learnings in this role, where so many others before me have given back and from whom I’ve learned a great amount
-Assist with continuing the momentum of companies becoming “data informed” rather than “data driven”
-Relay a hypothetical experiment and its related process which is similar to the framework and approach that we leverage at FloSports
+<ul>
+  <li>Jump start contributing my learnings in this role, where so many others before me have given back and from whom I’ve learned a great amount</li>
+  <li>Assist with continuing the momentum of companies becoming “data informed” rather than “data driven”</li>
+  <li>Relay a hypothetical experiment and its related process which is similar to the framework and approach that we leverage   at FloSports</li>
+</ul>
+
 First, what is the difference in being “data informed” versus “data driven”. There are several solid online resources which discuss this; for the sake of time I will quickly highlight an insightful one which I read very recently. In this Interana post, the author delineates between the two as the following:
 
-Data-driven: You let the data guide your decision-making process
+<ul>
+<li>Data-driven: You let the data guide your decision-making process</li>
 
-Data-informed: You let data act as a check on your intuition
+<li>Data-informed: You let data act as a check on your intuition</li>
+</ul>
 
 Essentially, when an organization says that it is “data driven”, one risk it could be introducing is the possibility of optimizing for local maximums; this can occur due to solely focusing on the quantitative aspects of the available data, potentially disregarding key, relevant elements of the company’s underlying business model, and this approach can even run the risk of ultimately leading to a poorly driven decision due to inherent data biases related to the data’s collection and analysis.
-
 
 It is this last aspect that I would like to focus on. Companies are constantly evaluating ways to expand the number of subscribers who make it through their activation funnel; one potential hypothesis to consider is whether or not a free trial offering would be beneficial to the business. Free trials are used by numerous online streaming companies, such as Netflix, Hulu, and WWE.
 
 When testing a free trial, everyone understands that we are evaluating if activations spike with the “try before you buy approach” relative to the traditional request for an upfront payment. Some of the key metrics that I believe would be important to monitor in order to determine this particular experiment’s success, which also must be adjusted / normalized, include:
 
-Upfront conversion rate: the % of visitors who start a subscription
-Plan % mix: the % of all started subscriptions who select a certain plan option, which may fluctuate by experiment variant
-Trial-to-pay conversion rate: while the trial may generate greater upfront conversions, one must convert the trial subs to pay after the trial period
-M1 Retention: compare historical retention curves to free trial participant retention; we need to be cognizant of how the free trial also impacts the lifetime value of subscribers (in addition to the upfront metrics cited above)
+<ul>
+  <li>Upfront conversion rate: the % of visitors who start a subscription</li>
+  <li>Plan % mix: the % of all started subscriptions who select a certain plan option, which may fluctuate by experiment          variant</li>
+  <li>Trial-to-pay conversion rate: while the trial may generate greater upfront conversions, one must convert the trial subs   to pay after the trial period</li>
+  <li>M1 Retention: compare historical retention curves to free trial participant retention; we need to be cognizant of how     the free trial also impacts the lifetime value of subscribers (in addition to the upfront metrics cited above)</li>
+</ul>
 
 The final piece to this analysis could be which subscribers should be included in evaluating the overall results. Many digital streaming providers have subscribers who churn and then return at a later date; the industry term for these is “reactivations”. For this particular experiment, I would most likely focus on “new” subscribers. We want to expand the overall activations within our funnel. Reactivated subscribers are more familiar with the product offering, as former subscribers, and also have different objectives and most likely different retention curves than new subscribers.
 
@@ -49,6 +55,8 @@ In future posts, I would like to continue to share my perspective on how to help
 
 Additional image citations:
 
-The risk of optimizing for local maximums; from Andrew Chen: “Know the difference between data-informed and versus data-driven”
-Photo Credit: Optimizely from Optimizely’s blog. Stat Engine is a powerful tool which shows near real-time results and statistical significance of those results.
-Featured picture from Wikimedia Commons. This image illustrates the maxim that “nature abhors a vacuum.” This is not necessarily the case with the consistency of experiment results across time.
+<ol>
+  <li>The risk of optimizing for local maximums; from Andrew Chen: “Know the difference between data-informed and versus data-    driven”</li>
+  <li>Photo Credit: Optimizely from Optimizely’s blog. Stat Engine is a powerful tool which shows near real-time results and      statistical significance of those results.</li>
+  <li>Featured picture from Wikimedia Commons. This image illustrates the maxim that “nature abhors a vacuum.” This is not       necessarily the case with the consistency of experiment results across time.</li>
+</ol>
