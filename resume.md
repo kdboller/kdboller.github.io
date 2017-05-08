@@ -4,8 +4,10 @@ title: Resume
 permalink: /resume/
 ---
 
-This is a placeholder page which will be updated with my latest resume.
+This is a placeholder page for now as I intend to provide summaries related to each stage of my professional and 
+education background.
 
+In the meantime, please feel free to download my resume [here](Boller_Kevin_Resume_2017.pdf) directly.
 
 {% comment %} 
 This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, 
