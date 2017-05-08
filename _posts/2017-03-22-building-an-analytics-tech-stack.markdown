@@ -25,7 +25,7 @@ For business intelligence (BI), most companies consolidate their key data source
 
 For the remainder of this post, I’ll highlight a few important tools which we’ve made use of since the second half of last year. These applications are incredibly important to every aspect of the analysis that we conduct and report on -- in combination with our data warehouse, they’ve empowered me to be able to leave the world of “CSV extract, read into Jupyter Notebook, extract back to CSV, paste into financial model, and output to powerpoint”; I truly could not be more thankful.
 
-
+<img src="/assets/periscope_data.png" alt="Periscope Data" style="width: 100%">
 <strong>Periscope Data</strong>
 
 
