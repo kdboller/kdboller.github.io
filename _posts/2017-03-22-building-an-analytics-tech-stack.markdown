@@ -25,8 +25,8 @@ For business intelligence (BI), most companies consolidate their key data source
 
 For the remainder of this post, I’ll highlight a few important tools which we’ve made use of since the second half of last year. These applications are incredibly important to every aspect of the analysis that we conduct and report on -- in combination with our data warehouse, they’ve empowered me to be able to leave the world of “CSV extract, read into Jupyter Notebook, extract back to CSV, paste into financial model, and output to powerpoint”; I truly could not be more thankful.
 
-<img src="/assets/periscope_data.png" alt="Periscope Data" style="width: 100%">
 <strong>Periscope Data</strong>
+<img src="/assets/periscope_data.png" alt="Periscope Data" style="width: 100%">
 
 
 I was aware of Periscope Data while we were in the process of standing up our data warehouse; however, this post on Medium by Samsun Hu provided tremendous insight into the benefits of Periscope relative to more traditional, and generally costlier, BI tools.
@@ -51,6 +51,7 @@ At FloSports, we use Periscope as our ‘consumer facing’ dashboard product --
 </ul>
 
 <strong>Mode Analytics</strong>
+<img src="/assets/mode_analytics.png" alt="Mode Analytics" style="width: 100%">
 
 
 Mode Analytics markets its product as “a SQL editor, Python notebook, and visualization builder, all rolled into one.” After using it since November, I’m a huge, huge fan and I spend a significant amount of several days per week working in Mode.
@@ -72,7 +73,7 @@ Mode Analytics markets its product as “a SQL editor, Python notebook, and visu
 </ul>
 
 <strong>Segment</strong>
-
+<img src="/assets/segment.png" alt="Segment" style="width: 100%">
 
 When building out a DW, there will always be a tradeoff between time spent engineering the ETL process / workflow(s) and creating reporting tables, e.g., aggregate fact tables, conducting machine learning, etc. The ETL serves as the plumbing of the DW and it’s obvious that high quality data is requisite to enabling key insights; as Bob Becker from the Kimball Group wrote: “At its foundation, the DW/BI environment must be a repository of high quality data. The biggest challenges for most DW/BI efforts are data-related. In general, the effort to develop the ETL processes required to provide high quality data is typically more demanding than anticipated” (my emphasis added).
 
