@@ -4,7 +4,9 @@
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: home
 ---
-
+<center>
+<img src="/assets/Flo_headshot.png" alt="Kevin Boller" height="100" width="100" style="border-radius: 50%"> 
+</center>
 <p>Hi, I’m Kevin Boller and I currently live in Austin, TX where I am the VP of Product (Revenue and Analytics) for <a href="http://www.flosports.tv/" target="_blank">FloSports</a>. </p>
 
 <p>As a major sports enthusiast and technologist, I am extremely passionate about the analytical revolution unfolding across sports media and sports technology.</p>
