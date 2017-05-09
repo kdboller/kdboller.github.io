@@ -40,7 +40,7 @@ When testing a free trial, everyone understands that we are evaluating if activa
 <li><strong>M1 Retention:</strong> compare historical retention curves to free trial participant retention; we need to be cognizant of how the free trial also impacts the lifetime value of subscribers (in addition to the upfront metrics cited above)</li>
 </ul>
 
-<img src="/assets/optimizely-stat-engine.png" alt="Optimizely Stat Engine" height="500"  style="width: 100%"> 
+<img src="/assets/optimizely-stat-engine.png" alt="Optimizely Stat Engine" height="300"  style="width: 100%"> 
 
 The final piece to this analysis could be which subscribers should be included in evaluating the overall results. Many digital streaming providers have subscribers who churn and then return at a later date; the industry term for these is “reactivations”. For this particular experiment, I would most likely focus on “new” subscribers. We want to expand the overall activations within our funnel. Reactivated subscribers are more familiar with the product offering, as former subscribers, and also have different objectives and most likely different retention curves than new subscribers.
 
