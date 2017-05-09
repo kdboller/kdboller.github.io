@@ -27,7 +27,7 @@ First, what is the difference in being “data informed” versus “data driven
 
 Essentially, when an organization says that it is “data driven”, one risk it could be introducing is the possibility of optimizing for local maximums; this can occur due to solely focusing on the quantitative aspects of the available data, potentially disregarding key, relevant elements of the company’s underlying business model, and this approach can even run the risk of ultimately leading to a poorly driven decision due to inherent data biases related to the data’s collection and analysis.
 
-<img src="/assets/local-maximums.gif" alt="Local Maximums" height="250"  style="width: 100%"> 
+<img src="/assets/local-maximums.gif" alt="Local Maximums" height="150"  style="width: 100%"> 
 
 It is this last aspect that I would like to focus on. Companies are constantly evaluating ways to expand the number of subscribers who make it through their activation funnel; one potential hypothesis to consider is whether or not a free trial offering would be beneficial to the business. Free trials are used by numerous online streaming companies, such as Netflix, Hulu, and WWE.
 
