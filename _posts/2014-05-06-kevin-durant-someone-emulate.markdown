@@ -27,7 +27,7 @@ thank her for all of her sacrifices which she made for me while I was growing up
 
 <strong>“…When you didn’t eat, you made sure we ate. You went to sleep hungry. You sacrificed for us. You’re the real MVP.” </strong>
 -- Kevin Durant about his MVP Mom
-<br />
+<br>
 <p>Sports allow us to witness incredible feats by the best athletes in the world. However, for me, what’s even better are all 
 of the childhood memories from my days of playing sports while my dad often coached and my mom cheered. 
 Sports will always play an important role in my life, as the memories last forever and because exceptional people like Kevin Durant should be emulated, both on and off the court.
