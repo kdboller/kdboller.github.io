@@ -5,6 +5,8 @@ date:   2017-02-27 12:00:00 -0500
 categories: 
 ---
 
+<img src="/assets/big-data.png" alt="Big Data" height="500"  style="width: 100%"> 
+
 I am presently VP of Product (Revenue and Analytics) at FloSports, a direct-to-consumer provider of live streaming and on-demand digital sports content. In this role, I focus on product innovations which can drive top-line growth while also overseeing analytics (business, product, and data, among others). Recently, our CEO Martin Floreani has spoken about the business intelligence platform we have been building out since last year, which is internally known as Neptune. His interview with Sports Techie, where he discusses the impact Neptune has had on the business, can be found here. I have been fortunate to be one of FloSports’ founding members of Neptune and am responsible for overseeing both our data source and business intelligence reporting roadmaps.
 
 <strong>My goal in this post is primarily to:</strong>
@@ -25,6 +27,8 @@ First, what is the difference in being “data informed” versus “data driven
 
 Essentially, when an organization says that it is “data driven”, one risk it could be introducing is the possibility of optimizing for local maximums; this can occur due to solely focusing on the quantitative aspects of the available data, potentially disregarding key, relevant elements of the company’s underlying business model, and this approach can even run the risk of ultimately leading to a poorly driven decision due to inherent data biases related to the data’s collection and analysis.
 
+<img src="/assets/local-maximums.gif" alt="Local Maximums" height="250"  style="width: 100%"> 
+
 It is this last aspect that I would like to focus on. Companies are constantly evaluating ways to expand the number of subscribers who make it through their activation funnel; one potential hypothesis to consider is whether or not a free trial offering would be beneficial to the business. Free trials are used by numerous online streaming companies, such as Netflix, Hulu, and WWE.
 
 When testing a free trial, everyone understands that we are evaluating if activations spike with the “try before you buy approach” relative to the traditional request for an upfront payment. Some of the key metrics that I believe would be important to monitor in order to determine this particular experiment’s success, which also must be adjusted / normalized, include:
@@ -35,6 +39,8 @@ When testing a free trial, everyone understands that we are evaluating if activa
 <li><strong>Trial-to-pay conversion rate:</strong> while the trial may generate greater upfront conversions, one must convert the trial subs to pay after the trial period</li>
 <li><strong>M1 Retention:</strong> compare historical retention curves to free trial participant retention; we need to be cognizant of how the free trial also impacts the lifetime value of subscribers (in addition to the upfront metrics cited above)</li>
 </ul>
+
+<img src="/assets/optimizely-stat-engine.png" alt="Optimizely Stat Engine" height="500"  style="width: 100%"> 
 
 The final piece to this analysis could be which subscribers should be included in evaluating the overall results. Many digital streaming providers have subscribers who churn and then return at a later date; the industry term for these is “reactivations”. For this particular experiment, I would most likely focus on “new” subscribers. We want to expand the overall activations within our funnel. Reactivated subscribers are more familiar with the product offering, as former subscribers, and also have different objectives and most likely different retention curves than new subscribers.
 
