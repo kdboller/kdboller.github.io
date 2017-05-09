@@ -8,16 +8,16 @@ categories:
 <img src="/assets/gameday_application.jpg" alt="GameDay Application" height="500"  style="width: 100%"> 
 
 In an ongoing attempt to be helpful to and learn from others serving in similar job capacities, I am continuing to review my experiences in building out our data infrastructure over the past ~12 months and discuss the most helpful applications which currently sit within our analytics tech stack. 
-In my most recent post, Data Informed Experiments, I discussed the difference between being “data informed” and being “data driven”. I also provided some perspective related to building a “data informed” organizational culture -- my intent is to share what we have learned along the way and discuss the applications which enable us to take advantage of all of the work we've completed to-date.
+In my most recent post, <a href="https://kdboller.github.io/2017/02/27/data-informed-experiments.html" target="_blank">Data Informed Experiments</a>, I discussed the difference between being “data informed” and being “data driven”. I also provided some perspective related to building a “data informed” organizational culture -- my intent is to share what we have learned along the way and discuss the applications which enable us to take advantage of all of the work we've completed to-date.
 
 When I arrived at FloSports a little over a year ago, I joined as a Product Director of Subscription Revenue. The company had great momentum in a market, live sports streaming, which was and continues to experience remarkable growth. However, from a data and analytics standpoint, a data warehouse did not yet exist; reporting was somewhat fragmented and siloed among departments, often living in Google Sheets. Although financial and subscription reporting and KPI monitoring was in place, it was clear that the analytical foundation would have a very challenging time scaling alongside the company’s significant growth trajectory. Among other aspects of our business model, in just a year and a half we’ve grown from producing and selling subscriptions against live events for 5 sports to over 20 sports, and this continues to grow.
 
-For business intelligence (BI), most companies consolidate their key data sources into a centralized data warehouse (DW); the process of extracting data from various sources and loading it into the DW is referred to as ETL; for reporting purposes, a business intelligence / reporting application is connected to the data warehouse, allowing for dashboards to be created with reports that leverage one or more of the DW’s data sources. While the build out of a DW is time consuming and can be challenging at times, the quick highlights of this process for us, which we kicked off less than a year ago, include the following:
+For business intelligence (BI), most companies consolidate their key data sources into a centralized data warehouse (DW); the process of extracting data from various sources and loading it into the DW is referred to as <a href="https://en.wikipedia.org/wiki/Extract,_transform,_load" target="_blank">ETL</a>; for reporting purposes, a business intelligence / reporting application is connected to the data warehouse, allowing for dashboards to be created with reports that leverage one or more of the DW’s data sources. While the build out of a DW is time consuming and can be challenging at times, the quick highlights of this process for us, which we kicked off less than a year ago, include the following:
 
 <ul>
-  <li>Select where your data warehouse will reside / be hosted; like many other growth, tech companies, we selected Amazon Redshift</li>
+  <li>Select where your data warehouse will reside / be hosted; like many other growth, tech companies, we selected <a href="https://aws.amazon.com/redshift/" target="_blank">Amazon Redshift</a></li>
   <li>Identify your most critical data sources and build a roadmap for data source expansion</li>
-  <li>Evaluate build versus buy options along the way for key elements of the warehouse; I’ll discuss Segment in more detail later in this post</li>
+  <li>Evaluate build versus buy options along the way for key elements of the warehouse; I’ll discuss <a href="https://segment.com/" target="_blank">Segment</a> in more detail later in this post</li>
   <li>Outline and document the business rules and logic which will define how data is modeled and how the facts about your data will be reported on</li>
   <li>Model all data and ensure that you have a ‘source of truth’ which you will use to validate each source loaded into your data warehouse</li>
   <li>Choose BI visualization and ETL tools which best suit your organization’s requirements, budget and your team’s overall technical sophistication</li>
@@ -25,11 +25,11 @@ For business intelligence (BI), most companies consolidate their key data source
 
 For the remainder of this post, I’ll highlight a few important tools which we’ve made use of since the second half of last year. These applications are incredibly important to every aspect of the analysis that we conduct and report on -- in combination with our data warehouse, they’ve empowered me to be able to leave the world of “CSV extract, read into Jupyter Notebook, extract back to CSV, paste into financial model, and output to powerpoint”; I truly could not be more thankful.
 
-<strong>Periscope Data</strong>
+<strong><a href="https://periscopedata.com/" target="_blank">Periscope Data</a></strong>
 <img src="/assets/periscope_data.png" alt="Periscope Data" style="width: 100%">
 
 
-I was aware of Periscope Data while we were in the process of standing up our data warehouse; however, this post on Medium by Samsun Hu provided tremendous insight into the benefits of Periscope relative to more traditional, and generally costlier, BI tools.
+I was aware of Periscope Data while we were in the process of standing up our data warehouse; however, <a href="https://medium.com/@samson_hu/building-analytics-at-500px-92e9a7005c83" target="_blank">this post on Medium</a> by Samsun Hu provided tremendous insight into the benefits of Periscope relative to more traditional, and generally costlier, BI tools.
 
 At FloSports, we use Periscope as our ‘consumer facing’ dashboard product -- we have permissioned our dashboards by Groups and placed our business users into the Groups which align with their reporting needs and use cases. Here are my primary observations:
 
