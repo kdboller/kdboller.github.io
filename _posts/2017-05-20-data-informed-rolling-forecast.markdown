@@ -94,7 +94,7 @@ in this example, inputs such as vertical launch month, last month of actuals, an
 each sport and generate a model tailored to each sport’s history without manual intervention / rewiring.
 </p>
 
-<img src="/assets/Illustrative Inputs Worksheet.png" alt="Illustrative Inputs Worksheet" height="250"  style="width: 100%">
+<img src="/assets/Illustrative Inputs Worksheet.png" alt="Illustrative Inputs Worksheet" height="350"  style="width: 100%">
 
 <p>
 For those familiar with financial modeling, you know that you can make use of scenarios and cases to sensitize / stress test for various potential outcomes.  
