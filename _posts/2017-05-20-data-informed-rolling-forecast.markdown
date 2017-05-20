@@ -115,8 +115,8 @@ Visual reports which reflect the quarter’s goals → easier for business users
 A pacing dashboard to provide insight into how the sports are pacing versus forecast, including net cash / revenue, signups, subscribers and churn. 
 </p>
 
-<p>
 <strong><u>Part 3:  Leveraging the right BI tools</u></strong>
+<p>
 I’ve written about Pericope’s cache before, and it proved to be extremely helpful in this case.  Our data engineering team, which is very lean and always busy, 
 is currently investigating Redshift Spectrum to make CSVs and other flat files “first class citizens”.  In the meantime, we’ve used Periscope’s cache in several 
 ways.  As one example, we’ve been able to accomplish cross database joins, one source in MySQL and the other in Postgres, while also combining data from a flat 
