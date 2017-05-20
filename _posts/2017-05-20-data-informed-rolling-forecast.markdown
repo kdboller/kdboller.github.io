@@ -151,6 +151,7 @@ In a future post, I’ll write about what we’ve learned and any mistakes or le
 </p>
 
 <u>A sanitized illustration</u>
+<hr>
 <img src="/assets/Illustrative Q2 Pacing Dashboard.png" alt="Illustrative Q2 Pacing Dashboard" height="300"  style="width: 100%">
 
 <p>
