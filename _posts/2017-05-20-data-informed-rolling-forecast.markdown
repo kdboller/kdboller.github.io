@@ -50,9 +50,9 @@ wanted to define our subscriber types and plan intervals.
 As an example, we could map out our different subscriber types based on the type of payment made combined with where the subscriber was in his / her lifecycle 
 with a particular sport offering.  To show illustrative examples of subscriber types for clarity:
 <ul>
-<li>New:  subscriber makes a payment for the first time for a particular sport’s subscription</li>
-<li>Reactivation:  subscriber, who has been a subscriber prior to previously canceling, returns and makes a payment for a particular sport’s subscription</li>
-<li>Recurring:  subscriber makes a recurring payment for his / her particular sport’s subscription</li>
+<li><strong>New:</strong>  subscriber makes a payment for the first time for a particular sport’s subscription</li>
+<li><strong>Reactivation:</strong>  subscriber, who has been a subscriber prior to previously canceling, returns and makes a payment for a particular sport’s subscription</li>
+<li><strong>Recurring:</strong>  subscriber makes a recurring payment for his / her particular sport’s subscription</li>
 </ul>
 </p>
 
@@ -66,7 +66,7 @@ Leveraging these data rich fact tables and a flexible BI tool like Periscope Dat
 filterable by sport, which we can bend as needed via SQL and then download as a CSV and load into our financial models.
 </p>
 
-<strong><u>Part 2:  Building the bottoms-up financial model template</strong></u>
+<strong><u>Part 2:  Building the bottoms-up financial model template</u></strong>
 
 <p>
 Given the reality that we have 25+ sports and time is finite, one of my primary goals in building the bottoms-up financial model for each sport was to make 
@@ -94,7 +94,7 @@ in this example, inputs such as vertical launch month, last month of actuals, an
 each sport and generate a model tailored to each sport’s history without manual intervention / rewiring.
 </p>
 
-<img src="/assets/Illustrative Inputs Worksheet.png" alt="Illustrative Inputs Worksheet" height="500"  style="width: 100%">
+<img src="/assets/Illustrative Inputs Worksheet.png" alt="Illustrative Inputs Worksheet" height="250"  style="width: 100%">
 
 <p>
 For those familiar with financial modeling, you know that you can make use of scenarios and cases to sensitize / stress test for various potential outcomes.  
@@ -116,7 +116,7 @@ A pacing dashboard to provide insight into how the sports are pacing versus fore
 </p>
 
 <p>
-<strong><u>Part 3:  Leveraging the right BI tools</strong></u>
+<strong><u>Part 3:  Leveraging the right BI tools</u></strong>
 I’ve written about Pericope’s cache before, and it proved to be extremely helpful in this case.  Our data engineering team, which is very lean and always busy, 
 is currently investigating Redshift Spectrum to make CSVs and other flat files “first class citizens”.  In the meantime, we’ve used Periscope’s cache in several 
 ways.  As one example, we’ve been able to accomplish cross database joins, one source in MySQL and the other in Postgres, while also combining data from a flat 
@@ -147,7 +147,7 @@ include:
 </ul>
 </p>
 
-<img src="/assets/Illustrative Q2 Pacing Dashboard.png" alt="Illustrative Q2 Pacing Dashboard" height="500"  style="width: 100%">
+<img src="/assets/Illustrative Q2 Pacing Dashboard.png" alt="Illustrative Q2 Pacing Dashboard" height="300"  style="width: 100%">
 
 <p>
 In a future post, I’ll write about what we’ve learned and any mistakes or lessons learned as part of this process.  
