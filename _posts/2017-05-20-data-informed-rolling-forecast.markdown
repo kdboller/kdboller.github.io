@@ -59,9 +59,9 @@ with a particular sport offering.  To show illustrative examples of subscriber t
 <p> 
 <u><a href="http://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/aggregate-fact-table-cube/" target="_blank">Aggregate Fact Tables.</a></u>  Given the range of our sports and plan offerings, queries can become rather complicated, especially for sports with multi-year histories
 and lots of activity from both new and existing subscribers.  Given this, our most common reporting use cases, once fleshed out and well understood, 
-are generally converted into aggregated fact tables which will often combine two, three or more different data sources.  
+are generally converted into aggregate fact tables which will often combine two, three or more different data sources.  
 
-We have built aggregated fact tables for key performance metrics including subscriber waterfalls (monthly grain) and payments (daily grain).  
+We have built aggregate fact tables for key performance metrics including subscriber waterfalls (monthly grain) and payments (daily grain).  
 Leveraging these data rich fact tables and a flexible BI tool like Periscope Data, we were able to create a historical benchmarking dashboard, 
 filterable by sport, which we can bend as needed via SQL and then download as a CSV and load into our financial models.
 </p>
@@ -70,17 +70,17 @@ filterable by sport, which we can bend as needed via SQL and then download as a 
 
 <p>
 Given the reality that we have 25+ sports and time is finite, one of my primary goals in building the bottoms-up financial model for each sport was to make 
-the model’s template dynamic and flexible; this facilitated limited, if any, rewiring of the model for each case, as we are able to flex the model based on
+the model’s dynamic and flexible; this facilitated limited, if any, rewiring of the model for each case, as we are able to flex the model based on
 different launch dates and the historical performances for each sport.</p>
 
 <p>
 As an example, some sports have been around for several years, whereas others only have a few months of historical data.  
-Rather than building each model to conform to each individual sport’s history, and also need to rebuild each model every quarter, I spent a lot of upfront 
+Rather than building each model to conform to each individual sport’s history, and also needing to rebuild each model every quarter, I spent a lot of upfront 
 time figuring out how to best flex the model.  Examples of what we’re able to dynamically feed through all 15+ worksheets includes:
 
 <ul>
-<li>Subscriber retention waterfalls</li>
-<li>Weighted average retention curve across all historical cohorts with projected future churn based on decay rate</li>
+<li>Subscriber cohort retention waterfalls</li>
+<li>Weighted average retentions curve across all historical cohorts with projected future churn based on decay rates</li>
 <li>Historical plan selection mix, e.g., % monthly / yearly</li>
 <li>Subscriber corkscrew build over time -- beginning plus new less churned equals ending (monthly grain); (also helpful for MRR by plan offering and sport)</li>
 <li>Weekly forecast for the quarter based on historical cohorts and their projected recurring payments and 
@@ -89,8 +89,8 @@ combined with forecasted new and reactivated subscriber payments</li>
 </p>
 
 <p>
-The model’s flexibility is generally accomplished by determining which Inputs are needed in order to drive dynamic formulas within; 
-in this example, inputs such as vertical launch month, last month of actuals, and date quarter starts allow me to key the model off the unique aspects of
+The model’s flexibility is generally accomplished by determining which input drivers are needed in order to drive dynamic formulas within; 
+in this example, inputs such as <i>vertical launch month, last month of actuals, and date quarter starts </i>allow me to key the model off of the unique aspects of
 each sport while still generating one tailored to each sport’s history and without manual intervention / rewiring.
 </p>
 
@@ -100,7 +100,7 @@ each sport while still generating one tailored to each sport’s history and wit
 For those familiar with financial modeling, you know that you can make use of scenarios and cases to sensitize / stress test for various potential outcomes.  
 One example could be, “what if we close a large sporting event deal in the 2nd month of the quarter”, but all of our key inputs, e.g., monthly price, remain the same.  
 In this instance, to account for this possibility we would create a scenario, often using the offset function, that allows us to select whether or not we want 
-the impact of this potential outcome to flow through the model.  On top of this, we could combine the "Large New Event" scenario with a "Bull" case → “what if we 
+the impact of this potential outcome to change certain inputs and then flow through the model.  On top of this, we could combine the "Large New Event" scenario with a "Bull" case → “what if we 
 close the large event and the % yearly mix for the quarter is 500 bps higher than we’ve seen historically, due to a more robust offering for the sport’s 
 subscribers?”
 </p>
@@ -127,13 +127,13 @@ CSV file in order to generate 20+ charts for a time-sensitive dashboard; this da
 
 <p>
 Periscope’s Cache has also been remarkably helpful in enabling us to quickly build proof of concepts for new data sources and receive feedback from 
-business stakeholders before requesting engineering to add new data sources into our ETL workflows.  Furthermore, for the business users who are less familiar with requesting their data processes 
-to become part of our ETL process, Periscope's cache also provides us with a low-cost way to iterate on their reporting ideas prior to fully modeling the data and incorporating 
-the source into our overall warehouse schemas.
+business stakeholders; we accomplish this before ever requesting engineering to add new data sources into our ETL workflows.  Furthermore, for the business users who are less familiar with requesting their current state data processes 
+to become a part of our ETL process, Periscope's cache also provides us with a low-cost way to iterate on their reporting ideas prior to fully modeling the data and incorporating 
+the new source(s) into our overall warehouse schemas.
 </p>
 
 <p>
-As part of the Q2 Dashboard that we built using Periscope, we were able to create a highly customizable reporting tool which displays daily, weekly, monthly and 
+The Q2 Dashboard that we built using Periscope is a highly customizable reporting tool for business users which displays daily, weekly, monthly and 
 quarterly pacing.  This provides visibility for the rights acquisition team, marketers, management and the data analyst team in terms of where we are beating or 
 potentially short on quarterly goals -- further, we can leverage the dashboard’s reports to trigger areas requiring additional investigations.  Some examples 
 include: 
@@ -150,14 +150,14 @@ include:
 In a future post, I’ll write about what we’ve learned and any mistakes or lessons learned as part of this process.  
 </p>
 
-<u>A sanitized illustration</u>
+<u>A sanitized illustration of the Q2 2017 dashboard</u>
 <hr>
 <img src="/assets/Illustrative Q2 Pacing Dashboard.png" alt="Illustrative Q2 Pacing Dashboard" height="300"  style="width: 100%">
 
 <p>
 
 That’s effectively it -- it’s been rather rewarding that I’ve been able to combine my financial modeling background with data analytics, 
-and it’s also gratifying that all of the hard work of defining and validating our business logic has made all of this possible.  <strong>And thanks to Periscope Data for being such a great partner across our initiatives.</strong>
+and it’s also gratifying that all of the hard work in defining and validating our business logic has made all of this possible.  <strong>And thanks to Periscope Data for being such a great partner across our initiatives!</strong>
 </p>
 <p>
 For those less familiar with a process such as this, I hope that this post is informative and sparks some ideas and new thinking, and I welcome any questions or additional 
