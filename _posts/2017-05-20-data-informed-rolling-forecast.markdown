@@ -20,10 +20,10 @@ has ~25 different sports that we are tracking.</p>
 
 <p>As part of all of our key efforts, one new initiative that I spearheaded prior to the start of our Q2 this year (we are on a calendar year) is what I call 
 a “Data Informed Rolling Forecast”.  
-<strong>In this post, I’ll walk through at a macro level how this was accomplished and how Periscope Data was invaluable in helping us achieve a pacing dashboard -- 
+<strong>In this post, I’ll walk through at a macro level how this was accomplished and how <a href="https://www.periscopedata.com/" target="_blank">Periscope Data</a> was invaluable in helping us achieve a pacing dashboard -- 
 with limited to no engineering time required.</strong></p>
 
-<p>Below is the list of ingredients that were necessary for me to accomplish this (most of this type work is a marathon, not a sprint):
+<p>Below is the list of ingredients that were necessary for me to accomplish this <i>(most of this type work is a marathon, not a sprint)</i>:
 
 <ol>
 <li>An understanding of the key drivers of your business and economic model</li>
@@ -32,7 +32,7 @@ with limited to no engineering time required.</strong></p>
 <li>A bottoms-up financial model template, ideally scenario and case based (e.g., only growth from existing business versus existing + high probability to 
 close business, bull / base / bear cases, etc.), which builds off of most recent actuals from #2 and forecasts expected results for the next quarter</li>
 <li>Business intelligence tools which facilitate the creation of a pacing dashboard</li>
-<li>A process to conduct post-mortem analysis regarding strengths / areas for improvement within the overall framework (Future post)</li>
+<li>A process to conduct post-mortem analysis regarding strengths / areas for improvement within the overall framework <strong>(Future post)</strong></li>
 </ol>
 </p>
 
@@ -56,8 +56,8 @@ with a particular sport offering.  To show illustrative examples of subscriber t
 </ul>
 </p>
 
-<p>
-<u>Aggregated Fact Tables.</u>  Given the range of our sports and plan offerings, queries can become rather complicated, especially for sports with multi-year histories
+<p> 
+<u><a href="http://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/aggregate-fact-table-cube/" target="_blank">Aggregate Fact Tables.</a></u>  Given the range of our sports and plan offerings, queries can become rather complicated, especially for sports with multi-year histories
 and lots of activity from both new and existing subscribers.  Given this, our most common reporting use cases, once fleshed out and well understood, 
 are generally converted into aggregated fact tables which will often combine two, three or more different data sources.  
 
@@ -89,18 +89,18 @@ combined with forecasted new and reactivated subscriber payments</li>
 </p>
 
 <p>
-The model’s flexibility is generally accomplished by determining which Inputs are needed in order to drive dynamic formulas within the model; 
+The model’s flexibility is generally accomplished by determining which Inputs are needed in order to drive dynamic formulas within; 
 in this example, inputs such as vertical launch month, last month of actuals, and date quarter starts allow me to key the model off the unique aspects of
-each sport and generate a model tailored to each sport’s history without manual intervention / rewiring.
+each sport while still generating one tailored to each sport’s history and without manual intervention / rewiring.
 </p>
 
 <img src="/assets/Illustrative Inputs Worksheet.png" alt="Illustrative Inputs Worksheet" height="350"  style="width: 100%">
 
 <p>
 For those familiar with financial modeling, you know that you can make use of scenarios and cases to sensitize / stress test for various potential outcomes.  
-One example could be, “what if we close a large sporting event in the 2nd month of the quarter”, but all of our key inputs, e.g., Monthly price, remain the same.  
-In this instance, to account for this possibility, we could create a scenario, often using the offset function, that allows us to select whether or not we want 
-the impact of this potential outcome to flow through the model.  On top of this, we could combine the Large New Event scenario with a Bull case → “what if we 
+One example could be, “what if we close a large sporting event deal in the 2nd month of the quarter”, but all of our key inputs, e.g., monthly price, remain the same.  
+In this instance, to account for this possibility we would create a scenario, often using the offset function, that allows us to select whether or not we want 
+the impact of this potential outcome to flow through the model.  On top of this, we could combine the "Large New Event" scenario with a "Bull" case → “what if we 
 close the large event and the % yearly mix for the quarter is 500 bps higher than we’ve seen historically, due to a more robust offering for the sport’s 
 subscribers?”
 </p>
@@ -109,25 +109,27 @@ subscribers?”
 <u>Time to create a combined CSV for all forecasts.</u>
 Finally, while each sport has an individual model, within each I added a worksheet that rolled up all of the key reporting metrics across the 
 various worksheets as rows (weeks) and columns (metrics), which could then serve as a flat, query-able table → combining all of these model’s sheets into a 
-single CSV is what enabled us to create a pacing dashboard.  This allowed us to accomplish:
+single CSV is what enabled us to create a pacing dashboard.  By doing so, we accomplished the following:
 
-Visual reports which reflect the quarter’s goals → easier for business users to understand what our goals are and how we are looking to accomplish those
-A pacing dashboard to provide insight into how the sports are pacing versus forecast, including net cash / revenue, signups, subscribers and churn. 
+<ul>
+<li>Visual reports which reflect the quarter’s goals → easier for business users to understand what our goals are and how we are looking to achieve them</li>
+<li>A pacing dashboard to provide insight into how the sports are pacing versus forecast, including net cash / revenue, signups, subscribers and churn.</li>
+</ul>
 </p>
 
-<strong><u>Part 3:  Leveraging the right BI tools</u></strong>
-<p>
-I’ve written about Pericope’s cache before, and it proved to be extremely helpful in this case.  Our data engineering team, which is very lean and always busy, 
-is currently investigating Redshift Spectrum to make CSVs and other flat files “first class citizens”.  In the meantime, we’ve used Periscope’s cache in several 
+<strong><u>Part 3:  Leveraging the right BI tools, aka Periscope Data FTW</u></strong>
+<p> 
+I’ve written about <a href="https://www.periscopedata.com/blog/building-the-periscope-cache-with-amazon-redshift.html" target="_blank">Periscope's data cache</a> before, and it proved to be extremely helpful in this case.  Our data engineering team, which is very lean and always busy, 
+is currently investigating <a href="http://blog.panoply.io/the-spectrum-of-redshift-athena-and-s3" target="_blank">Redshift Spectrum</a> to make CSVs and other flat files “first class citizens”.  In the meantime, we’ve used Periscope’s data cache in several 
 ways.  As one example, we’ve been able to accomplish cross database joins, one source in MySQL and the other in Postgres, while also combining data from a flat 
-CSV file in order to generate 20+ charts; we’ve used this example for a dashboard which satisfies one of our sports’ subscriber attribution reporting requests. 
+CSV file in order to generate 20+ charts for a time-sensitive dashboard; this dashboard satisfied one of our sports’ subscriber attribution reporting requests in probably 1/20th the time it might have taken to incorporate a proprietary ETL approach. 
 </p>
 
 <p>
-As a result, Periscope’s Cache has been remarkably helpful in enabling us to quickly build proof of concepts for new data sources and receive feedback from 
-business stakeholders before requesting engineering to add new data sources into our ETL workflows.  For the business users who are not familiar requesting data 
-to become part of the ETL process, the cache also provides us with a low-cost way to iterate on their reporting ideas prior to modeling the data and incorporating 
-the source into our overall reporting.
+Periscope’s Cache has also been remarkably helpful in enabling us to quickly build proof of concepts for new data sources and receive feedback from 
+business stakeholders before requesting engineering to add new data sources into our ETL workflows.  Furthermore, for the business users who are less familiar with requesting their data processes 
+to become part of our ETL process, Periscope's cache also provides us with a low-cost way to iterate on their reporting ideas prior to fully modeling the data and incorporating 
+the source into our overall warehouse schemas.
 </p>
 
 <p>
@@ -145,18 +147,21 @@ include:
   <ul><li>We saw higher retention than forecast; why would this be and how do we do more of this?</li></ul>
 
 </ul>
+In a future post, I’ll write about what we’ve learned and any mistakes or lessons learned as part of this process.  
 </p>
 
+<u>A sanitized illustration</u>
 <img src="/assets/Illustrative Q2 Pacing Dashboard.png" alt="Illustrative Q2 Pacing Dashboard" height="300"  style="width: 100%">
 
 <p>
-In a future post, I’ll write about what we’ve learned and any mistakes or lessons learned as part of this process.  
 
-That’s it -- it’s been rather rewarding that I’ve been able to combine my financial modeling background with data analytics, 
-and it’s also gratifying that the hard work of defining and validating our business logic has made all of this possible.
-For those less familiar with a process such as this, I hope that this post is informative and sparks some ideas, and I welcome any questions or additional 
+That’s effectively it -- it’s been rather rewarding that I’ve been able to combine my financial modeling background with data analytics, 
+and it’s also gratifying that all of the hard work of defining and validating our business logic has made all of this possible.  <strong>And thanks to Periscope Data for being such a great partner across our initiatives.</strong>
+</p>
+<p>
+For those less familiar with a process such as this, I hope that this post is informative and sparks some ideas and new thinking, and I welcome any questions or additional 
 thoughts in the comments below.  <strong>While I recognize there are areas for improvement in terms of the work done here, 
-I strongly believe that every company should adopt a Data Informed Rolling Forecast.</strong>
+I strongly believe that every company must adopt a Data Informed Rolling Forecast.</strong>
 </p>
 
 
