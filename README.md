@@ -15,9 +15,11 @@ media and technology focused startups. Topics include experimentation, analytics
 <strong>In process / to be completed:</strong>
 <ul>
 <li>Set up Google Analytics</li>
-<li>Set up Google Analytics</li>
 <li>Set up Lightbox</li>
 <li>Build out Resources section</li>
 <li>Build out Resume section</li>
+<li>Learn Markdown</li>
+<li>Re-learn CSS</li>
+<li>Come up with a "Now" section; inspiration:  https://michaelsoolee.com/now/</li>
 </ul>
 
