@@ -14,6 +14,8 @@ media and technology focused startups. Topics include experimentation, analytics
 
 <strong>In process / to be completed:</strong>
 <ul>
+<li>Start a brief weekly recap post (time between the larger posts)</li>
+<li>Next post idea:  cross platform behavioral analytics, made possible with Segment</li>
 <li>Set up Google Analytics</li>
 <li>Set up Lightbox</li>
 <li>Build out Resources section</li>
