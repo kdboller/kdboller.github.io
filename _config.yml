@@ -34,5 +34,8 @@ exclude:
     
 google_analytics: UA-99677078-1
 
+disqus:
+    shortname: kevinboller
+
 # gems:
 # - jekyll-feed
