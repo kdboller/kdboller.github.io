@@ -70,7 +70,7 @@ filterable by sport, which we can bend as needed via SQL and then download as a 
 
 <p>
 Given the reality that we have 25+ sports and time is finite, one of my primary goals in building the bottoms-up financial model for each sport was to make 
-the model’s dynamic and flexible; this facilitated limited, if any, rewiring of the model for each case, as we are able to flex the model based on
+the model dynamic and flexible; this facilitated limited, if any, rewiring of the model for each case, as we are able to flex the model based on
 different launch dates and the historical performances for each sport.</p>
 
 <p>
@@ -80,7 +80,7 @@ time figuring out how to best flex the model.  Examples of what we’re able to 
 
 <ul>
 <li>Subscriber cohort retention waterfalls</li>
-<li>Weighted average retentions curve across all historical cohorts with projected future churn based on decay rates</li>
+<li>Weighted average retention curves across all historical cohorts with projected future churn based on decay rates</li>
 <li>Historical plan selection mix, e.g., % monthly / yearly</li>
 <li>Subscriber corkscrew build over time -- beginning plus new less churned equals ending (monthly grain); (also helpful for MRR by plan offering and sport)</li>
 <li>Weekly forecast for the quarter based on historical cohorts and their projected recurring payments and 
@@ -112,7 +112,7 @@ various worksheets as rows (weeks) and columns (metrics), which could then serve
 single CSV is what enabled us to create a pacing dashboard.  By doing so, we accomplished the following:
 
 <ul>
-<li>Visual reports which reflect the quarter’s goals → easier for business users to understand what our goals are and how we are looking to achieve them</li>
+<li>Visual reports which reflect the quarter’s goals; easier for business users to understand what our goals are and how we are looking to achieve them</li>
 <li>A pacing dashboard to provide insight into how the sports are pacing versus forecast, including net cash / revenue, signups, subscribers and churn.</li>
 </ul>
 </p>
@@ -121,7 +121,7 @@ single CSV is what enabled us to create a pacing dashboard.  By doing so, we acc
 <p> 
 I’ve written about <a href="https://www.periscopedata.com/blog/building-the-periscope-cache-with-amazon-redshift.html" target="_blank">Periscope's data cache</a> before, and it proved to be extremely helpful in this case.  Our data engineering team, which is very lean and always busy, 
 is currently investigating <a href="http://blog.panoply.io/the-spectrum-of-redshift-athena-and-s3" target="_blank">Redshift Spectrum</a> to make CSVs and other flat files “first class citizens”.  In the meantime, we’ve used Periscope’s data cache in several 
-ways.  As one example, we’ve been able to accomplish cross database joins, one source in MySQL and the other in Postgres, while also combining data from a flat 
+ways.  As one example, we’ve been able to accomplish cross database joins, one source's database in MySQL and the other in Postgres, while also combining data from a flat 
 CSV file in order to generate 20+ charts for a time-sensitive dashboard; this dashboard satisfied one of our sports’ subscriber attribution reporting requests in probably 1/20th the time it might have taken to incorporate a proprietary ETL approach. 
 </p>
 
