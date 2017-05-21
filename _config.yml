@@ -28,10 +28,11 @@ github_username:  kdboller
 # Build settings
 markdown: kramdown
 theme: minima
-gems:
-  - jekyll-feed
-  exclude:
-  - Gemfile
-  - Gemfile.lock
+
+# gems:
+# - jekyll-feed
+exclude:
+- Gemfile
+- Gemfile.lock
     
 google_analytics: UA-99677078-1
