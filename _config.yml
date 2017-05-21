@@ -35,5 +35,10 @@ exclude:
   - Gemfile
   - Gemfile.lock
   
+jekyll_analytics: 
+  GoogleAnalytics:          # Add, if you want to track with Google Analytics
+    id: UA-99677078-1          # Required - replace with your tracking id
+    anonymizeIp: false      # Optional - Default: false - set to true for anonymized tracking
+  
 # Google services
-google_analytics: UA-99677078-1
+# google_analytics: UA-99677078-1
