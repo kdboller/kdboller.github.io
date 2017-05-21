@@ -23,7 +23,7 @@ description: > # this means to ignore newlines until "baseurl:"
 url:  https://kdboller.github.io/ # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: kevinboller
 github_username:  kdboller
-linkedin: kevinboller
+linkedin_username: kevinboller
 
 # Build settings
 markdown: kramdown
