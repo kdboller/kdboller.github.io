@@ -14,14 +14,18 @@ media and technology focused startups. Topics include experimentation, analytics
 <li>Set up Disqus</li>
 </ul>
 
-<strong>In process / to be completed:</strong>
+<strong>In process:</strong>
+<ul>
+<li>Build out Resources section</li>
+<li>Build out Resume section</li>
+<li>Learn Markdown</li>
+</ul>
+
+<strong>To be completed:</strong>
 <ul>
 <li>Start a brief weekly recap post (time between the larger posts)</li>
 <li>Next post idea:  cross platform behavioral analytics, made possible with Segment</li>
 <li>Set up Lightbox</li>
-<li>Build out Resources section</li>
-<li>Build out Resume section</li>
-<li>Learn Markdown</li>
 <li>Re-learn CSS</li>
 <li>Come up with a "Now" section; inspiration:  https://michaelsoolee.com/now/</li>
 </ul>
