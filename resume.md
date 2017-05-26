@@ -14,14 +14,12 @@ My resume has also been included below in markdown format.
 <hr>
 
 # Kevin Boller
-1900 Barton Springs Rd, Unit 4048, Austin, TX 78704
-
-770.315.6173 | <a href="mailto:kdboller@gmail.com" target="_blank">kdboller@gmail.com</a> | <a href="https://kdboller.github.io" target="_blank">https://kdboller.github.io</a>
+<a href="https://kdboller.github.io" target="_blank">https://kdboller.github.io</a>
 
 # EXPERIENCE
 
-## FLOSPORTS – OTT sports media provider of live streaming events and video on-demand
-### VP Product (Revenue and Analytics)
+### FLOSPORTS – OTT sports media provider of live streaming events and video on-demand
+#### VP Product (Revenue and Analytics)
 Jan 2016 – Present,  Austin, TX
 
 * Oversee overall product revenue roadmap and company-wide analytics while serving as product owner of data warehouse
