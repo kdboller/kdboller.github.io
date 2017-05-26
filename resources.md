@@ -4,15 +4,35 @@ title: Resources
 permalink: /resources/
 ---
 
-This is a placeholder page for the time being which will eventually provide detail 
-related to key data science resources.
+<p>
+This resources page is intended to serve as an index for people who are looking to expand their skill set and learn more about data analytics and data science.
 
+Further, it also helps me catalog and organize all of the helpful resources I've leveraged, as well as those which I may have started working with or intend to in the future.
+</p>
+
+<p>
+<strong>Data Warehouse | Business Intelligence Applications</strong>
 <ul>
-  <li>Applications we currently use for our data warehouse implementation</li>
-  <li>Applications we currently use as part of our data and product analytics</li>
-  <li>Online resources, e.g., Udemy courses, which help aspiring data scientists round out and build their skill-set</li>
-  <li>Reviews of helpful blogs, articles and data set sources</li>
+  <li><a href="https://www.periscopedata.com" target="_blank">Periscope Data</a></li>
+  <li><a href="https://modeanalytics.com" target="_blank">Mode Analytics</a></li>
+  <li><a href="https://segment.com" target="_blank">Segment</a></li>
+  <li>Optimizely</li>
+</ul>
 
+<strong>Best Blogging Sources</strong>
+<ul>
+  <li><a href="http://gregreda.com/" target="_blank">Greg Reda</a></li>
+  <li>Growth Hackers</li>
+  <li>David Skok</li>
+  <li>Coelevate</li>
+</ul>
+
+<strong>Online Courses</strong>
+<ul>
+  <li>MIT Analytics Edge on edX</li>
+  <li>UT Stats Course on edX</li>
+  <li>Python Data Science Bootcamp</li>
+</ul>
 
 {% comment %} 
 This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, 
