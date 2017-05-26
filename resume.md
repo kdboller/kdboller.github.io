@@ -13,9 +13,6 @@ My resume has also been included below in markdown format.
 
 <hr>
 
-# Kevin Boller
-<a href="https://kdboller.github.io" target="_blank">https://kdboller.github.io</a>
-
 # EXPERIENCE
 
 ### FLOSPORTS – OTT sports media provider of live streaming events and video on-demand
