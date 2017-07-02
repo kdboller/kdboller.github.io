@@ -34,6 +34,15 @@ Further, it also helps me catalog and organize all of the helpful resources I've
   <li>Python Data Science Bootcamp</li>
 </ul>
 
+<strong>Sports Analytics</strong>
+<ul>
+  <li><a href="https://www.datacamp.com/community/tutorials/scikit-learn-tutorial-baseball-1#gs.MOT7vGQ" target="_blank">Scikit-Learn Tutorial: Baseball Analytics in Python Pt 1</a></li>
+  <li><a href="http://fansided.com/2015/09/07/nylon-calculus-101-data-scraping-with-python/" target="_blank">Nylon Calculus 101: Data Scraping With Python</a></li>
+  <li><a href="http://fansided.com/2015/09/14/nylon-calculus-101-visualizing-the-nba-draft-with-python/" target="_blank">Nylon Calculus 101: Visualizing the NBA Draft with Python</a></li>
+  <li><a href="https://www.edx.org/course/sabermetrics-101-introduction-baseball-bux-sabr101x-0" target="_blank">Sabermetrics 101: Introduction to Baseball Analytics</a></li>
+</ul>
+
+
 {% comment %} 
 This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, 
 as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
