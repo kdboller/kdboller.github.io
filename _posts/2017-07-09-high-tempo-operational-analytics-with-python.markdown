@@ -7,4 +7,4 @@ categories:
 
 <!-- <img src="/assets/4_OKC_players_in_2011.jpg" alt="Kevin Durant with OKC Teammates" height="500"  style="width: 100%"> -->
 
-<strong><h1>This post is currently under development.</h1></strong>
+<h1><strong>This post is currently under development.</strong></h1>
