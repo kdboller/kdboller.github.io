@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "High Tempo Operational Analytics with Python"
+title:  "Scaling Business and Operational Insights with Python"
 date:   2017-07-09 12:00:00 -0500
 categories: 
 ---
