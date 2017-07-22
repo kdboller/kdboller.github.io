@@ -21,11 +21,11 @@ Further, it also helps me catalog and organize all of the helpful resources I've
 
 <strong>Best Blogging Sources</strong>
 <ul>
-  <li><a href="http://gregreda.com/" target="_blank">Greg Reda:  Blog posts on web scraping and data analysis using Pandas.</a></li>
+  <li><a href="http://gregreda.com/" target="_blank">Greg Reda:</a>  Blog posts on web scraping and data analysis using Pandas.</li>
   <li><a href="https://growthhackers.com/posts" target="_blank">Growth Hackers</a></li>
   <li><a href="http://www.forentrepreneurs.com/" target="_blank">David Skok</a></li>
   <li><a href="http://www.coelevate.com/" target="_blank">Coelevate</a></li>
-  <li><a href="http://pbpython.com/" target="_blank">Python for Business:  leveraging Python, in place of traditional tools such as excel, for business tasks</a></li>
+  <li><a href="http://pbpython.com/" target="_blank">Python for Business:</a>  leveraging Python, in place of traditional tools such as excel, for business tasks</li>
 </ul>
 
 <strong>Online Courses</strong>
