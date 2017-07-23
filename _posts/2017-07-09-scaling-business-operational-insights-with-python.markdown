@@ -94,9 +94,9 @@ weighted_average_transpose = weighted_average.transpose()
 
 <p>The table attempt goes below.</p>
 
-Header | Header | Header
--------|--------|-------
-Cell   | Cell   | Cell
-Cell   | Cell   | Cell
+Header | Header | Header| Header| Header| Header| Header| Header| Header| Header| Header| Header| Header| Header
+-------|--------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------| 
+Cell   | Cell   | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell        
+Cell   | Cell   | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell    
 
 
