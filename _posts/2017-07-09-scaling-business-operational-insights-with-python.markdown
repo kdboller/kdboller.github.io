@@ -147,7 +147,7 @@ weighted_avg_transpose
 </p>
 
 <p>
-<strong>Hopefully I have made the time savings Python affords in acquiring the data to be pasted into these retention curve worksheets to be rather compelling.</strong> I have found the scaleability of doing analysis such as this in Python, a language I'm continually trying to improve in, to be fairly remarkable.  
+<strong>Hopefully I have made the time savings Python affords in acquiring the data to be pasted into these retention curve worksheets to seem rather compelling.</strong> I have found the scaleability of doing analysis such as this in Python, a language I'm continually trying to improve in, to be fairly remarkable.  
 </p>
 
 <p>
