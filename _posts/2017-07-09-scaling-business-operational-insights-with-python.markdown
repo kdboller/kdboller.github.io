@@ -78,7 +78,7 @@ arrive at my starting point -- I’m starting after his last code snippet, which
 <p>
     In his post, Greg used unstack in order to create a matrix where each column is the CohortGroup and each row is the cohort period.
     
-Using this unstack and then resetting the index, we have a flattened dataframe which we can now manipulate in order to calculate the weighted average retention by Cohort Period, e.g., Month 1.
+Using this unstack and then resetting the index, we have a flattened dataframe which we can now manipulate in order to calculate the weighted average retention by Cohort Period, e.g., Month 1.  Below the code block is what the output for this dataframe looks like in Jupyter Notebook.
 </p>
 
 ```python
@@ -89,8 +89,9 @@ unstacked.reset_index()
 
 <img src="/assets/unstacked_df.png" alt="Unstacked Cohorts Dataframe" height="400"  style="width: 100%">
 
+<p>We have successfully manipulated our subscriber data in order to create Cohort Groups and Cohort Periods for those groups, in large part thanks to Greg; and now we can create a separate dataframe which will contain our weighted average retentions across cohorts for each monthly period.</p>
 
-<p>This is a placeholder</p>
+<p>Below, we essentially create a dataframe with the reset index, calculate the sums across all rows (which represent the Cohort Periods), calculate weighted percentages by dividing by the first row, and then transpose the weighted_average dataframe to become a 3-row dataframe, with Total Users and Percentage of Retained users indexed by Cohort Month.</p>
 
 ```python
 # Create a weighted data frame with a reset index
@@ -115,7 +116,12 @@ weighted_average = weighted_average.drop('index', 1)
 weighted_average_transpose = weighted_average.transpose()
 ```
 
-<p>The table attempt goes below.</p>
+<img src="/assets/weighted_average_transpose.png" alt="Unstacked Cohorts Dataframe" height="400"  style="width: 100%">
+
+<p>Closing thoughts
+</p>
+
+<strong><u>Mode Analytics and its Python Notebook</u></strong>
 
  
 
