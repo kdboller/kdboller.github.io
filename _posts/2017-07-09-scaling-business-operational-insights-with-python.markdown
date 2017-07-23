@@ -62,3 +62,33 @@ arrive at my starting point -- I’m starting after his last code snippet, which
 </p>
 
 
+```python
+# Unstack the TotalUsers
+unstacked = cohorts['TotalUsers'].unstack(0)
+unstacked.reset_index()
+```
+<p>This is a placeholder</p>
+
+```python
+# Create a weighted data frame with a reset index
+weighted = unstacked.reset_index()
+
+# Drop the Cohort Period from the dataframe to calculate the sums
+weighted = weighted.drop('CohortPeriod', 1)
+
+# Sum the users across all of the rows
+total_users = weighted.sum(axis=1)
+
+# Calculate percents by dividing each row by the row at index 0
+pcts = total_users / total_users[0]
+
+# Calculate weighted averge by creating a dataframe using a sum + percents dictionary key:value pairing.
+weighted_average = pd.DataFrame(dict(total_users = total_users, pcts = pcts)).reset_index()
+
+# Drop the index column out of the weighted average dataframe
+weighted_average = weighted_average.drop('index', 1)
+
+# Transpose the weighted average dataframe
+```
+
+weighted_average_transpose = weighted_average.transpose()
