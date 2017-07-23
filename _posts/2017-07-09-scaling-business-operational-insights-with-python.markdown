@@ -32,8 +32,8 @@ categories:
     <li>This can be a single series fed directly into a model</li></ul>
   <li>The power of Mode Analytics, which combined SQL and Python in a single web application</li>
     <ul>
-      <li>I use Jupyter Notebook for all analysis in Python
-      <li>Mode Analytics has a powerful offering for Python, which all exists within their overall reporting tool
+      <li>I use Jupyter Notebook for all analysis in Python</li>
+      <li>Mode Analytics has a powerful offering for Python, which all exists within their overall reporting tool</li>
     </ul> 
   <li>The use of Python, in place of Excel, to conduct large scale analysis, which can ultimately live in a financial model</li>
       <ul><li>The best resource I’ve found for this to-date is Chris Moffit’s Practical Business Python blog</li>
@@ -41,8 +41,8 @@ categories:
 </ul>
 </p>
 
-<p>
 <strong><u>Cohort Retention Analysis with Python</strong></u>
+<p>
 Rather than reconstruct Greg Reda’s remarkably helpful post, I will simply continue from where he leaves off by showing how to calculate
 M1, M2, etc. weighted average retention.
 
@@ -50,7 +50,7 @@ As mentioned in this guest post on Andrew Chen’s blog, Christoph Janz has writ
 In the referenced post, one of the screenshots in Christoph’s post, from his model, shows the calculated weighted average retention by cohort month.
 
 Here’s a screenshot of what this looks like:
-<img src="/assets/ChristophJanz_CohortAnalysisNotes.00111.png" alt="Christoph Janz Cohort Analysis" height="300"  style="width: 100%">
+<img src="/assets/ChristophJanz_CohortAnalysisNotes.00111.png" alt="Christoph Janz Cohort Analysis" height="300"  style="width: 100%" />
 
 </p>
 
