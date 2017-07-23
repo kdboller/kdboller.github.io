@@ -136,7 +136,7 @@ weighted_avg_transpose = weighted_avg.transpose()
 weighted_avg_transpose
 ```
 
-<img src="/assets/weighted_average_transpose2.png" alt="Unstacked Cohorts Dataframe" height="125"  style="width: 100%">
+<img src="/assets/weighted_average_transpose2.png" alt="Unstacked Cohorts Dataframe" height="200"  style="width: 100%">
 
 <p>As you can see from the data above, across all of the Cohorts we had 757 total users; in the month after their initial purchase, ~32% were retained in the second month -- at FloSports, we would call this M1 retention since M0 is the initial payment month.
 </p>
