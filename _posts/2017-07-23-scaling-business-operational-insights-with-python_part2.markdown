@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Scaling Analytical Insights with Python (Part 2)"
-date:   2017-07-09 12:00:00 -0500
+date:   2017-07-23 12:00:00 -0500
 categories: 
 ---
 
