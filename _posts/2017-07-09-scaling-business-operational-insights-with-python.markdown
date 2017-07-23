@@ -17,7 +17,7 @@ categories:
 
 <p>
     I’ve also mentioned that the implementation of our data warehouse and the use of data analytics software, including Periscope Data, Segment, 
-  and Mode Analytics have been fairly transformative across the company.  And, as business intelligence and data analysis requests and 
+  and Mode Analytics, have been fairly transformative across the company.  And, as business intelligence and data analysis requests and 
   feedback grow within an organization, it is critical to put processes and analytical procedures in place that reduce the queuing of data requests
   -- fast-paced and efficient approaches significantly reduce the time gathering the data and increase the level of insight derived from the data.
 </p>
@@ -35,9 +35,8 @@ categories:
       <li>Outside of Mode, I use Jupyter Notebook for all analysis in Python</li>
       <li>Mode Analytics has a powerful offering for Python, which is completely self-contained within their overall reporting application</li>
     </ul> 
-  <li>strong><u>Part 3.</u></strong>  The use of Python, in place of Excel, to conduct large scale financial and operational analysis; the analysis / dataframes can ultimately, as the last step, be pasted into a financial model</li>
+  <li><strong><u>Part 3.</u></strong>  The use of Python, in place of Excel, to conduct large scale financial and operational analysis; the analysis / dataframes can ultimately, as the last step, be pasted into a financial model</li>
       <ul><li>The best resource I’ve found for Python business application to-date is Chris Moffit’s Practical Business Python blog</li>
-          <li><u>Note that this will be part of a follow-up post.</u></li>
       </ul>
 </ul>
 </p>
@@ -121,12 +120,14 @@ weighted_average_transpose = weighted_average.transpose()
 <p>As you can see from the data above, across all of the Cohorts we had 757 total users; in the month after their initial purchase, ~32% were retained in the second month -- at FloSports, we call this M1 retention since M0 is the initial payment month.
 </p>
 
-<p>In the financial models which I build and collaborate on, we build a retention curve schedule worksheet, which we flex by business case / vertical.  We do this in order to conduct all sorts of pro forma analysis; and this schedule worksheet could have 10 - 20 different retention curves at a time.  
+<p>In the financial models which I build and collaborate on, we build a retention curve schedule worksheet, which we flex by business case / vertical when analyzing different scenarios (pricing, offerings, et al).  We do this in order to be able to conduct all sorts of pro forma analysis and this schedule worksheet could have 10 - 20 different retention curves at a time.  
 </p>
 
-Hopefully I have made the time savings Python affords inn acquiring the data to be pasted into these curves to be rather compelling.  
-    
 <p>
+<strong>Hopefully I have made the time savings Python affords in acquiring the data to be pasted into these retention curve worksheets to be rather compelling.</strong> I have found the scaleability of doing analysis such as this in Python, a language I'm continually trying to improve in, to be fairly remarkable.  Our general approach is to use a data gathering language, SQL, and acquire specific date ranges and /or combinations of plan offerings for our subscriberes, and then cut our curves as it makes most sense for the business.  To achieve this flexibility within Excel is remarkably difficult, if not impossible, and continuing to find ways to scale within Python has been very eye opening.
+</p>
+
+<p>In Part 2 of this Series, I'll discuss the use of this approach within Mode Analytics, which I believe offers even more potential for massive efficiency improvements and gains from data insights.
 </p>
 
  
