@@ -118,7 +118,13 @@ weighted_average_transpose = weighted_average.transpose()
 
 <img src="/assets/weighted_average_transpose.png" alt="Unstacked Cohorts Dataframe" height="125"  style="width: 100%">
 
-<p>As you can see from the data above, across all of the Cohorts we had 757 total users; in the month after 
+<p>As you can see from the data above, across all of the Cohorts we had 757 total users; in the month after their initial purchase, ~32% were retained in the second month -- at FloSports, we call this M1 retention since M0 is the initial payment month.
+</p>
+
+<p>In the financial models which I build and collaborate on, we build a retention curve schedule worksheet, which we flex by business case / vertical.  Hopefully I have made the time savings Python affords inn acquiring the data to be pasted into these curves to be rather compelling.  
+</p>    
+
+<p>
 </p>
 
 <strong><u>Mode Analytics and its Python Notebook</u></strong>
