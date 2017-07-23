@@ -52,7 +52,7 @@ In the referenced post, one of the screenshots in Christoph’s post, from his m
 
 <p>
 Here’s a screenshot of what this looks like:
-<img src="/assets/ChristophJanz_CohortAnalysisNotes.png" alt="Illustrative Inputs Worksheet" height="350"  style="width: 100%">
+<img src="/assets/ChristophJanz_CohortAnalysisNotes.png" alt="Illustrative Inputs Worksheet" height="500"  style="width: 100%">
 
 </p>
 
