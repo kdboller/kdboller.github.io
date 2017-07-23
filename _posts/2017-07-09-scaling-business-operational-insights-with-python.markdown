@@ -41,7 +41,7 @@ categories:
 </ul>
 </p>
 
-<strong><u>Cohort Retention Analysis with Python</strong></u>
+<strong><u>Cohort Retention Analysis with Python</u></strong>
 <p>
 Rather than reconstruct Greg Reda’s remarkably helpful post, I will simply continue from where he leaves off by showing how to calculate
 M1, M2, etc. weighted average retention.
