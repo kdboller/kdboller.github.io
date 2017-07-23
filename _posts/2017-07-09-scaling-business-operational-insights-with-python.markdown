@@ -92,4 +92,12 @@ weighted_average = weighted_average.drop('index', 1)
 weighted_average_transpose = weighted_average.transpose()
 ```
 
+<p>The table attempt goes below.</p>
+
+| Tables        | Are           | Cool  |Cool  | Cool  | Cool  | Cool  | Cool  | Cool  | Cool  | Cool  |    
+| ------------- |:-------------:| -----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|
+| col 3 is      | right-aligned | $1600 |$1600 |$1600 |$1600 |$1600 |$1600 |$1600 |$1600 |$1600 |$1600 |
+| col 2 is      | centered      |   $12 |  $12 |  $12 |  $12 |  $12 |  $12 |  $12 |  $12 |  $12 |  $12 |
+| zebra stripes | are neat      |    $1 |    $1|    $1|    $1|    $1|    $1|    $1|    $1|    $1|    $1|
+
 
