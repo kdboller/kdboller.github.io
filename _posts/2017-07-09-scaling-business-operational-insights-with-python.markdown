@@ -25,17 +25,17 @@ categories:
 <p><i>In other words, spend less time calculating your LTV and more time focusing on efforts to grow your LTV. </i></p>
 
 <p>
-<strong><u>What I will cover in the next two posts:</u></strong>
+<strong><u>What I will cover in the next three part post series:</u></strong>
 <ul>
-  <li>Cohort retention analysis in Python; I discovered this over a year ago on Greg Reda’s blog, and it was remarkably helpful</li>
+  <li>Part 1.  Cohort retention analysis in Python; I discovered this over a year ago on Greg Reda’s blog, and it was remarkably helpful</li>
     <ul><li>Taking this an additional step further and calculating weighted average retention for monthly cohorts</li>
     <li>This can then become a single series fed directly into a financial model</li></ul>
-  <li>The power of Mode Analytics, which combines SQL and Python into a single web application</li>
+  <li>Part 2.  The power of Mode Analytics, which combines SQL and Python into a single web application</li>
     <ul>
       <li>Outside of Mode, I use Jupyter Notebook for all analysis in Python</li>
       <li>Mode Analytics has a powerful offering for Python, which is completely self-contained within their overall reporting application</li>
     </ul> 
-  <li>The use of Python, in place of Excel, to conduct large scale financial and operational analysis; the analysis / dataframes can ultimately, as the last step, be pasted into a financial model</li>
+  <li>Part 3.  The use of Python, in place of Excel, to conduct large scale financial and operational analysis; the analysis / dataframes can ultimately, as the last step, be pasted into a financial model</li>
       <ul><li>The best resource I’ve found for Python business application to-date is Chris Moffit’s Practical Business Python blog</li>
           <li><u>Note that this will be part of a follow-up post.</u></li>
       </ul>
@@ -121,13 +121,13 @@ weighted_average_transpose = weighted_average.transpose()
 <p>As you can see from the data above, across all of the Cohorts we had 757 total users; in the month after their initial purchase, ~32% were retained in the second month -- at FloSports, we call this M1 retention since M0 is the initial payment month.
 </p>
 
-<p>In the financial models which I build and collaborate on, we build a retention curve schedule worksheet, which we flex by business case / vertical.  Hopefully I have made the time savings Python affords inn acquiring the data to be pasted into these curves to be rather compelling.  
-</p>    
-
-<p>
+<p>In the financial models which I build and collaborate on, we build a retention curve schedule worksheet, which we flex by business case / vertical.  We do this in order to conduct all sorts of pro forma analysis; and this schedule worksheet could have 10 - 20 different retention curves at a time.  
 </p>
 
-<strong><u>Mode Analytics and its Python Notebook</u></strong>
+Hopefully I have made the time savings Python affords inn acquiring the data to be pasted into these curves to be rather compelling.  
+    
+<p>
+</p>
 
  
 
