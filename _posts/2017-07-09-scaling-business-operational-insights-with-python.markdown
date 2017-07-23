@@ -54,7 +54,7 @@ One of the screenshots in Christoph’s guest post, from his model, shows the ca
 
 <p>
 Here’s a screenshot of what this looks like:
-<img src="/assets/ChristophJanz_CohortAnalysisNotes.png" alt="Illustrative Inputs Worksheet" height="500"  style="width: 100%">
+<img src="/assets/ChristophJanz_CohortAnalysisNotes.png" alt="Janz Cohort Analyses Screenshot" height="500"  style="width: 100%">
 
 </p>
 
@@ -87,6 +87,7 @@ unstacked = cohorts['TotalUsers'].unstack(0)
 unstacked.reset_index()
 ```
 
+<img src="/assets/unstacked_df.png" alt="Unstacked Cohorts Dataframe" height="500"  style="width: 100%">
 
 
 <p>This is a placeholder</p>
