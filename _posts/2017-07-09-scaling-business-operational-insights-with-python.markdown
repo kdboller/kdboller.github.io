@@ -78,7 +78,7 @@ arrive at my starting point -- I’m starting after his last code snippet, which
 <p>
     In his post, Greg used unstack in order to create a matrix where each column is the CohortGroup and each row is the cohort period.
     
-    Using this unstack and then resetting the index, we have a flattened dataframe which we can now manipulate in order to calculate the weighted average retention by Cohort Period, e.g., Month 1.
+Using this unstack and then resetting the index, we have a flattened dataframe which we can now manipulate in order to calculate the weighted average retention by Cohort Period, e.g., Month 1.
 </p>
 
 ```python
