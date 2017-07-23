@@ -5,7 +5,7 @@ date:   2017-07-09 12:00:00 -0500
 categories: 
 ---
 
-<img src="/assets/octocat-love-chompy-5.png" alt="Octocat Loves Chompy" height="400"  style="width: 100%"> -->
+<img src="/assets/octocat-love-chompy-5.png" alt="Octocat Loves Chompy" height="400"  style="width: 100%">
 
 <!--<h1><strong>Please note that this post is still under development but a significant amount has now been completed.</strong></h1>-->
 
