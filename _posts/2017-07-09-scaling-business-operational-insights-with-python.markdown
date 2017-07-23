@@ -129,7 +129,7 @@ weighted
 # Grab only the Cohort Period and Ret Pct columns
 weighted_avg = weighted.filter(items=['CohortPeriod', 'Ret_Pct'])
 
-# Tranpose the values to run across the row rather that column
+# Transpose the values to run across the row rather that column
 weighted_avg_transpose = weighted_avg.transpose()
 
 # Return the weighted average data frame
