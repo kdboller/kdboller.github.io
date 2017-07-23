@@ -48,7 +48,9 @@ M1, M2, etc. weighted average retention.
 
 As mentioned in this guest post on Andrew Chen’s blog, Christoph Janz has written some of the most helpful posts on SaaS metrics and cohort analyses.
 In the referenced post, one of the screenshots in Christoph’s post, from his model, shows the calculated weighted average retention by cohort month.
+</p>
 
+<p>
 Here’s a screenshot of what this looks like:
 <img src="/assets/ChristophJanz_CohortAnalysisNotes.00111.png" alt="Christoph Janz Cohort Analysis" height="300"  style="width: 100%" />
 
