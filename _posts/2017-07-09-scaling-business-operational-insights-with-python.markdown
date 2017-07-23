@@ -87,7 +87,7 @@ unstacked = cohorts['TotalUsers'].unstack(0)
 unstacked.reset_index()
 ```
 
-<img src="/assets/unstacked_df.png" alt="Unstacked Cohorts Dataframe" height="500"  style="width: 100%">
+<img src="/assets/unstacked_df.png" alt="Unstacked Cohorts Dataframe" height="400"  style="width: 100%">
 
 
 <p>This is a placeholder</p>
