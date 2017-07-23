@@ -65,11 +65,11 @@ I certainly believe Christoph's model and overall helpfulness to SaaS companies 
 At FloSports, I am constantly thinking about and looking to create scaleable solutions to deal with some of the challenges which we've run into. Some examples of these include:
 <ul>
     <li>We have 25+ verticals with multiple subscription offerings.</li>
-    <li>New data is constantly being created by subscribers, including experimentation data, and we need to be able to cut this data several different ways</li>
-    <li>Our verticals are at different stages within their lifecycles, and building and updating flexible waterfalls in Excel is rather time consuming</li>
-</ul>
+    <li>New data is constantly being created by subscribers, including experimentation data, and we need to be able to cut this data several different ways in order to "cut our losers and let our winners run."</li>
+    <li>Our verticals are at different stages within their lifecycles, and building and updating flexible waterfalls in Excel can be rather time consuming.</li>
+</ul></p>
 
-</p>
+<p>
 
 If you would like to follow along with this explanation in Jupyter notebook, you will just need to use Greg Reda’s code from the post to
 arrive at my starting point -- I’m starting after his last code snippet, which uses Seaborn and generates a heat map.
