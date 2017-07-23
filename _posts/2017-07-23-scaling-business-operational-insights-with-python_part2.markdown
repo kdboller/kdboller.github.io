@@ -9,3 +9,7 @@ categories:
 
 <h1><strong>Please note that this post is currently under development.</strong></h1>
 
+However, please find Part 1 of this Series at <a href="https://kdboller.github.io/2017/07/09/scaling-business-operational-insights-with-python.html" target="_blank">this link.</a>
+
+
+
