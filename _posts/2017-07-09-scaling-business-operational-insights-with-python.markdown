@@ -89,6 +89,7 @@ weighted_average = pd.DataFrame(dict(total_users = total_users, pcts = pcts)).re
 weighted_average = weighted_average.drop('index', 1)
 
 # Transpose the weighted average dataframe
+weighted_average_transpose = weighted_average.transpose()
 ```
 
-weighted_average_transpose = weighted_average.transpose()
+
