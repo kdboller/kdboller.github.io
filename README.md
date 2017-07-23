@@ -12,13 +12,13 @@ media and technology focused startups. Topics include experimentation, analytics
 <li>Set up general nav, including About, Resources, Resume</li>
 <li>Set up Google Analytics</li>
 <li>Set up Disqus</li>
+<li>Learn Markdown</li>
 </ul>
 
 <strong>In process:</strong>
 <ul>
 <li>Build out Resources section</li>
 <li>Build out Resume section</li>
-<li>Learn Markdown</li>
 </ul>
 
 <strong>To be completed:</strong>
