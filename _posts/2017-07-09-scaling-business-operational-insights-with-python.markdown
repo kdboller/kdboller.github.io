@@ -94,26 +94,46 @@ unstacked.reset_index()
 <p>Below, we essentially create a dataframe with a reset index, calculate the sums across all rows (which represent each Cohort Period), calculate weighted percentages by dividing by our first row of Total Users, and then transpose the weighted_average dataframe to become a new three-row dataframe; this three-row dataframe has Total Users and the Percentage of Retained Users for each Period, indexed by Cohort Period Month.</p>
 
 ```python
-# Create a weighted data frame with a reset index
+# Create a weighted data frame and reset the index
 weighted = unstacked.reset_index()
 
-# Drop the Cohort Period from the dataframe to calculate the sums
-weighted = weighted.drop('CohortPeriod', 1)
+# Add a Total Subs column which sums up all of the subscribers within each Cohort Period.
+weighted['Total_Subs'] = weighted.drop('CohortPeriod', axis=1).sum(axis=1)
 
-# Sum the users across all of the rows
-total_users = weighted.sum(axis=1)
+# Add a "placeholder" Retention Pct column; will calculate weighted averages within this column after adding.
+weighted['Ret_Pct'] = weighted.iloc[:, 1:-1].sum(axis=1) / weighted.iloc[0, 1:-1].sum()
 
-# Calculate percents by dividing each row by the row at index 0
-pcts = total_users / total_users[0]
+# These will modify all of the Retention Pcts to reflect the total duration of each cohort;
+# This is probably better served with a function --> apply --> lamba expression approach
+# In the future will figure out best way to scale this further.
+weighted['Ret_Pct'].iloc[1] = weighted.iloc[1, 1:-3].sum() / weighted.iloc[0, 1:-3].sum()
+weighted['Ret_Pct'].iloc[2] = weighted.iloc[2, 1:-4].sum() / weighted.iloc[0, 1:-4].sum()
+weighted['Ret_Pct'].iloc[3] = weighted.iloc[3, 1:-5].sum() / weighted.iloc[0, 1:-5].sum()
+weighted['Ret_Pct'].iloc[4] = weighted.iloc[4, 1:-6].sum() / weighted.iloc[0, 1:-6].sum()
+weighted['Ret_Pct'].iloc[5] = weighted.iloc[5, 1:-7].sum() / weighted.iloc[0, 1:-7].sum()
+weighted['Ret_Pct'].iloc[6] = weighted.iloc[6, 1:-8].sum() / weighted.iloc[0, 1:-8].sum()
+weighted['Ret_Pct'].iloc[7] = weighted.iloc[7, 1:-9].sum() / weighted.iloc[0, 1:-9].sum()
+weighted['Ret_Pct'].iloc[8] = weighted.iloc[8, 1:-10].sum() / weighted.iloc[0, 1:-10].sum()
+weighted['Ret_Pct'].iloc[9] = weighted.iloc[9, 1:-11].sum() / weighted.iloc[0, 1:-11].sum()
+weighted['Ret_Pct'].iloc[10] = weighted.iloc[10, 1:-12].sum() / weighted.iloc[0, 1:-12].sum()
+weighted['Ret_Pct'].iloc[11] = weighted.iloc[11, 1:-13].sum() / weighted.iloc[0, 1:-13].sum()
+weighted['Ret_Pct'].iloc[12] = weighted.iloc[12, 1:-14].sum() / weighted.iloc[0, 1:-14].sum()
+weighted['Ret_Pct'].iloc[13] = weighted.iloc[13, 1:-15].sum() / weighted.iloc[0, 1:-15].sum()
+weighted['Ret_Pct'].iloc[14] = weighted.iloc[14, 1:-16].sum() / weighted.iloc[0, 1:-16].sum()
 
-# Calculate weighted averge by creating a dataframe using a sum + percents dictionary key:value pairing.
-weighted_average = pd.DataFrame(dict(total_users = total_users, pcts = pcts)).reset_index()
+# Return the full weighted data frame
+weighted
+```
 
-# Drop the index column out of the weighted average dataframe
-weighted_average = weighted_average.drop('index', 1)
+```python
+# Grab only the Cohort Period and Ret Pct columns
+weighted_avg = weighted.filter(items=['CohortPeriod', 'Ret_Pct'])
 
-# Transpose the weighted average dataframe
-weighted_average_transpose = weighted_average.transpose()
+# Tranpose the values to run across the row rather that column
+weighted_avg_transpose = weighted_avg.transpose()
+
+# Return the weighted average data frame
+weighted_avg_transpose
 ```
 
 <img src="/assets/weighted_average_transpose.png" alt="Unstacked Cohorts Dataframe" height="125"  style="width: 100%">
