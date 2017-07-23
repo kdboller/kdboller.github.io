@@ -127,7 +127,7 @@ weighted_average_transpose = weighted_average.transpose()
 <strong>Hopefully I have made the time savings Python affords in acquiring the data to be pasted into these retention curve worksheets to be rather compelling.</strong> I have found the scaleability of doing analysis such as this in Python, a language I'm continually trying to improve in, to be fairly remarkable.  Our general approach is to use a data gathering language, SQL, and acquire specific date ranges and /or combinations of plan offerings for our subscriberes, and then cut our curves as it makes most sense for the business.  To achieve this flexibility within Excel is remarkably difficult, if not impossible, and continuing to find ways to scale within Python has been very eye opening.
 </p>
 
-<p>In Part 2 of this Series, I'll discuss the use of this approach within Mode Analytics, which I believe offers even more potential for massive efficiency improvements and gains from data insights.
+<p><strong>In Part 2 of this Series, I'll discuss the use of this approach within Mode Analytics, which I believe offers even more potential for massive efficiency improvements and gains from data insights.</strong>
 </p>
 
  
