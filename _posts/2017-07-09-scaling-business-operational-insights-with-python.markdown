@@ -25,18 +25,19 @@ categories:
 <p><i>In other words, spend less time calculating your LTV and more time focusing on efforts to grow your LTV. </i></p>
 
 <p>
-<strong><u>What I will cover in this post:</u></strong>
+<strong><u>What I will cover in the next two posts:</u></strong>
 <ul>
-  <li>Cohort retention analysis; I found this over a year ago on Greg Reda’s blog, and it was remarkably helpful</li>
-    <ul><li>Taking this one step further and calculating weighted average retention</li>
-    <li>This can be a single series fed directly into a model</li></ul>
-  <li>The power of Mode Analytics, which combined SQL and Python in a single web application</li>
+  <li>Cohort retention analysis in Python; I discovered this over a year ago on Greg Reda’s blog, and it was remarkably helpful</li>
+    <ul><li>Taking this an additional step further and calculating weighted average retention for monthly cohorts</li>
+    <li>This can then become a single series fed directly into a financial model</li></ul>
+  <li>The power of Mode Analytics, which combines SQL and Python into a single web application</li>
     <ul>
       <li>I use Jupyter Notebook for all analysis in Python</li>
-      <li>Mode Analytics has a powerful offering for Python, which all exists within their overall reporting tool</li>
+      <li>Mode Analytics has a powerful offering for Python, which all exists within their overall reporting application</li>
     </ul> 
-  <li>The use of Python, in place of Excel, to conduct large scale analysis, which can ultimately live in a financial model</li>
+  <li>The use of Python, in place of Excel, to conduct large scale analysis, which can ultimately, as the last step, in a financial model</li>
       <ul><li>The best resource I’ve found for this to-date is Chris Moffit’s Practical Business Python blog</li>
+          <li><u>Note that this will be part of a follow-up post.</u></li>
       </ul>
 </ul>
 </p>
@@ -44,10 +45,11 @@ categories:
 <strong><u>Cohort Retention Analysis with Python</u></strong>
 <p>
 Rather than reconstruct Greg Reda’s remarkably helpful post, I will simply continue from where he leaves off by showing how to calculate
-M1, M2, etc. weighted average retention.
+M1, M2, etc. weighted average retention.</p>
 
+<p>
 As mentioned in this guest post on Andrew Chen’s blog, Christoph Janz has written some of the most helpful posts on SaaS metrics and cohort analyses.
-In the referenced post, one of the screenshots in Christoph’s post, from his model, shows the calculated weighted average retention by cohort month.
+One of the screenshots in Christoph’s guest post, from his model, shows the calculated weighted average retention by cohort month.
 </p>
 
 <p>
@@ -57,6 +59,18 @@ Here’s a screenshot of what this looks like:
 </p>
 
 <p>
+I certainly believe Christoph's model and overall helpfulness to SaaS companies is fairly outstanding.  However, as a company scales, there are challenges with activities such as pasting cohort data into a model and then calculating weighted average retention, and other metrics, within Excel.
+</p>
+<p>
+At FloSports, I am constantly thinking about and looking to create scaleable solutions to deal with some of the challenges which we've run into. Some examples of these include:
+<ul>
+    <li>We have 25+ verticals with multiple subscription offerings.</li>
+    <li>New data is constantly being created by subscribers, including experimentation data, and we need to be able to cut this data several different ways</li>
+    <li>Our verticals are at different stages within their lifecycles, and building and updating flexible waterfalls in Excel is rather time consuming</li>
+</ul>
+
+</p>
+
 If you would like to follow along with this explanation in Jupyter notebook, you will just need to use Greg Reda’s code from the post to
 arrive at my starting point -- I’m starting after his last code snippet, which uses Seaborn and generates a heat map.
 </p>
