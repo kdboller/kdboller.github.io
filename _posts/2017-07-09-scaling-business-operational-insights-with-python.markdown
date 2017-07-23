@@ -116,7 +116,7 @@ weighted_average = weighted_average.drop('index', 1)
 weighted_average_transpose = weighted_average.transpose()
 ```
 
-<img src="/assets/weighted_average_transpose.png" alt="Unstacked Cohorts Dataframe" height="150"  style="width: 100%">
+<img src="/assets/weighted_average_transpose.png" alt="Unstacked Cohorts Dataframe" height="125"  style="width: 100%">
 
 <p>Closing thoughts
 </p>
