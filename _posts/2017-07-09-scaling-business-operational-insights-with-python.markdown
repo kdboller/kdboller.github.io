@@ -87,10 +87,7 @@ unstacked = cohorts['TotalUsers'].unstack(0)
 unstacked.reset_index()
 ```
 
-CohortGroup|CohortPeriod|2009-01|2009-02|2009-03|2009-04|2009-05|2009-06|2009-07|2009-08|2009-09|2009-10|2009-11|2009-12
--------|--------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------| 
-Cell   | Cell   | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  |     
-Cell   | Cell   | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  |
+
 
 <p>This is a placeholder</p>
 
@@ -119,9 +116,6 @@ weighted_average_transpose = weighted_average.transpose()
 
 <p>The table attempt goes below.</p>
 
-CohortGroup | Header | Header| Header| Header| Header| Header| Header| Header| Header| Header| Header| Header| Header
------------ |--------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------| 
-Cell        | Cell   | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell        
-Cell        | Cell   | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell    
+ 
 
 
