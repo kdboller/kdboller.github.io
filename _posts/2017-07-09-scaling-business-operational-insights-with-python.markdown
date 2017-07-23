@@ -7,7 +7,7 @@ categories:
 
 <!-- <img src="/assets/4_OKC_players_in_2011.jpg" alt="Kevin Durant with OKC Teammates" height="500"  style="width: 100%"> -->
 
-<h1><strong>Please note that this post is still under development but a significant amount has now been completed.</strong></h1>
+<!--<h1><strong>Please note that this post is still under development but a significant amount has now been completed.</strong></h1>-->
 
 <p>
     In recent months, I’ve written about some of the critical undertakings and initiatives which I oversee as VP of Product at FloSports.  
@@ -27,15 +27,15 @@ categories:
 <p>
 <strong><u>What I will cover in the next three part post series:</u></strong>
 <ul>
-  <li>Part 1.  Cohort retention analysis in Python; I discovered this over a year ago on Greg Reda’s blog, and it was remarkably helpful</li>
+    <li><strong><u>Part 1.</u></strong>  Cohort retention analysis in Python; I discovered this over a year ago on Greg Reda’s blog, and it was remarkably helpful</li>
     <ul><li>Taking this an additional step further and calculating weighted average retention for monthly cohorts</li>
     <li>This can then become a single series fed directly into a financial model</li></ul>
-  <li>Part 2.  The power of Mode Analytics, which combines SQL and Python into a single web application</li>
+  <li><strong><u>Part 2.</u></strong>  The power of Mode Analytics, which combines SQL and Python into a single web application</li>
     <ul>
       <li>Outside of Mode, I use Jupyter Notebook for all analysis in Python</li>
       <li>Mode Analytics has a powerful offering for Python, which is completely self-contained within their overall reporting application</li>
     </ul> 
-  <li>Part 3.  The use of Python, in place of Excel, to conduct large scale financial and operational analysis; the analysis / dataframes can ultimately, as the last step, be pasted into a financial model</li>
+  <li>strong><u>Part 3.</u></strong>  The use of Python, in place of Excel, to conduct large scale financial and operational analysis; the analysis / dataframes can ultimately, as the last step, be pasted into a financial model</li>
       <ul><li>The best resource I’ve found for Python business application to-date is Chris Moffit’s Practical Business Python blog</li>
           <li><u>Note that this will be part of a follow-up post.</u></li>
       </ul>
