@@ -138,10 +138,12 @@ weighted_avg_transpose
 
 <img src="/assets/weighted_average_transpose2.png" alt="Unstacked Cohorts Dataframe" height="200"  style="width: 100%">
 
-<p>As you can see from the data above, across all of the Cohorts we had 757 total users; in the month after their initial purchase, ~32% were retained in the second month -- at FloSports, we would call this M1 retention since M0 is the initial payment month.
-</p>
+<p>Across all of the Cohorts in the data set that Greg originally used, we had 757 total users.  As you can see from the data above, in the month after their initial purchase, ~33% (row 3, Cohort Period 2) were retained in the second month -- at FloSports, we would call this M1 retention since M0 is the initial payment month. </p>
+    
+<p><strong>There are certainly areas for improvement within my Python code, and I always welcome suggestions on improvements, but regardless this is a massive time saver and is much easier to check for mistakes and therefore much less error-prone.</strong></p>
 
-<p>In the financial models which I build and collaborate on, we include a retention curve schedule worksheet, which we dynamically select based on the business case / vertical running through the model's different scenarios (pricing, offerings, et al).  We do this in order to be able to conduct all sorts of pro forma analyses and this schedule worksheet could have 10 - 20 different retention curves at a time.  Adding a new selection is as simple as re-running the above analysis, after reading in the source data, and then pasting that weighted average retention series into your model's worksheet.
+
+<p>In the financial models which I build and collaborate on, we include a retention curve schedule worksheet, which we dynamically select based on the business case / vertical running through the model's different scenarios (pricing, offerings, et al).  We do this in order to be able to conduct all sorts of pro forma analyses and this schedule worksheet could have 10 - 20 different retention curves at a time.  Adding a new selection is as simple as re-running the above analysis, after reading in the source data, and then reading out the data and pasting that weighted average retention series into your model's worksheet.
 </p>
 
 <p>
