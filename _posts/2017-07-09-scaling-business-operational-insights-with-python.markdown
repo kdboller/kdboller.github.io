@@ -36,18 +36,19 @@ categories:
       <li>Mode Analytics has a powerful offering for Python, which is completely self-contained within their overall reporting application</li>
     </ul> 
   <li><strong><u>Part 3.</u></strong>  The use of Python, in place of Excel, to conduct large scale financial and operational analysis; the analysis / dataframes can ultimately, as the last step, be pasted into a financial model</li>
-      <ul><li>The best resource I’ve found for Python business application to-date is Chris Moffit’s Practical Business Python blog</li>
+      <ul><li>The best resource I’ve found for Python business application to-date is <a href="http://pbpython.com/" target="_blank">Chris Moffit’s Practical Business Python blog</a></li>
       </ul>
 </ul>
-</p>
 
+
+</p>
 <strong><u>Cohort Retention Analysis with Python</u></strong>
 <p>
-Rather than reconstruct Greg Reda’s remarkably helpful post, which can be found here, I will simply continue from where he leaves off by showing how to calculate
+Rather than reconstruct Greg Reda’s remarkably helpful post, which can be found <a href="http://www.gregreda.com/2015/08/23/cohort-analysis-with-python/" target="_blank">here</a>, I will simply continue from where he leaves off by showing how to calculate
 M1, M2, etc. weighted average retention.</p>
 
 <p>
-As mentioned in this guest post on Andrew Chen’s blog, Christoph Janz has written some of the most helpful essays on SaaS metrics and cohort analyses.
+As mentioned in <a href="http://andrewchen.co/the-easiest-spreadsheet-for-churn-mrr-and-cohort-analysis-guest-post/" target="_blank">this guest post on Andrew Chen’s blog</a>, Christoph Janz has written some of the most helpful essays on SaaS metrics and cohort analyses.
 One of the screenshots in Christoph’s guest post, from his model, shows the calculated weighted average retention by cohort month.
 </p>
 
@@ -70,7 +71,7 @@ I certainly believe Christoph's model and overall helpfulness to SaaS companies 
 
 <strong><u>Calculating Weighted Average Subscriber Retention with Python</u></strong>
 <p>
-If you would like to follow along with this explanation in Jupyter notebook, you will just need to use Greg Reda’s code from his post (here's the link again), in order to
+If you would like to follow along with this explanation in Jupyter notebook, you will just need to use Greg Reda’s code from his post (<a href="http://www.gregreda.com/2015/08/23/cohort-analysis-with-python/" target="_blank">here's the link again</a>), in order to
 arrive at my starting point -- I’m starting after his last code snippet, which uses Seaborn and generates a heat map.
 </p>
 
@@ -120,11 +121,15 @@ weighted_average_transpose = weighted_average.transpose()
 <p>As you can see from the data above, across all of the Cohorts we had 757 total users; in the month after their initial purchase, ~32% were retained in the second month -- at FloSports, we would call this M1 retention since M0 is the initial payment month.
 </p>
 
-<p>In the financial models which I build and collaborate on, we include a retention curve schedule worksheet, which we dynamically select based on the business case / vertical running through the model's different scenarios (pricing, offerings, et al).  We do this in order to be able to conduct all sorts of pro forma analyses and this schedule worksheet could have 10 - 20 different retention curves at a time.  
+<p>In the financial models which I build and collaborate on, we include a retention curve schedule worksheet, which we dynamically select based on the business case / vertical running through the model's different scenarios (pricing, offerings, et al).  We do this in order to be able to conduct all sorts of pro forma analyses and this schedule worksheet could have 10 - 20 different retention curves at a time.  Adding a new selection is as simple as re-running the above analysis, after reading in the source data, and then pasting that weighted average retention series into your model's worksheet.
 </p>
 
 <p>
-<strong>Hopefully I have made the time savings Python affords in acquiring the data to be pasted into these retention curve worksheets to be rather compelling.</strong> I have found the scaleability of doing analysis such as this in Python, a language I'm continually trying to improve in, to be fairly remarkable.  Our general approach is to use a data gathering language, SQL, and acquire specific date ranges and /or combinations of plan offerings for our subscribers; we then cut our curves as it makes most sense for the business and / or what we are evaluating.  To achieve this flexibility within Excel is remarkably difficult, if not impossible, and continuing to find ways to scale within Python has been extremely eye opening.
+<strong>Hopefully I have made the time savings Python affords in acquiring the data to be pasted into these retention curve worksheets to be rather compelling.</strong> I have found the scaleability of doing analysis such as this in Python, a language I'm continually trying to improve in, to be fairly remarkable.  
+</p>
+
+</p>
+My general approach is to use a data gathering language, SQL in my case, and gather data for specific date ranges and /or combinations of plan offerings for our subscribers; we then cut our curves as it makes most sense for the business(es) we are evaluating.  To achieve this flexibility within Excel is remarkably difficult, if not impossible, and continuing to find ways to scale within Python has been extremely eye opening.
 </p>
 
 <p><strong>In <a href="https://kdboller.github.io/2017/07/23/scaling-business-operational-insights-with-python_part2.html" target="_blank">Part 2</a> of this Series, I'll discuss the use of this approach within Mode Analytics, which I believe offers even more potential for massive efficiency improvements and gains from increased data insights.</strong>
