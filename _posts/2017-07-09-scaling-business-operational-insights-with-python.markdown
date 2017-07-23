@@ -69,18 +69,29 @@ At FloSports, I am constantly thinking about and looking to create scaleable sol
     <li>Our verticals are at different stages within their lifecycles, and building and updating flexible waterfalls in Excel can be rather time consuming.</li>
 </ul></p>
 
+<strong><u>Calculating Weighted Average Subscriber Retention with Python</u></strong>
 <p>
-
 If you would like to follow along with this explanation in Jupyter notebook, you will just need to use Greg Reda’s code from the post to
 arrive at my starting point -- I’m starting after his last code snippet, which uses Seaborn and generates a heat map.
 </p>
 
+<p>
+    In his post, Greg used unstack in order to create a matrix where each column is the CohortGroup and each row is the cohort period.
+    
+    Using this unstack and then resetting the index, we have a flattened dataframe which we can now manipulate in order to calculate the weighted average retention by Cohort Period, e.g., Month 1.
+</p>
 
 ```python
 # Unstack the TotalUsers
 unstacked = cohorts['TotalUsers'].unstack(0)
 unstacked.reset_index()
 ```
+
+CohortGroup|CohortPeriod|2009-01|2009-02|2009-03|2009-04|2009-05|2009-06|2009-07|2009-08|2009-09|2009-10|2009-11|2009-12
+-------|--------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------| 
+Cell   | Cell   | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  |     
+Cell   | Cell   | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  | Cell  |
+
 <p>This is a placeholder</p>
 
 ```python
