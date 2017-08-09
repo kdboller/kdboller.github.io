@@ -100,40 +100,70 @@ weighted = unstacked.reset_index()
 # Add a Total Subs column which sums up all of the subscribers within each Cohort Period.
 weighted['Total_Subs'] = weighted.drop('CohortPeriod', axis=1).sum(axis=1)
 
-# Add a "placeholder" Retention Pct column; will calculate weighted averages within this column after adding.
-weighted['Ret_Pct'] = weighted.iloc[:, 1:-1].sum(axis=1) / weighted.iloc[0, 1:-1].sum()
-
-# These will modify all of the Retention Pcts to reflect the total duration of each cohort;
-# This is probably better served with a function --> apply --> lamba expression approach
-# In the future will figure out best way to scale this further.
-weighted['Ret_Pct'].iloc[1] = weighted.iloc[1, 1:-3].sum() / weighted.iloc[0, 1:-3].sum()
-weighted['Ret_Pct'].iloc[2] = weighted.iloc[2, 1:-4].sum() / weighted.iloc[0, 1:-4].sum()
-weighted['Ret_Pct'].iloc[3] = weighted.iloc[3, 1:-5].sum() / weighted.iloc[0, 1:-5].sum()
-weighted['Ret_Pct'].iloc[4] = weighted.iloc[4, 1:-6].sum() / weighted.iloc[0, 1:-6].sum()
-weighted['Ret_Pct'].iloc[5] = weighted.iloc[5, 1:-7].sum() / weighted.iloc[0, 1:-7].sum()
-weighted['Ret_Pct'].iloc[6] = weighted.iloc[6, 1:-8].sum() / weighted.iloc[0, 1:-8].sum()
-weighted['Ret_Pct'].iloc[7] = weighted.iloc[7, 1:-9].sum() / weighted.iloc[0, 1:-9].sum()
-weighted['Ret_Pct'].iloc[8] = weighted.iloc[8, 1:-10].sum() / weighted.iloc[0, 1:-10].sum()
-weighted['Ret_Pct'].iloc[9] = weighted.iloc[9, 1:-11].sum() / weighted.iloc[0, 1:-11].sum()
-weighted['Ret_Pct'].iloc[10] = weighted.iloc[10, 1:-12].sum() / weighted.iloc[0, 1:-12].sum()
-weighted['Ret_Pct'].iloc[11] = weighted.iloc[11, 1:-13].sum() / weighted.iloc[0, 1:-13].sum()
-weighted['Ret_Pct'].iloc[12] = weighted.iloc[12, 1:-14].sum() / weighted.iloc[0, 1:-14].sum()
-weighted['Ret_Pct'].iloc[13] = weighted.iloc[13, 1:-15].sum() / weighted.iloc[0, 1:-15].sum()
-weighted['Ret_Pct'].iloc[14] = weighted.iloc[14, 1:-16].sum() / weighted.iloc[0, 1:-16].sum()
-
 # Return the full weighted data frame
-weighted
-```
+# weighted
 
-```python
+# Count non-NaN values in the row, call n
+# Add up first n values of the first row, n_sum
+# Divide the value in the total subs column of that row by n_sum
+weighted['num_months'] = weighted['CohortPeriod'].count() - weighted.isnull().sum(axis=1)
+
+def calc_sum(col_end):
+    ans = 0
+    for i in range(1,int(col_end)):
+        ans = ans + weighted.iloc[0, i]
+        
+    return ans
+
+def calc_ret_pct(total_subs, num_months):
+    sum_initial = calc_sum(1 + num_months)
+    
+    return total_subs / sum_initial
+
+# Create a retention percentage column with use of a lambda function to apply calc ret pct for each row
+weighted['Ret_Pct'] = weighted.apply(lambda row: calc_ret_pct(row['Total_Subs'], row['num_months']), axis=1)
+# weighted
+
 # Grab only the Cohort Period and Ret Pct columns
 weighted_avg = weighted.filter(items=['CohortPeriod', 'Ret_Pct'])
+
+weighted_avg['Ret_Pct'] = pd.Series(["{0:.2f}%".format(val * 100) for val in weighted_avg['Ret_Pct']], index = weighted_avg.index)
+weighted_avg['CohortPeriod'] = weighted_avg['CohortPeriod'].astype(int)
 
 # Transpose the values to run across the row rather that column
 weighted_avg_transpose = weighted_avg.transpose()
 
 # Return the weighted average data frame
-weighted_avg_transpose
+# weighted_avg
+
+```
+
+```python
+# Import necessary libraries in order to plot weighted average retention using Plotly
+import plotly.plotly as py
+from plotly.offline import download_plotlyjs, init_notebook_mode, iplot
+from plotly.graph_objs import *
+import plotly.graph_objs as go
+import plotly
+plotly.offline.init_notebook_mode()
+
+trace = go.Scatter(
+    x = weighted_avg['CohortPeriod'],
+    y = weighted_avg['Ret_Pct']
+)
+
+data = [trace]
+
+layout = go.Layout(
+    title = 'Monthly Retention Curve',
+    yaxis=dict(
+        ticksuffix='%'
+    )
+)
+
+fig = dict(data=data, layout=layout)
+
+iplot(fig)
 ```
 
 <img src="/assets/weighted_average_transpose2.png" alt="Unstacked Cohorts Dataframe" height="200"  style="width: 100%">
