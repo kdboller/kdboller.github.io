@@ -171,10 +171,10 @@ iplot(fig)
 
 <p>Across all of the Cohorts in the data set that Greg originally used, we had 757 total users.  As you can see from the data above, in the month after their initial purchase, ~33% (hovered over in the chart above) were retained in the second month -- at FloSports, we would call this M1 retention since M0 is the initial payment month. </p>
     
-<p><strong>There are certainly areas for improvement within my Python code, and I always welcome suggestions on improvements, but regardless this is a massive time saver and is much easier to check for mistakes and therefore much less error-prone.</strong></p>
+<p><strong>As you might imagine, this is a massive time saver and is much easier to check for mistakes and therefore much less error-prone than a traditional excel-based approach, particularly when you need to update, e.g., each month / as new experiment data rolls in.</strong></p>
 
 
-<p>In the financial models which I build and collaborate on, we include a retention curve schedule worksheet, which we dynamically select based on the business case / vertical running through the model's different scenarios (pricing, offerings, et al).  We do this in order to be able to conduct all sorts of pro forma analyses and this schedule worksheet could have 10 - 20 different retention curves at a time.  Adding a new selection is as simple as re-running the above analysis, after reading in the source data, and then reading out the data and pasting that weighted average retention series into your model's worksheet.
+<p>In the financial models which I build and collaborate on, we include a retention curve schedule worksheet, which we dynamically select based on the business case / vertical running through the model's different scenarios (pricing, offerings, et al).  We do this in order to be able to conduct all sorts of pro forma analyses and this schedule worksheet could have 10 - 20 different retention curves at a time.  Adding a new selection to our models can now be as simple as re-running the above analysis, after reading in the source data, and then reading out the data and pasting that weighted average retention series into your model's worksheet.
 </p>
 
 <p>
@@ -185,7 +185,7 @@ iplot(fig)
 My general approach is to use a data gathering language, SQL in my case, and gather data for specific date ranges and /or combinations of plan offerings for our subscribers; we then cut our curves as it makes most sense for the business(es) we are evaluating.  To achieve this flexibility within Excel is remarkably difficult, if not impossible, and continuing to find ways to scale within Python has been extremely eye opening.
 </p>
 
-<p><strong>In <a href="https://kdboller.github.io/2017/07/23/scaling-business-operational-insights-with-python_part2.html" target="_blank">Part 2</a> of this Series, I'll discuss the use of this approach within Mode Analytics, which I believe offers even more potential for massive efficiency improvements and gains from increased data insights.</strong>
+<p><strong>In <a href="https://kdboller.github.io/2017/07/23/scaling-analytical-insights-with-python_part2.html" target="_blank">Part 2</a> of this Series, I'll discuss the use of this approach within Mode Analytics, which I believe offers even more potential for massive efficiency improvements and gains from increased data insights.</strong>
 </p>
 
  
