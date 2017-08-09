@@ -166,7 +166,7 @@ fig = dict(data=data, layout=layout)
 iplot(fig)
 ```
 
-<img src="/assets/weighted_average_transpose2.png" alt="Unstacked Cohorts Dataframe" height="200"  style="width: 100%">
+<img src="/assets/plotly_weighted_avg_ret_curve.png" alt="Weighted Average Retention Plot with Plotly" height="300"  style="width: 100%">
 
 <p>Across all of the Cohorts in the data set that Greg originally used, we had 757 total users.  As you can see from the data above, in the month after their initial purchase, ~33% (row 3, Cohort Period 2) were retained in the second month -- at FloSports, we would call this M1 retention since M0 is the initial payment month. </p>
     
