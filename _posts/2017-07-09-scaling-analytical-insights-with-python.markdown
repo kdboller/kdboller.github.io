@@ -91,7 +91,8 @@ unstacked.reset_index()
 
 <p>We have successfully manipulated our subscriber data in order to create Cohort Groups and Cohort Periods for those groups, in large part thanks to Greg; and now we can create a separate dataframe which will contain our weighted average retentions across these combined cohorts for each of their monthly periods for which we have data.</p>
 
-<p>Below, we essentially create a dataframe with a reset index, calculate the sums across all rows (which represent each Cohort Period), calculate weighted percentages by dividing by our first row of Total Users, and then transpose the weighted_average dataframe to become a new dataframe; this dataframe has Total Users and the Percentage of Retained Users for each Period, indexed by Cohort Period Month.</p>
+<p>There is a fair amount going on below, and I can certainly clarify or provide more detail as needed.  We create a dataframe with a reset index to isolate the data we need.  We then write two functions -- the first finds the number of columns we should use for each weighted average period, and the second is used to divide the total subs left after i periods by the appropriate amount of initial Total Subs.  After that, we use the filter method and then utilize Plotly in order to make an interactive chart right within the Jupyter notebook.
+</p>
 
 ```python
 # Create a weighted data frame and reset the index
