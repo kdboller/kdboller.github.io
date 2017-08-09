@@ -169,7 +169,7 @@ iplot(fig)
 
 <img src="/assets/plotly_weighted_avg_ret_curve.png" alt="Weighted Average Retention Plot with Plotly" height="500"  style="width: 100%">
 
-<p>Across all of the Cohorts in the data set that Greg originally used, we had 757 total users.  As you can see from the data above, in the month after their initial purchase, ~33% (row 3, Cohort Period 2) were retained in the second month -- at FloSports, we would call this M1 retention since M0 is the initial payment month. </p>
+<p>Across all of the Cohorts in the data set that Greg originally used, we had 757 total users.  As you can see from the data above, in the month after their initial purchase, ~33% (hovered over in the chart above) were retained in the second month -- at FloSports, we would call this M1 retention since M0 is the initial payment month. </p>
     
 <p><strong>There are certainly areas for improvement within my Python code, and I always welcome suggestions on improvements, but regardless this is a massive time saver and is much easier to check for mistakes and therefore much less error-prone.</strong></p>
 
