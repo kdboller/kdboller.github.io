@@ -5,14 +5,22 @@ date:   2017-10-11 12:00:00 -0500
 categories: 
 ---
 
-<!-- <img src="/assets/4_OKC_players_in_2011.jpg" alt="Kevin Durant with OKC Teammates" height="500"  style="width: 100%"> -->
+<head>
+<style type="text/css">
+<!--
+.tab { margin-left: 40px; }
+-->
+</style>
+</head>
 
+<!-- <img src="/assets/4_OKC_players_in_2011.jpg" alt="Kevin Durant with OKC Teammates" height="500"  style="width: 100%"> -->
+<body>
 <h1><strong>Please note that this post is currently under development.</strong></h1>
 
 If you would like to read Part 1 of this Series, please find it at <a href="https://kdboller.github.io/2017/07/09/scaling-analytical-insights-with-python.html" target="_blank">this link.</a>
 
 
-<p style="margin-left: 40px">A fair amount has happened since my Scaling Analytical Insights with Python (Part 1) post back in August.  Since that time, I decided to resign from FloSports in order to join Amazon’s Kindle Content Acquisition team as a Sr. Product Manager -- this obviously includes moving my family from Austin, TX to Seattle.  While this was taking place behind the scenes, I had every intention to return to my write up of Part 2 of this series.  Note that I’ve decided to put Part 3 on hold, and I may potentially not revisit the topic of using Python for financial analysis for a decent while.</p> 
+<p class="tab">Example of a tabA fair amount has happened since my Scaling Analytical Insights with Python (Part 1) post back in August.  Since that time, I decided to resign from FloSports in order to join Amazon’s Kindle Content Acquisition team as a Sr. Product Manager -- this obviously includes moving my family from Austin, TX to Seattle.  While this was taking place behind the scenes, I had every intention to return to my write up of Part 2 of this series.  Note that I’ve decided to put Part 3 on hold, and I may potentially not revisit the topic of using Python for financial analysis for a decent while.</p> 
 
 <p style="margin-left: 40px">In this Part 2 post, I’ll combine several resources which I believe are remarkably useful, and this post will tie together a few key pieces of analyses for better understanding a direct-to-consumer, SaaS type user / subscriber base.  In order to meld all of this together, I’ll also use one of my favorite data analytics / data science tools, Mode Analytics [link].  At the end, what I hope you’ll find both helpful and cool is an open source Mode Analytics report, here [link]; this is a slimmed down version of the type of report I would produce in my former role as the head of the data warehouse and data analytics, and all of the code and visualizations are able to be cloned into your own Mode report (assuming you create an account, which is free).</p>
 
@@ -80,3 +88,4 @@ If you would like to read Part 1 of this Series, please find it at <a href="http
 </p>
 
 <p style="margin-left: 40px">Hopefully you found this post as helpful as I’ve found Mode to be, as well as the referenced posts that we leveraged, and please let me know if you have any questions or thoughts in the comments section.</p>
+</body>
