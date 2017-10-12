@@ -13,7 +13,7 @@ permalink: /about/
 </center>
 
 <center><h3>TECHNICAL SKILLS</h3></center>
-<p><strong>Programming/Analytics:</strong> SQL (Postgres, MySQL), Python (pandas, numpy, scikit-learn), R, Kissmetrics</p>
+<p><strong>Programming/Analytics:</strong> SQL (Postgres, MySQL), Python (pandas, numpy, scikit-learn), R</p>
 <p><strong>Databases/Warehouses:</strong> Periscope Data (Cache/Views), Mode Analytics, Segment (warehouse and platform), Redshift
 
 <hr>
