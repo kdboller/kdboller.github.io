@@ -7,9 +7,10 @@ permalink: /resume/
 As mentioned on my home page, I am passionate about the analytical revolution unfolding across sports media and digital technology and I am interested in consulting, advisory and board member work.
 
 On this page you'll find my generally up-to-date, traditionally formatted resume.  
+
 Please feel free to download my resume [here](/assets/Boller_Kevin_Resume_2017.pdf) directly.
 
-My resume has also been included below in markdown format.   
+My resume has also been included below in markdown format (note that this needs to be updated post my recent transition).   
 
 <hr>
 
