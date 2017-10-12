@@ -18,9 +18,11 @@ permalink: /about/
 
 <hr>
 
-<center><h3>AREAS OF EXPERTISE</h3></center>
+<center><h3>KEY STRENGTHS</h3></center>
 <ul>
-<li>Sports Media and Sports Technology</li>
+<li>Sports Media and Sports Technology Expertise</li>
+<li>Business Intelligence and Data Warehouse Product Management</li>
+<li>Financial, Operational, Product and Data Analytics</li>
 <li>Financial Modeling and Economic Model Optimization</li>
 <li>Pricing Strategy Analyses and Advisory</li>
 <li>Corporate Strategy and Business Development</li>
