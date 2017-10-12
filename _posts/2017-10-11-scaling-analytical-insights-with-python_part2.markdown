@@ -27,18 +27,43 @@ If you would like to read Part 1 of this Series, please find it at <a href="http
 
 <p>To start with, I took the relay-foods data set and added it as a public file on Mode -- <a href="https://help.modeanalytics.com/articles/upload-public-data-to-mode/" target="_blank">here</a> are Mode’s instructions on how to do that (I also added an all_time dataset, more on that in the projected LTV portion).  The Python code in this portion of the post, again available in the Notebook section of the report, is identical to the code utilized in my prior post -- the difference is that a dataframe created from an SQL query is utilized within a Mode Python notebook.  Additionally, the SQL code provided below shows a minor data enrichment step that I took on this dataset, where I categorize the first payment for a user as ‘Initial’ and any subsequent payments as ‘Repeat’.  This is a fairly minor but quick example of the type of business logic that you can apply to data sources, generally using aggregate fact tables as I’ve mentioned in the past.</p>
 
-[Insert SQL code here]
+```sql
+with payment_enrichment as (
+  
+  select
+  
+    order_id
+    , order_date
+    , user_id
+    , total_charges
+    , common_id
+    , pup_id
+    , pickup_date
+    , date_trunc('month', order_date) as order_month
+    , row_number() over (partition by user_id order by order_date) as payment_number
+  
+  from kdboller.relay_foods_v1  
+  )
+  
+  select
+    pe.*
+    , case when payment_number = 1 then 'Initial' else 'Repeat' end as payment_type
+    
+  from payment_enrichment as pe
+```
 
-<p>As the next step in this analysis, I will build a projected LTV analysis, again referencing another helpful resource which I found online -- Ryan Iyengar posted this on Medium a little bit over a year ago [link].  If you’ve ever conducted an LTV analysis in Excel, you know that this can be rather time consuming and these models can become extremely large and much less dynamic than one would prefer.   <strong><u>You would think that there has to be a better way to calculate a single value which is rather critical to understanding the health of a subscription business.</u></strong>  Fortunately, there are a number of much better, highly repeatable ways to do this.  Furthermore, evaluating different start/end date ranges for cohorts, e.g., to normalize for particularly strong “early adopter” cohorts, is a significant advantage of conducting this type of analysis in SQL and / or Python.</p>
+<p>As the next step in this analysis, I will build a projected LTV analysis, again referencing another helpful resource which I found online -- Ryan Iyengar posted this on Medium a little bit over a year ago and can be found <a href="https://ryaniyengar.com/projecting-customer-lifetime-value-in-sql-using-exponential-decay-b9bf984cef0c" target="_blank">here</a>.  If you’ve ever conducted an LTV analysis in Excel, you know that this can be rather time consuming and these models can become extremely large and much less dynamic than one would prefer.   <strong><u>You would think that there has to be a better way to calculate a single value which is rather critical to understanding the health of a subscription business.</u></strong>  Fortunately, there are a number of much better, highly repeatable ways to do this.  Furthermore, evaluating different start/end date ranges for cohorts to include, e.g., to normalize for particularly strong “early adopter” cohorts, is a significant advantage of conducting this type of analysis in SQL and / or Python.</p>
 
-<p>With all of this said, Ryan’s post definitely requires a fairly thorough understanding of SQL, particularly given the significant use of common table expressions (CTEs).  Given the length of this query, I’ve not pasted it below but you can find several build ups to the final query within the Mode Report.  If you have specific questions on the background or rationale for parts of Ryan’s query, I would refer you to his rather insightful and informative post.  For purposes of my post, I’ve shown how to create the needed data from the original data set we’re using, provide some observational takeaways from our dataset below and also show a few key charts that Mode allows me to add to my overall report within the LTV section.</p>
+<p>With all of this said, Ryan’s post definitely requires a fairly thorough understanding of SQL, particularly given the significant use of common table expressions (CTEs).  Given the length of the resulting query, I’ve not pasted it below but you can find several build ups to the final query within the Mode Report.  If you have specific questions on the background or rationale for this piece of my post, I would refer you to his rather insightful and informative post.  For purposes of my post, I’ve shown how to create the needed data from the original data set we’re using, provide some observational takeaways from our dataset below and also show a few key charts that Mode allows me to add to my overall report within the LTV section.</p>
 
 
 <strong><u>LTV Section -- summary of the queries</u></strong>
 
-<p>The SQL queries related to LTV, which piggyback off of Ryan’s extremely helpful work, start with the numbering of 2 - 8.  Within mode, I try to order my queries using this system in order to track the natural progression of the queries written within the project -- a nice feature request would be to have some type of a folder-ing system in order to organize these into payment, LTV, and RFM query sections.  Query #2 modestly manipulates the dataset in order to pull back a return that is consistent with the dataset which Ryan uses in his post -- this should make it very straightforward to follow.  I also built out the queries to mimic where Ryan pauses during his blog post, so that it is easier to follow between his post and the Mode report that I created.</p>  
+<p>The SQL queries related to LTV, which piggyback off of Ryan’s extremely helpful work, start with the numbering of 2 - 8 within the report.  Within Mode, I try to order my queries using this system in order to track the natural progression of the queries written within the project -- <strong>a nice feature request would be to have some type of a folder-ing system in order to organize these into payment, LTV, and RFM query sections.</strong>  Query #2 modestly manipulates the dataset in order to pull back a return that is consistent with the dataset which Ryan uses in his post -- this should make it very straightforward to follow.  I also built out the queries to mimic where Ryan pauses during his blog post, so that it is easier to follow between his post and the Mode report that I created.</p>  
 
-<p>Within queries 4-6, you’ll see that I detected an anomalous situation within one of the cohorts.  In the 2009/04/01 cohort, in the three latest months the cohort’s revenue share actually dramatically increased; while reactivations, users who leave a cohort and then later return, is not uncommon, this significantly skewed the forecasted revenue and therefore LTV for this particular cohort.  As a result, tather than projecting a decay in revenue, it was actually forecasting a greater than 20% month over month increase (for the whole forecast).  While there are probably a few most effective ways to normalize this, in the interest of time I decided to just exclude this cohort from the analysis -- I would say that something similar to this happens in almost every analysis, and it’s obviously critical to vet the data and determine how to adjust as needed.  The adjustment decisions will somewhat vary given a company’s industry, future prospects, and maturity.</p>
+<p>Within queries 4-6, you’ll see that while performing this I detected an anomalous situation within one of the cohorts (see screenshot below this paragraph).  In the 2009/04/01 cohort, in the three latest months the cohort’s revenue share actually dramatically increased; while reactivations, users who leave a cohort and then later return, are not uncommon, this significantly skewed the forecasted revenue and therefore LTV for this particular cohort.  As a result, rather than projecting a decay in revenue, the model was forecasting a greater than 20% month over month increase (for the whole forecast).  While there are probably a few preferred ways to normalize this, in the interest of time I decided to just exclude this cohort from the analysis -- I would say that something similar to this happens in almost every analysis, and it’s obviously critical to vet the data and determine how to adjust as needed.  The adjustment decisions will somewhat vary given a company’s industry, future prospects, and maturity.</p>
+
+<insert asset showing anamoly>
 
 <p>Queries 7 and 8 complete the query with the final expected return, one which shows the projected LTV for each cohort and one which shows the overall forecasted LTV when taking into account all cohorts forecasted projections and initial users.  You can see from the below screen scrape copied from the Mode Report output, the overall LTV is ~$315.  In addition to that, we see that the initial cohort, most likely the “early adopters”, have a much higher LTV than seen in subsequent months -- with the caveat that we only have 12 monthly cohorts to evaluate and this is a rarely new company given this example, next steps could include further segmenting users and finding each LTV, as well as potentially normalizing overall LTV by excluding the “early adopter” contribution from this analysis.  It’s also worth noting that the LTV is much lower with the higher volume recent cohorts, and we would want to understand if we can more effectively grow our user base while ideally growing, or at minimum maintaining, our LTV over time.</p>
 
