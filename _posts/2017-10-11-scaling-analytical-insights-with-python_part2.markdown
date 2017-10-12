@@ -48,9 +48,9 @@ If you would like to read Part 1 of this Series, please find it at <a href="http
 
 <p>In this last section, I’ve included a Recency, Frequency, Monetary Value (RFM) analysis.  While in the course of reviewing effective ways to segment subscribers and after discovering this methodology, I then found this helpful notebook on Joao Correia’s GitHub.  Here’s a quick rundown of RFM. </p>
 
-<strong>Recency:</strong>  how recently from an evaluated date, e.g., today, a user / subscriber has purchased from a site.\s\s
-<strong>Frequency:</strong>  the number of times that a user / subscriber has purchased on a particular site in their entire lifetime as a customer.\s\s
-<strong>Monetary Value:</strong>  the total dollar amount that the user / subscriber has paid in total from all of their purchases during their entire lifetime as a customer.\s\s
+<strong>Recency:</strong>  how recently from an evaluated date, e.g., today, a user / subscriber has purchased from a site.<br>
+<strong>Frequency:</strong>  the number of times that a user / subscriber has purchased on a particular site in their entire lifetime as a customer.<br>
+<strong>Monetary Value:</strong>  the total dollar amount that the user / subscriber has paid in total from all of their purchases during their entire lifetime as a customer.<br>
 
 <p>While there are a few ways to complete the RFM analysis, including via SQL, part of my intent here is to show how the useful work of others can be repurposed with a rather straightforward initial dataset.  Within the Python notebook, which is here within the Mode Report [link], you will see that I’ve largely followed Joao’s notebook.  As in his notebook’s conclusion, I show below the the top ten customers in the RFMClass 111 -- this represents the users who are in the top quartile for all three RFM metrics; these users have paid rather recently, and have also paid more times and at a higher monetary value than 75% of the site’s other users.  As a result, these users are prime for qualitative surveys requesting feedback on what they love and what could be better, and you can also study their site behavior to understand what they may be doing differently than other visitors, among several different evaluations you can take on.
 </p>
