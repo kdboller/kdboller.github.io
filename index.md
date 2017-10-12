@@ -5,10 +5,10 @@
 layout: home
 ---
 
-<p>Hi, I’m Kevin Boller and I currently live in Austin, TX where I am the VP of Product (Revenue and Analytics) for <a href="http://www.flosports.tv/" target="_blank">FloSports</a>. </p>
+<p>Hi, I’m Kevin Boller and I am currently in Product Management with Amazon in Seattle, WA. </p>
 
-<p>As a major sports enthusiast and technologist, I am extremely passionate about the analytical revolution unfolding across sports media and sports technology.</p>
+<p>As a major sports enthusiast and technologist, I am extremely passionate about the analytical revolution unfolding across sports media and digital technology.</p>
 
-<p>I am interested in consulting, advisory and board member work within the sports technology space, so please feel free to get in touch.</p>
+<p>I am interested in consulting, advisory and board member work, so please feel free to get in touch.</p>
 
 <hr>
