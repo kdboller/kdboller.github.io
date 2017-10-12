@@ -7,8 +7,6 @@ categories:
 
 <!-- <img src="/assets/4_OKC_players_in_2011.jpg" alt="Kevin Durant with OKC Teammates" height="500"  style="width: 100%"> -->
 
-<h1><strong>Please note that this post is currently under development.</strong></h1>
-
 If you would like to read Part 1 of this Series, please find it at <a href="https://kdboller.github.io/2017/07/09/scaling-analytical-insights-with-python.html" target="_blank">this link.</a>
 
 
