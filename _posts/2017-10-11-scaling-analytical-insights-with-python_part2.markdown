@@ -98,19 +98,19 @@ with payment_enrichment as (
 		<li>Charts can be created either in SQL (built-in chart functionality) or in Python</li>
 		<li>Reports are highly reproducible and can be cloned if you want to preserve a previous one, e.g., quarterly reviews</li>
 		<li>Mitigates need to create a dataset and read out as a CSV into Jupyter notebook; read queries directly into Python notebook as a dataframe</li>
-		<ul><li>With the caveat that not all Python libraries are available, although quite a few are, and computing power is an area in which Mode is constantly looking to improve.</li></ul>
+		<ul><li>With the caveat that not all Python libraries are available, although quite a few are, and computing power is an area in which Mode is constantly looking to improve</li></ul>
 	</ul>
 
 <p>Starting from a rather basic user data set and using Mode Analytics, we were able to complete the following:
 	<ul>	
-		<li>Contribute two public datasets</li>
+		<li>Contribute two public datasets onto Mode's platform</li>
 		<li>Group the users into monthly cohorts via SQL and Python</li>
 		<li>Build retention curves / retention heatmaps for these monthly cohorts in Python</li>
 		<li>Calculate a weighted average retention curve for the cohorts in Python</li>
 		<li>Project LTV for the entire company and for each cohort using SQL</li>
 		<li>Conduct an RFM analysis and understand the distribution for each class and the contribution by Monthly cohort in Python</li>
 		<li>Finally, we leveraged Mode Analytics to produce an intuitive, comprehensive report</li>
-		<li>This report is rather extensible to add in additional analyses and can also be easily updated as new monthly data rolls in</li>
+		<ul><li>This report is rather extensible to add in additional analyses and can also be easily updated as new monthly data rolls in</li></ul>
 	</ul>
 </p>
 
