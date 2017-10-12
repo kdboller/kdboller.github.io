@@ -56,36 +56,37 @@ with payment_enrichment as (
 
 <p>With all of this said, Ryan’s post definitely requires a fairly thorough understanding of SQL, particularly given the significant use of common table expressions (CTEs).  Given the length of the resulting query, I’ve not pasted it below but you can find several build ups to the final query within the Mode Report.  If you have specific questions on the background or rationale for this piece of my post, I would refer you to his rather insightful and informative post.  For purposes of my post, I’ve shown how to create the needed data from the original data set we’re using, provide some observational takeaways from our dataset below and also show a few key charts that Mode allows me to add to my overall report within the LTV section.</p>
 
-
 <strong><u>LTV Section -- summary of the queries</u></strong>
 
 <p>The SQL queries related to LTV, which piggyback off of Ryan’s extremely helpful work, start with the numbering of 2 - 8 within the report.  Within Mode, I try to order my queries using this system in order to track the natural progression of the queries written within the project -- <strong>a nice feature request would be to have some type of a folder-ing system in order to organize these into payment, LTV, and RFM query sections.</strong>  Query #2 modestly manipulates the dataset in order to pull back a return that is consistent with the dataset which Ryan uses in his post -- this should make it very straightforward to follow.  I also built out the queries to mimic where Ryan pauses during his blog post, so that it is easier to follow between his post and the Mode report that I created.</p>  
 
 <p>Within queries 4-6, you’ll see that while performing this I detected an anomalous situation within one of the cohorts (see screenshot below this paragraph).  In the 2009/04/01 cohort, in the three latest months the cohort’s revenue share actually dramatically increased; while reactivations, users who leave a cohort and then later return, are not uncommon, this significantly skewed the forecasted revenue and therefore LTV for this particular cohort.  As a result, rather than projecting a decay in revenue, the model was forecasting a greater than 20% month over month increase (for the whole forecast).  While there are probably a few preferred ways to normalize this, in the interest of time I decided to just exclude this cohort from the analysis -- I would say that something similar to this happens in almost every analysis, and it’s obviously critical to vet the data and determine how to adjust as needed.  The adjustment decisions will somewhat vary given a company’s industry, future prospects, and maturity.</p>
 
-<insert asset showing anamoly>
+<img src="/assets/revenue forecast anomaly.png" alt="Revenue Forecast Anamoly" height="300"  style="width: 100%">
 
 <p>Queries 7 and 8 complete the query with the final expected return, one which shows the projected LTV for each cohort and one which shows the overall forecasted LTV when taking into account all cohorts forecasted projections and initial users.  You can see from the below screen scrape copied from the Mode Report output, the overall LTV is ~$315.  In addition to that, we see that the initial cohort, most likely the “early adopters”, have a much higher LTV than seen in subsequent months -- with the caveat that we only have 12 monthly cohorts to evaluate and this is a rarely new company given this example, next steps could include further segmenting users and finding each LTV, as well as potentially normalizing overall LTV by excluding the “early adopter” contribution from this analysis.  It’s also worth noting that the LTV is much lower with the higher volume recent cohorts, and we would want to understand if we can more effectively grow our user base while ideally growing, or at minimum maintaining, our LTV over time.</p>
 
-[Paste in Mode screen scrape]
+<img src="/assets/part2_LTV analyses.png" alt="LTV Analyses" height="300"  style="width: 100%">
 
 <p>In this last section, I’ve included a Recency, Frequency, Monetary Value (RFM) analysis.  While in the course of reviewing effective ways to segment subscribers and after discovering this methodology, I then found this helpful notebook on Joao Correia’s GitHub.  Here’s a quick rundown of RFM. </p>
 
+<p>
 <strong>Recency:</strong>  how recently from an evaluated date, e.g., today, a user / subscriber has purchased from a site.<br>
 <strong>Frequency:</strong>  the number of times that a user / subscriber has purchased on a particular site in their entire lifetime as a customer.<br>
 <strong>Monetary Value:</strong>  the total dollar amount that the user / subscriber has paid in total from all of their purchases during their entire lifetime as a customer.<br>
+</p>
 
 <p>While there are a few ways to complete the RFM analysis, including via SQL, part of my intent here is to show how the useful work of others can be repurposed with a rather straightforward initial dataset.  Within the Python notebook, which is here within the Mode Report [link], you will see that I’ve largely followed Joao’s notebook.  As in his notebook’s conclusion, I show below the the top ten customers in the RFMClass 111 -- this represents the users who are in the top quartile for all three RFM metrics; these users have paid rather recently, and have also paid more times and at a higher monetary value than 75% of the site’s other users.  As a result, these users are prime for qualitative surveys requesting feedback on what they love and what could be better, and you can also study their site behavior to understand what they may be doing differently than other visitors, among several different evaluations you can take on.
 </p>
 
-[insert scrape from Mode]
+<img src="/assets/top monetary value users.png" alt="Top Monetary Users, RFM Class 111" height="300"  style="width: 100%">
 
 <p>Utilizing Plotly within the Mode report, I then added three visualizations which help me to better understand the data and are also meant to anticipate potential questions from business stakeholders.  The first shows the distribution of users within each RFMClass.  On a positive note, 81 users are in the 111 class, but 75 are in 344 and 65 are in 444 -- these are users who have not paid in a while, and who have also paid far fewer times and at a much lower monetary value than the median value for all users.  We would want to see if we could resurrect these users or if there’s something that happened which caused them to (almost) never return to our site.  
 </p>
 
 <p>Lastly, I would want to know how each RFMClass indexes in terms of cohort groups -- are earlier cohorts the ones that are primarily in the 111 class?  If so, that would probably be a cause for concern.  In reviewing the two charts (below), the first with total users by cohort and the second with RFM Class 111 users by cohort, we see that the largest contributors to the RFM Class 111 are from November 2009 and January 2010.  However, when reviewing the first chart with total users per cohort, we see that November 2009 was a particularly large cohort, and on a relative basis is not as strong of a contributor to the top RFM class.  An even better output would calculate, for each cohort, what percent RFMClass 111 users comprised of each monthly cohort; but I’ll leave that for another time / potentially a follow-up post.</p>
 
-[insert screen scrape with two charts]
+<img src="/assets/total users in cohort versus 111 class.png" alt="Top Monetary Users, RFM Class 111" height="300"  style="width: 100%">
 
 <p>And this largely concludes a post that I’ve been waiting to write for over two months.  Hopefully this conveys the value of stepping out of Excel and leveraging the public contributions of insightful people and the benefits of tools such as SQL and Python. Here’s a post from Mode’s blog [insert link] regarding their take on getting out of Excel and into SQL and Python.</p>
 
