@@ -28,11 +28,19 @@ permalink: /about/
 <hr>
 <br />
 
-<p> Kevin Boller has broad experience in finance, corporate strategy and software development across industries including sports media, healthcare and technology. Currently, Kevin is VP Product (Revenue and Analytics) at FloSports. He also serves as a strategic consultant to early-stage companies and investment teams who are evaluating pre and post-revenue technology and software-enabled services companies. </p>
+<p> My professional experience spans software consulting, investment banking, consumer-facing product management and data warehouse ownership, as well as product and data analytics leadership. </p>
 
-<p>Previously, Kevin was a Vice President in Blackstone's Advisory Partners (M&A) group. While at Blackstone, he was a member of the deal team which advised the Los Angeles Dodgers’ former owner and management on the $2.3 billion sale of the team, stadium, media rights and real estate to Magic Johnson and Guggenheim Partners. The deal became the largest sports transaction in history.</p>
+<p>
+  Most recently I served as VP Product (Revenue and Analytics) at FloSports in Austin, TX; I spearheaded subscription revenue generation, the data warehouse development and our data and analytics roadmaps; during my tenure, we started from scratch and built a data warehouse with 15+ daily refreshed data sources and grew to ~150 company users on our business intelligence dashboards. I selected Periscope Data, Mode Analytics and Segment (customer data platform and unlimited sources), while also conducting extensive price testing which led to a significant modification in our pricing strategy. 
+</p>
 
-<p>Kevin also worked at Rothschild, where he was a member of the deal team who sold a minority stake in Creative Artists Agency to TPG Capital. Prior to attending business school at the University of Chicago Booth School of Business, Kevin was a healthcare IT consultant. </p>
+<p>Prior to this, I was a Vice President in Blackstone's Advisory Partners (M&A) group. From 2011-2012, I was a member of the deal team which advised the Los Angeles Dodgers’ former owner and management on the $2.3 billion sale of the team, stadium, media rights and real estate to Magic Johnson and Guggenheim Partners.</p>
+
+<p>
+After graduating from the University of Chicago Booth School of Business, I worked at Rothschild and was a member of the deal team who sold a minority stake in Creative Artists Agency to TPG Capital. 
+</p>
+
+<p>Before business school, I was a healthcare IT consultant, leveraging SQL and implementing software in a client-facing role. </p>
 
 
 
