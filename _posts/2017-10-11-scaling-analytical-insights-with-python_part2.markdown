@@ -92,14 +92,14 @@ with payment_enrichment as (
 
 <p>And this largely concludes a post that I’ve been waiting to write for over two months.  Hopefully this conveys the value of stepping out of Excel and leveraging the public contributions of insightful people and the benefits of tools such as SQL and Python. </p>
 	
-<p>Some quick notes on the benefits of working with Mode (<a href="https://blog.modeanalytics.com/learn-sql-using-excel" target="_blank">also, here's a post</a> from Mode’s blog regarding their take on getting out of Excel and into SQL and Python)</p>:
-	<ul>	
+<p>Some quick notes on the benefits of working with Mode (<a href="https://blog.modeanalytics.com/learn-sql-using-excel" target="_blank">also, here's a post</a> from Mode’s blog regarding their take on getting out of Excel and into SQL and Python):</p>
+	
+<ul>	
 		<li>Charts can be created either in SQL (built-in chart functionality) or in Python</li>
 		<li>Reports are highly reproducible and can be cloned if you want to preserve a previous one, e.g., quarterly reviews</li>
 		<li>Mitigates need to create a dataset and read out as a CSV into Jupyter notebook; read queries directly into Python notebook as a dataframe</li>
 		<ul><li>With the caveat that not all Python libraries are available, although quite a few are, and computing power is an area in which Mode is constantly looking to improve.</li></ul>
 	</ul>
-</p>
 
 <p>Starting from a rather basic user data set and using Mode Analytics, we were able to complete the following:
 	<ul>	
