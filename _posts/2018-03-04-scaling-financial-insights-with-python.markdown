@@ -6,4 +6,4 @@ categories:
 ---
 
 
-<bold>This post is currently in process.</bold>
+<strong>As of 3/4, 2018, this post is currently in process.</strong>
