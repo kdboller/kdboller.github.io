@@ -22,3 +22,27 @@ categories:
 <p><strong>Disclosure:</strong>  <i>Nothing in this post should be considered investment advice.  These are general examples about how to download data for a small sample of stocks across different time intervals and benchmark their performance against an index.  You should direct all investment related questions that you have to your financial advisor.</i></p>
 
 <p>Further, I am not an expert on this topic and I outline some limitations as well as future areas for development at the end of this post.  However, I believe the approach herein should still be very helpful, particularly for novice to intermediate-level professionals, especially since this approach and the visualizations extend to other types of financial analyses.  <strong>This approach is “PME-like” in the sense that’s it’s measuring inflows over equal holding periods, however, I have more work to do on the exited positions side of things.  As public market investments are much more liquid than private equity, and presuming you follow a trailing stop approach, from my perspective it’s more important to focus on active holdings -- you should be divesting holdings which underperform a benchmark or which you no longer want to own for various reasons, while I take a long-term view and am happy to own outperforming stocks for as long as they’ll have me.</strong></p>
+
+<p>Resources:
+    <ul>
+    <li>I am a current DataCamp subscriber (future post forthcoming on DataCamp) and this community tutorial on Python for Finance is great.</li>
+    <li>I have created a repo for this post including the Python notebook here, and the excel file here.</li>
+    <li>If you want to see the full interactive version (because Jupyter <<-->> Github integration is awesome), you can view using nbviewer here.</li>
+  </ul>
+  <p>Outline of what we want to accomplish:
+  <ul>
+    <li>Import S&P 500 and sample ticker data, using the Yahoo Finance API</li>
+    <li>Create a merged portfolio file which combines the sample portfolio dataframe with the historical ticker and historical S&P 500 data</li>
+    <li>Determine what the S&P 500 close was on the date of acquisition of each investment, which allows us to calculate the S&P 500 equivalent share position with the same dollars invested</li>
+    <li>Calculate the relative % and value returns for the portfolio positions over time, compared to the S&P 500 returns over that time</li>
+    <li>Calculate cumulative investment returns and ROI multiple, in order to assess how well your portfolio compared to a market index</li>
+    <li>One of the most important items:  dynamically calculate how each position is doing relative to a trailing stop, e.g., if a position closes 25% below it’s closing high, sell the position on the next trading day.</li>
+    <li>Visualizations</li>
+    <ul>
+      <li>YTD and Trailing Stop Charts -- how is relative performance YTD and is the stock in violation of your trailing stop investing rules?</li>
+      <li>Total Return Comparisons -- % return of each position relative to index benchmark</li>
+      <li>Cumulative Returns Over Time -- $ Gain / (Loss) relative to benchmark</li>
+      <li>Cumulative Investments Over Time</li>
+    </ul>
+  </ul></p>
+  </p>
