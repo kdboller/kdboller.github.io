@@ -119,3 +119,26 @@ If you're following along with your own notebook, you should see something like 
 <img src="/assets/Yahoo Finance_SP500 dataframe head.png" alt="S&P 500 Initial Import">
 <!-- height="200"  style="width: 100%" -->
 
+After loading in the S&P 500 data, you'll see that I inspect the head and tail of the dataframe, as well as condense the dataframe to only include the Adj Close column.  The difference between the adjusted close and the close column is that adjusted close reflects dividends.  When a stock issues a dividend, the stock price will adjust down by the size of the dividend per share, as the company is distributing a portion of the company's earnings.  For purposes of this analysis, we will only need to analyze this column.  I also create a dataframe which only includes the S&P's adjusted close on the last day of 2017 (start of 2018); this is in order to run YTD comparisons of individual tickers relative to the S&P 500's performance.
+
+
+In the below code, we create an array of all of the tickers in our sample portfolio dataframe, and then write a function to read in all of the tickers and their relevant data into a new dataframe (this is the same approach we took for the S&P500), but it is applied to all of the tickers.
+
+```python
+# Generate a dynamic list of tickers to pull from Yahoo Finance API based on the imported file with tickers.
+tickers = portfolio_df['Ticker'].unique()
+tickers
+
+# Stock comparison code
+
+def get(tickers, startdate, enddate):
+    def data(ticker):
+        return (pdr.get_data_yahoo(ticker, start=startdate, end=enddate))
+    datas = map(data, tickers)
+    return(pd.concat(datas, keys=tickers, names=['Ticker', 'Date']))
+               
+all_data = get(tickers, stocks_start, stocks_end)
+
+```
+
+
