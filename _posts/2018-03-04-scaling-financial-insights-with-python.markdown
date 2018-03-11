@@ -80,4 +80,21 @@ portfolio_df = pd.read_excel('Sample stocks acquisition dates_costs.xlsx', sheet
 portfolio_df.head(10)
 ```
 
+Now that we have read in our sample portfolio file, we'll create a few variables which capture the date ranges for the S&P 500 and all of the tickers in our sample file.  Note that this is one of the few aspects of this notebook which requires an update each week (adjust the date range to include the most recent trading week).  
+
+```python
+# Date Ranges for SP 500 and for all tickers
+# Modify these date ranges each week.
+
+# The below will pull back stock prices from the start date until end date specified.
+start_sp = datetime.datetime(2013, 1, 1)
+end_sp = datetime.datetime(2018, 3, 10)
+
+# This variable is used for YTD performance.
+end_of_last_year = datetime.datetime(2017, 12, 29)
+
+# These are separate if for some reason want different date range than SP.
+stocks_start = datetime.datetime(2013, 1, 1)
+stocks_end = datetime.datetime(2018, 3, 10)
+```
 
