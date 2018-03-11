@@ -88,14 +88,14 @@ Now that we have read in our sample portfolio file, we'll create a few variables
 
 # The below will pull back stock prices from the start date until end date specified.
 start_sp = datetime.datetime(2013, 1, 1)
-end_sp = datetime.datetime(2018, 3, 10)
+end_sp = datetime.datetime(2018, 3, 9)
 
 # This variable is used for YTD performance.
 end_of_last_year = datetime.datetime(2017, 12, 29)
 
 # These are separate if for some reason want different date range than SP.
 stocks_start = datetime.datetime(2013, 1, 1)
-stocks_end = datetime.datetime(2018, 3, 10)
+stocks_end = datetime.datetime(2018, 3, 9)
 ```
 
 As mentioned in the Python Finance training post, the pandas-datareader package enables us to read in data from sources like Google, Yahoo! Finance and the World Bank, among others.  In this post, I'll focus on Yahoo! Finance, although I've worked very preliminarily in Quantopian and have also begun looking into quandl as a data source.  As also mentioned in the DataCamp post, the Yahoo API endpoint recently changed and this requires the installation of a temporary fix in order for Yahoo! Finance to work.  I've made this slight adjustment in the code below, as noted.  I have noticed some minor data issues where the data does not always read in when hitting the endpoint, or the last trading day is sometimes missing.  While these issues have been infrequent, I'm continuing to monitor whether or not Yahoo! is the best and most reliable data source.
@@ -140,5 +140,61 @@ def get(tickers, startdate, enddate):
 all_data = get(tickers, stocks_start, stocks_end)
 
 ```
+
+As with the S&P 500 dataframe, we'll create an adj_close dataframe which only has the Adj Close column for all of our stock tickers.  If you look at the notebook in the repo I link to above, this code is chunked out in more code blocks, but for purposes of describing this here, I've included below all of the code which leads up to our initial merged_portfolio dataframe.
+
+```python
+# Also only pulling the ticker, date and adj. close columns for our tickers.
+
+adj_close = all_data[['Adj Close']].reset_index()
+adj_close.head()
+
+# Grabbing the ticker close from the end of last year
+adj_close_start = adj_close[adj_close['Date']==end_of_last_year]
+adj_close_start.head()
+
+# Grab the latest stock close price
+
+adj_close_latest = adj_close[adj_close['Date']==stocks_end]
+adj_close_latest
+
+adj_close_latest.set_index('Ticker', inplace=True)
+adj_close_latest.head()
+
+# Set portfolio index prior to merging with the adj close latest.
+portfolio_df.set_index(['Ticker'], inplace=True)
+
+portfolio_df.head()
+
+# Merge the portfolio dataframe with the adj close dataframe; they are being joined by their indexes.
+
+merged_portfolio = pd.merge(portfolio_df, adj_close_latest, left_index=True, right_index=True)
+merged_portfolio.head()
+
+# The below creates a new column which is the ticker return; takes the latest adjusted close for each position
+# and divides that by the initial share cost.
+
+merged_portfolio['ticker return'] = merged_portfolio['Adj Close'] / merged_portfolio['Unit Cost'] - 1
+
+merged_portfolio
+
+```
+
+<img src="/assets/Merged portfolio initial returns.png" alt="Merged Portfolio Initial Returns">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
