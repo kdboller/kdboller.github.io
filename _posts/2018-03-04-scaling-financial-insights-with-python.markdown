@@ -116,5 +116,6 @@ sp500.head()
 
 If you're following along with your own notebook, you should see something like the below once you've successfully read in the data from Yahoo's API:
 
-<img src="/assets/Yahoo Finance_SP500 dataframe head.png" alt="S&P 500 Initial Import" height="200"  style="width: 100%">
+<img src="/assets/Yahoo Finance_SP500 dataframe head.png" alt="S&P 500 Initial Import">
+<!-- height="200"  style="width: 100%" -->
 
