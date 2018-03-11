@@ -101,7 +101,18 @@ stocks_end = datetime.datetime(2018, 3, 10)
 As mentioned in the Python Finance training post, the pandas-datareader package enables us to read in data from sources like Google, Yahoo! Finance and the World Bank, among others.  In this post, I'll focus on Yahoo! Finance, although I've worked very preliminarily in Quantopian and have also begun looking into quandl as a data source.  As also mentioned in the DataCamp post, the Yahoo API endpoint recently changed and this requires the installation of a temporary fix in order for Yahoo! Finance to work.  I've made this slight adjustment in the code below, as noted.  I have noticed some minor data issues where the data does not always read in when hitting the endpoint, or the last trading day is sometimes missing.  While these issues have been infrequent, I'm continuing to monitor whether or not Yahoo! is the best and most reliable data source.
 
 ```python
+# Leveraged from the helpful Datacamp Python Finance trading blog post.
 
+from pandas_datareader import data as pdr
+import fix_yahoo_finance as yf
+yf.pdr_override() # <== that's all it takes :-)
 
+sp500 = pdr.get_data_yahoo('^GSPC', 
+                           start_sp,
+                             end_sp)
+    
+sp500.head()
 ```
+
+
 
