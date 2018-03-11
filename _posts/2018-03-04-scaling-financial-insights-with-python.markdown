@@ -41,7 +41,7 @@ categories:
     <li>One of the most important items:  dynamically calculate how each position is doing relative to a trailing stop, e.g., if a position closes 25% below it’s closing high, sell the position on the next trading day.</li>
     <li>Visualizations</li>
     <ul>
-      <li>YTD and Trailing Stop Charts -- how is relative performance YTD and is the stock in violation of your trailing stop investing rules?</li>
+      <li>YTD and Trailing Stop Charts -- how is relative performance YTD and is the stock in violation of trailing stop investing rules?</li>
       <li>Total Return Comparisons -- % return of each position relative to index benchmark</li>
       <li>Cumulative Returns Over Time -- $ Gain / (Loss) of each position relative to benchmark</li>
       <li>Cumulative Investments Over Time -- given the above, how do the overall investment returns compare to the equal weighting and time period of S&P 500 investments?</li>
