@@ -49,4 +49,8 @@ categories:
   </ul></p>
   </p>
 
+<h2>Investment Portfolio Python Notebook</h2>
+
+<h3>Data Import and Dataframe Manipulation</h3>
+
 
