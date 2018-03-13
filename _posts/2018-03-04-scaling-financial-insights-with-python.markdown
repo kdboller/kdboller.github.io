@@ -187,7 +187,7 @@ Depending on your level of familiarity with Python, this will be very straightfo
 <ul>
 <li>The overall approach we are taking is an example of split-apply-combine.  A helpful overview of this can be found here.</li>
 <li>The all_data[['Adj Close']] line creates a new <u>dataframe</u> with only the columns provided in the list; here Adj Close is the only item provided in the list.</li>
-<li>Using this line of code, adj_close[adj_close['Date']==end_of_last_year], we rae filtering the adj_close dataframe to only the row where the data's Date column equals the date which we earlier specified in the end_of_last_year variable.</li>
+<li>Using this line of code, adj_close[adj_close['Date']==end_of_last_year], we are filtering the adj_close dataframe to only the row where the data's Date column equals the date which we earlier specified in the end_of_last_year variable.</li>
 <li>We also set the index of the adj_close_latest and portfolio_df dataframes.  I did this because this is how we'll merge the two dataframes.  The merge function, very similar to SQL joins, is an extremely useful function which I use very often.</li>
 <li>Within the merge function, we specify our left dataframe (portfolio_df) and our right dataframe (adj_close_latest).  By specifying left_index and right_index True, we are stating that the two dataframes share a common index and we will join both on this.</li>
 <li>Last, we create a new column called 'ticker return'.  This calculates the percent return by dividing the Adj Close by the Unit Cost (initial purchase price for stock) and subtracting 1.  This is similar to calculating a formula in excel and carrying it down, but in pandas this is accomplished with one-line of code.</li>
