@@ -436,7 +436,7 @@ data = [trace1, trace2]
 layout = go.Layout(title = 'Total Return vs S&P 500'
     , barmode = 'group'
     , yaxis=dict(title='Returns', tickformat=".2%")
-    , xaxis=dict(title='Ticker', tickformat=".2%")
+    , xaxis=dict(title='Ticker')
     , legend=dict(x=.8,y=1)
     )
 
@@ -445,7 +445,28 @@ iplot(fig)
 
 ```
 
-- Explanation forthcoming.
+-  When using ``Plotly``, you create ``traces`` which will plot the x and y data you specify.  Here, you specify in trace1 that you want to plot a bar chart, with each Ticker on the x-axis and each ticker's return on the y-axis.
+-  In trace2, to break up the data a bit, we'll use a Scatter line chart for the Ticker on the x-axis and the S&P Return on the y-axis.  
+-  Where the bar is above the line, the individual ticker (6 of 8 times) has outperformed the S&P 500.
+-  You then create a data object with these traces, and then you provide a layout for the chart; in this case you specify a title, barmode, and the position of the legend; you also pass in a title and tick format (percent format to two decimal places) for the y-axis series.
+-  You then create a figure object using ``go.Figure``, specifying the data and layout objects, which you've called `data` and `layout`.
+
+The next chart below shows the gain / (loss) dollar amount for each position, relative to the S&P 500, as well as shows the Ticker Total Return %.  While it is generally recommended that you allocate an equal position size to your positions, this may not always be the case.  For a less volatile investment, you may purchase invest more than in a riskier position (or you may have additional position sizing rules).  Given this, this visualizations shows both each position's return and the dollar value contribution to your overall portfolio's return.  
+
+Here, you can see that although you invested slightly less in Facebook (FB), this stock has returned an ~$20k in this mock portfolio, greater than a 4x return relative to an equivalent S&P 500 investment.
+
+<img src="/assets/Gain (Loss) Total Return vs S&P 500.png" alt="Gain (Loss) Total Return vs S&P 500">
+
+The next chart below leverages the cumulative columns which you created: ``'Cum Invst'``, ``'Cum SP Returns'``, ``'Cum Ticker Returns'``, and ``'Cum Ticker ROI Mult'``.  
+-  Across the x-axis you have sorted the portfolio alphabetically.  Each position shows the investment and returns for that position, combined with the positions preceding it. 
+-  To explain further, based on the ~$8k investment in AAPL, this grew to ~$22.5k, versus $15k for the S&P.  This is a 2.75x return over the initial investment in AAPL.
+-  Continuing to FB, you have invested ~$16k in aggregate ($8k in both positions), and this has grown to over $50k, a greater than 3x return -- this means that FB has expanded your overall portfolio ROI.
+-  Further down the x-axis, you see that both TWTR and WMT have reduced the overall portfolio ROI -- this is obvious, as both have underperformed the S&P, but the magnitude is clearer with this visualization. 
+-  As a caveat, this cumulative approach, given the different holding periods, is a bit of an apples and oranges combination.  However, you can always isolate this analysis by subsetting your overall dataframe and separately comparing positions which have similar holding periods.  As an example, you could compare your 2016 and 2017 purchases separate of one another.
+
+<img src="/assets/Total Cumulative Investments Over Time.png" alt="Total Cumulative Investments Over Time">
+
+
 
 
 <h3>Adjusted Close % off of High Comparison</h3>
