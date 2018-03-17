@@ -192,7 +192,7 @@ Depending on your level of familiarity with Python, this will be very straightfo
 <li>Last, you create a new column called 'ticker return'.  This calculates the percent return by dividing the Adj Close by the Unit Cost (initial purchase price for stock) and subtracting 1.  This is similar to calculating a formula in excel and carrying it down, but in pandas this is accomplished with one-line of code.</li>
 </ul>
 
-Now, you will continue to build on top of the 'master' dataframe using pandas ``merge`` function.  Next, we will reset the current dataframe's index and join our smaller dataframes with the master dataframe in order to create our end deliverable.  Once again, the below code block is broken out further in the ``Jupyter`` notebook, but I will take a similar approach where I'll break down the below code block below.
+Now, you will continue to build on top of the 'master' dataframe using pandas ``merge`` function.  Next, we will reset the current dataframe's index and join our smaller dataframes with the master dataframe in order to create our end deliverable.  Once again, the below code block is broken out further in the ``Jupyter`` notebook, but I will take a similar approach where I'll share the code in this post and then break down the key aspects of the below code block.
 
 ```python
 
@@ -234,6 +234,11 @@ merged_portfolio_sp_latest.rename(columns={'Adj Close': 'SP 500 Latest Close'}, 
 
 merged_portfolio_sp_latest.head()
 
+```
+
+Explanation to be inserted here.
+
+```python
 # Percent return of SP from acquisition date of position through latest trading day.
 merged_portfolio_sp_latest['SP Return'] = merged_portfolio_sp_latest['SP 500 Latest Close'] / merged_portfolio_sp_latest['SP 500 Initial Close'] - 1
 
