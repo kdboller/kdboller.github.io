@@ -190,7 +190,7 @@ Depending on your level of familiarity with Python, this will be very straightfo
 -  Within the ``merge`` function, you specify the left dataframe ( ``portfolio_df`` ) and our right dataframe ( ``adj_close_latest`` ).  By specifying ``left_index`` and ``right_index`` True, you are stating that the two dataframes share a common index and you will join both on this.
 -  Last, you create a new column called ``'ticker return'`` .  This calculates the percent return by dividing the ``Adj Close`` by the ``Unit Cost`` (initial purchase price for stock) and subtracting 1.  This is similar to calculating a formula in excel and carrying it down, but in pandas this is accomplished with one-line of code.
 
-Now, you will continue to build on top of the 'master' dataframe using pandas ``merge`` function.  Next, we will reset the current dataframe's index and join our smaller dataframes with the master dataframe in order to create our end deliverable.  Once again, the below code block is broken out further in the ``Jupyter`` notebook, but I will take a similar approach where I'll share the code in this post and then break down the key aspects of the below code block.
+You have started to take the individual dataframes for the S&P and individual stocks, and you are beginning to develop a 'master' dataframe which we'll use for calculations, visualizations and any further analysis.  Next, you continue to build on this 'master' dataframe using pandas ``merge`` function.  Below, you reset the current dataframe's index and begin joining your smaller dataframes with the master one.  Once again, the below code block is broken out further in the ``Jupyter`` notebook; here I take a similar approach to before where I'll share the code below and then break down the key callouts below the code block.
 
 ```python
 
@@ -228,7 +228,16 @@ merged_portfolio_sp_latest.head()
 
 ```
 
-Explanation to be inserted here.
+-  You use ``reset_index`` on the ``merged_portfolio`` in order to flatten the master dataframe and join on the smaller dataframes' relevant columns.
+-  In the ``merged_portfolio_sp`` line, we merge our master dataframe (merged_portfolio) with the ``sp_500_adj_close``; you do this in order to have the S&P's closing price on each position's purchase data -- this allows you to track the S&P performance over the same time period as each position. 
+-  The merge here is slightly different than before, in that we join on the left dataframe's ``Acquisition Date`` column and on the right dataframe's ``Date`` column.
+-  After completing this merge, you will have extra columns which you do not need -- since our master dataframe will eventually have a considerable number of columns for analysis, it is important to prune duplicative and unnecessary columns along the way.
+-  There are several ways to remove unnecessary columns and perform various column name cleanups; for simplicity I use ``python`` ``del`` and then rename a few columns with pandas ``rename`` method, clarifying the ticker's ``Adj Close`` column with ``Ticker Adj Close`` and distinguishing the S&P's adjusted close with ``SP 500 Initial Close``.
+-  When you calculate ``merged_portfolio_sp['Equiv SP Shares']``, you do so in order to be able to calculate the S&P 500's equivalent value for the latest close:  if you spend $5,000 on a new stock position, you could have spent an equal amount on the S&P 500; if the S&P 500 was trading at $2,500 per share, you would have purchased 2 shares.  Later, if the S&P 500 is trading for $3,000 per share, your stake would be worth $6,000 and you would have $1,000 in paper profits.
+-  In the rest of the code block, we perform a similar merge, this time joining on the S&P 500's latest close -- this provides the the second piece needed to calculate the S&P's return:  S&P 500 price on acquisition day and S&P 500's latest close.
+
+ 
+
 
 ```python
 # Percent return of SP from acquisition date of position through latest trading day.
