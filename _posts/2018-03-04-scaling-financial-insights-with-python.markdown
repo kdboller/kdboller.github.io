@@ -458,24 +458,44 @@ Here, you can see that although you invested slightly less in Facebook (FB), thi
 <img src="/assets/Gain (Loss) Total Return vs S&P 500.png" alt="Gain (Loss) Total Return vs S&P 500">
 
 The next chart below leverages the cumulative columns which you created: ``'Cum Invst'``, ``'Cum SP Returns'``, ``'Cum Ticker Returns'``, and ``'Cum Ticker ROI Mult'``.  
--  Across the x-axis you have sorted the portfolio alphabetically.  Each position shows the investment and returns for that position, combined with the positions preceding it. 
--  To explain further, based on the ~$8k investment in AAPL, this grew to ~$22.5k, versus $15k for the S&P.  This is a 2.75x return over the initial investment in AAPL.
--  Continuing to FB, you have invested ~$16k in aggregate ($8k in both positions), and this has grown to over $50k, a greater than 3x return -- this means that FB has expanded your overall portfolio ROI.
+-  Across the x-axis you have sorted the portfolio alphabetically.  Each position shows the investment and total value (investment plus returns or less losses) for that position, combined with the positions preceding it. 
+-  To explain further, based on the ~$8k investment in AAPL, this grew to ~$22.5k (>$14k in gains), versus $15k in total value for the S&P.  This is a 2.75x return over the initial investment in AAPL.
+-  Continuing to FB, you have invested ~$16k in aggregate ($8k in both positions), and this has grown to over $50k, a greater than 3x return -- this means that FB expanded your overall portfolio ROI.
 -  Further down the x-axis, you see that both TWTR and WMT have reduced the overall portfolio ROI -- this is obvious, as both have underperformed the S&P, but the magnitude is clearer with this visualization. 
--  As a caveat, this cumulative approach, given the different holding periods, is a bit of an apples and oranges combination.  However, you can always isolate this analysis by subsetting your overall dataframe and separately comparing positions which have similar holding periods.  As an example, you could compare your 2016 and 2017 purchases separate of one another.
+-  As a caveat, this cumulative approach, given the different holding periods, is a bit of an apples and oranges combination for some positions based on when they were acquired.  However, you can always isolate this analysis by subsetting into smaller dataframes and separately compare positions which have similar holding periods.  To further the example, you could compare your 2016 and 2017 purchases separate of one another.
 
 <img src="/assets/Total Cumulative Investments Over Time.png" alt="Total Cumulative Investments Over Time">
 
-
-
-
 <h3>Adjusted Close % off of High Comparison</h3>
 
+Your final chart compares how far off each position's latest close price is from its adjusted closing high since the position was purchased.  This is generally an important visualization to consider:
+
+-  As a stock increasingly closes at a higher price, it's generally recommended to adjust your trailing stop up as well.  To illustrate, here's an example:
+-  A position is acquired at $10 and doubles to $20 -- using a 25% trailing stop, you would want to consider selling this position the next day if it closed at $15 ($15 / $20 - 1 = (25%)).
+-  If the position increased to $25, you would want to consider moving your trailing stop up to $18.75 ($18.75 / $25 - 1 = (25%)).
+-  As initially mentioned before, nothing in here is intended to be financial advice; different trading systems have different rules for trailing stops, and this is an illustrative example.
+-  However, trailing stops help preserve gains and generally important in also mitigating the emotions of investing; however, while it's easy to see your position's current return, what tends to be manual (or somewhat expensive if you use a Trailing Stop service) is calculating how close your positions are to your trailing stops.
+-  This final visualization makes this easy to evaluate for any date you are reviewing; in the chart, we see that AAPL, MTCH, and NFLX all closed at their closing highs (typically a very good sign).
+-  However, TWTR is greater than 25% below its highest close (33% below as of 3/9/2018) and WMT is ~20% below its highest close.
+-  In this case, you might want to sell TWTR and keep a close eye on the performance of WMT. 
+
+<img src="/assets/Adj Close % off of High.png" alt="Adj Close % off of High">
 
 
+<h2>Limitations to Approach and Closing Summary</h2>
+
+Now you have a highly flexible Jupyter notebook, which you will be able to use in order to evaluate your personal portfolio and is flexible to add in new metrics and visualizations as you see fit.
+
+Please note that while this notebook provides a fairly thorough review of a portfolio, the following are not taken into consideration, would have an impact on the overall evaluation, and likely present areas for future development:
+
+-  [Does not factor in exited positions and overall return].
+-  [Does not take into account dividends].
+-  [Any other considerations].
 
 
-<h3>[Limitations Placeholder]</h3>
+We accomplished a lot here, including importing S&P 500 and ticker data using Yahoo! Finance's API and creating a master dataframe which combines your portfolio with historical ticker and S&P 500 prices.  In doing this, you are able to calculate the relative % and dollar value returns for each position, as well as the cumulative impact of each position on your overall portfolio's returns.  You can also dynamically monitor your trailing stops, based on your own trading rules, and you have created visualizations which allow you to have much better insight into your master dataframe, focusing on the differnet metrics and each position's contribution within each visualization.
+
+I hope that you found this tutorial useful, and I welcome any feedback in the comments.  I will continue to build on top of this notebook, and I will also look to incorporate insightful recommendations which will improve and / or advance the notebook's current capabilities.
 
 
 
