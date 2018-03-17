@@ -11,7 +11,7 @@ categories:
 
 <p>My two most recent blog posts were about Scaling Analytical Insights with Python; part 1 can be found <a href="https://kdboller.github.io/2017/07/09/scaling-analytical-insights-with-python.html" target="_blank">here</a> and part 2 can be found <a href="https://kdboller.github.io/2017/10/11/scaling-analytical-insights-with-python_part2.html" target="_blank">here</a>.  It has been several months since I wrote those, largely due to the fact that I relocated my family to Seattle to join Amazon in November; I've spent most of the time on my primary project determining our global rollout plan and related business intelligence roadmap. </p> 
 
-<p>At my former company, FloSports, prior to my departure we were in the process of overhauling our analytics reporting across the organization (data, marketing, product et al), and part of this overhaul included our financial reporting.  While I left prior to us getting too far along in that implementation, over the past several months I’ve continued using Python extensively, particularly ``pandas``.  In this post, I will share how I leveraged some very helpful online resources, the ``Yahoo Finance API`` (which requires a work around and may require a future replacement), and Jupyter notebook in order to build a Python notebook for my stock portfolio.  This approach allows me to almost completely automate the tracking of my individual ticker and overall personal stock portfolio performance, as well compare relative performance to the S&P 500 at the individual position level.</p>
+At my former company, FloSports, prior to my departure we were in the process of overhauling our analytics reporting across the organization (data, marketing, product et al), and part of this overhaul included our financial reporting.  While I left prior to us getting too far along in that implementation, over the past several months I’ve continued using Python extensively, particularly ``pandas``.  In this post, I will share how I leveraged some very helpful online resources, the ``Yahoo Finance API`` (which requires a work around and may require a future replacement), and Jupyter notebook in order to build a Python notebook for my stock portfolio.  This approach allows me to almost completely automate the tracking of my individual ticker and overall personal stock portfolio performance, as well compare relative performance to the S&P 500 at the individual position level.
 
 <h2>Overview of PME and benchmarking individual stock performance</h2>
 
@@ -119,7 +119,7 @@ If you're following along with your own notebook, you should see something like 
 <img src="/assets/Yahoo Finance_SP500 dataframe head.png" alt="S&P 500 Initial Import">
 <!-- height="200"  style="width: 100%" -->
 
-After loading in the S&P 500 data, you'll see that I inspect the head and tail of the dataframe, as well as condense the dataframe to only include the ``Adj Close column``.  The difference between the adjusted close and the close column is that adjusted close reflects dividends.  When a company issues a dividend, the stock price will adjust down by the size of the dividend per share, as the company is distributing a portion of the company's earnings.  For purposes of this analysis, you will only need to analyze this column.  I also create a dataframe which only includes the S&P's adjusted close on the last day of 2017 (start of 2018); this is in order to run YTD comparisons of individual tickers relative to the S&P 500's performance.
+After loading in the S&P 500 data, you'll see that I inspect the head and tail of the dataframe, as well as condense the dataframe to only include the ``Adj Close`` column.  The difference between the adjusted close and the close column is that adjusted close reflects dividends.  When a company issues a dividend, the stock price will adjust down by the size of the dividend per share, as the company is distributing a portion of the company's earnings.  For purposes of this analysis, you will only need to analyze this column.  I also create a dataframe which only includes the S&P's adjusted close on the last day of 2017 (start of 2018); this is in order to run YTD comparisons of individual tickers relative to the S&P 500's performance.
 
 In the below code, you create an array of all of the tickers in our sample portfolio dataframe, and then write a function to read in all of the tickers and their relevant data into a new dataframe (this is the same approach you took for the S&P500), but it is applied to all of the tickers.
 
@@ -244,8 +244,8 @@ Given the above, you will next perform the requisite calculations in order to co
 
 I'll quickly summarize below in the relevant groupings the new columns which you are adding to the 'master' dataframe.
 
--  With the first two columns, ``['SP Return']`` and ``['Abs. Return Compare']``, in the first, you create a column which calculates the absolute percent return of the S&P over the holding period of each position (note, this is an absolute return and is not an annualized return).  In the second column, you compare the ``['ticker return']`` (each position's return) relative to the ``['SP Return']`` over the same time period.
--  In the next three columns, ``['Ticker Share Value']``, ``['SP 500 Value']`` and ``['Abs Value Compare']``, we calculate the dollar value (market value) equivalent bsed on the shares we hold multiplied by the latest adjusted close price.
+-  In the first column, ``['SP Return']``, you create a column which calculates the absolute percent return of the S&P over the holding period of each position (note, this is an absolute return and is not an annualized return).  In the second column (``['Abs. Return Compare']``), you compare the ``['ticker return']`` (each position's return) relative to the ``['SP Return']`` over the same time period.
+-  In the next three columns, ``['Ticker Share Value']``, ``['SP 500 Value']`` and ``['Abs Value Compare']``, we calculate the dollar value (market value) equivalent based on the shares we hold multiplied by the latest adjusted close price.
 -  Last, the ``['Stock Gain / (Loss)']`` and ``['SP 500 Gain / (Loss)']`` columns calculate our unrealized dollar gain / loss on each position (and comparable S&P 500 gain / loss) in order to compare the value impact of each position versus if we had simply invested those same dollars in the S&P 500.
 
 ```python
@@ -337,7 +337,7 @@ merged_portfolio_sp_latest_YTD_sp.head()
 
 ```
 
-You are now in the home stretch and almost ready to start visualizing your data and assessing the strengths and weaknesses of your portfolio's performance.
+You are now nearing the home stretch and almost ready to start visualizing your data and assessing the strengths and weaknesses of your portfolio's individual and overall performance.
 
 As before, I've included the main code block for determining where positions are trading relative to their recent closing high; I'll then unpack the code further below.
 
@@ -411,7 +411,41 @@ This has been a pretty significant lift, and it's now time for our long-awaited 
 <img src="/assets/Master Dataframe (incl Closing High).png" alt="Master Dataframe (incl Closing High)">
 
 <h3>Total Return and Cumulative Return Visualizations</h3>
+For all of these visualizations you'll use ``Plotly``, which will allow you to make D3 charts entirely without code.  While I also use ``Matplotlib`` and ``Seaborn``, I really value the interactivty of ``Plotly``, and once you are use to it, the syntax becomes fairly straightforward and dynamic charts are very easily attainable. 
 
+Your first chart below compares each individual position's total return relative to the S&P 500 (same holding periods for the position and hypothetical investment in the S&P 500).  In the below, you'll see that over their distinct holding periods, 6 of the 8 positions outperformed the S&P.  The last two, Twitter (which actually has had a negative return) and Walmart underperformed an equal timed investment in the S&P 500.
+
+<img src="/assets/Total Return versus S&P 500.png" alt="Total Return versus S&P 500">  
+
+As each of these visualizations are relatively similar, I'll explain the code required to generate the above Plotly visualization, and for the remaining ones I'll only summarize observations based on the visualization.
+
+```python
+
+trace1 = go.Bar(
+    x = merged_portfolio_sp_latest_YTD_sp_closing_high['Ticker'][0:10],
+    y = merged_portfolio_sp_latest_YTD_sp_closing_high['ticker return'][0:10],
+    name = 'Ticker Total Return')
+
+trace2 = go.Scatter(
+    x = merged_portfolio_sp_latest_YTD_sp_closing_high['Ticker'][0:10],
+    y = merged_portfolio_sp_latest_YTD_sp_closing_high['SP Return'][0:10],
+    name = 'SP500 Total Return')
+    
+data = [trace1, trace2]
+
+layout = go.Layout(title = 'Total Return vs S&P 500'
+    , barmode = 'group'
+    , yaxis=dict(title='Returns', tickformat=".2%")
+    , xaxis=dict(title='Ticker', tickformat=".2%")
+    , legend=dict(x=.8,y=1)
+    )
+
+fig = go.Figure(data=data, layout=layout)
+iplot(fig)
+
+```
+
+- Explanation forthcoming.
 
 
 <h3>Adjusted Close % off of High Comparison</h3>
