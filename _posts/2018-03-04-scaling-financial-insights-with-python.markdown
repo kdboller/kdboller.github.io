@@ -204,8 +204,6 @@ merged_portfolio.reset_index(inplace=True)
 merged_portfolio_sp = pd.merge(merged_portfolio, sp_500_adj_close, left_on='Acquisition Date', right_on='Date')
 # .set_index('Ticker')
 
-merged_portfolio_sp.head()
-
 # We will delete the additional date column which is created from this merge.
 # We then rename columns to Latest Date and then reflect Ticker Adj Close and SP 500 Initial Close.
 
@@ -214,16 +212,12 @@ del merged_portfolio_sp['Date_y']
 merged_portfolio_sp.rename(columns={'Date_x': 'Latest Date', 'Adj Close_x': 'Ticker Adj Close'
                                     , 'Adj Close_y': 'SP 500 Initial Close'}, inplace=True)
 
-merged_portfolio_sp.head()
-
 # This new column determines what SP 500 equivalent purchase would have been at purchase date of stock.
 merged_portfolio_sp['Equiv SP Shares'] = merged_portfolio_sp['Cost Basis'] / merged_portfolio_sp['SP 500 Initial Close']
 merged_portfolio_sp.head()
 
 # We are joining the developing dataframe with the sp500 closes again, this time with the latest close for SP.
 merged_portfolio_sp_latest = pd.merge(merged_portfolio_sp, sp_500_adj_close, left_on='Latest Date', right_on='Date')
-
-merged_portfolio_sp_latest.head()
 
 # Once again need to delete the new Date column added as it's redundant to Latest Date.  
 # Modify Adj Close from the sp dataframe to distinguish it by calling it the SP 500 Latest Close.
