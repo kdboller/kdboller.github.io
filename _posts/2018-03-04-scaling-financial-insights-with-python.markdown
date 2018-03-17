@@ -311,7 +311,100 @@ merged_portfolio_sp_latest_YTD_sp['SP 500 YTD'] = merged_portfolio_sp_latest_YTD
 
 ```
 
--- Explanation forthcoming.
+-  When creating the ``merged_portfolio_sp_latest_YTD`` dataframe, you are now merging the 'master' dataframe with the ``adj_close_start`` dataframe; as a quick reminder, you created this dataframe by filtering on the ``adj_close`` dataframe where the ``'Date'`` column equaled the variable ``end_of_last_year``; you do this because it's how YTD (year-to-date) stock and index performances are measured; last year's ending close is the following year's starting price.
+-  From here, we once again use ``del`` to remove unnecessary columns and the ``rename`` method to clarify the 'master' dataframe's newly added columns.
+-  Last, we take each Ticker (in the ``['Ticker Adj Close']`` column) and calculate the YTD return for each (we also have an S&P 500 equivalent value for each value in the ``['Ticker Adj Close']`` column).
+
+In the below code block, you use the ``sort_values`` method to re-sort our 'master' dataframe and then you calculate cumulative portfolio investments (sum of position acquisition costs), as well cumulative value of portfolio positions relative to the cumulative value of the S&P 500.  This allows you to be able to see how your total portfolio, with investments in positions made a different times across the total holding period, compares overall to a strategy where you had simply invested in an index.  Last, you'll see the use of the ``['Cum Ticker ROI Mult']`` later, where it helps you visualize how much each investment contributed to or decreased your overall return on investment (ROI).
+
+```python
+
+merged_portfolio_sp_latest_YTD_sp = merged_portfolio_sp_latest_YTD_sp.sort_values(by='Ticker', ascending=True)
+
+# Cumulative sum of original investment
+merged_portfolio_sp_latest_YTD_sp['Cum Invst'] = merged_portfolio_sp_latest_YTD_sp['Cost Basis'].cumsum()
+
+# Cumulative sum of Ticker Share Value (latest FMV based on initial quantity purchased).
+merged_portfolio_sp_latest_YTD_sp['Cum Ticker Returns'] = merged_portfolio_sp_latest_YTD_sp['Ticker Share Value'].cumsum()
+
+# Cumulative sum of SP Share Value (latest FMV driven off of initial SP equiv purchase).
+merged_portfolio_sp_latest_YTD_sp['Cum SP Returns'] = merged_portfolio_sp_latest_YTD_sp['SP 500 Value'].cumsum()
+
+# Cumulative CoC multiple return for stock investments
+merged_portfolio_sp_latest_YTD_sp['Cum Ticker ROI Mult'] = merged_portfolio_sp_latest_YTD_sp['Cum Ticker Returns'] / merged_portfolio_sp_latest_YTD_sp['Cum Invst']
+
+merged_portfolio_sp_latest_YTD_sp.head()
+
+```
+
+You are now in the home stretch and almost ready to start visualizing your data and assessing the strengths and weaknesses of your portfolio's performance.
+
+As before, I'll include the main code block for YTD assessment below, and then I'll unpack the code further below.
+
+```python
+
+# Need to factor in that some positions were purchased much more recently than others.
+# Join adj_close dataframe with portfolio in order to have acquisition date.
+
+portfolio_df.reset_index(inplace=True)
+
+adj_close_acq_date = pd.merge(adj_close, portfolio_df, on='Ticker')
+
+# delete_columns = ['Quantity', 'Unit Cost', 'Cost Basis', 'Start of Year']
+
+del adj_close_acq_date['Quantity']
+del adj_close_acq_date['Unit Cost']
+del adj_close_acq_date['Cost Basis']
+del adj_close_acq_date['Start of Year']
+
+# Sort by these columns in this order in order to make it clearer where compare for each position should begin.
+adj_close_acq_date.sort_values(by=['Ticker', 'Acquisition Date', 'Date'], ascending=[True, True, True], inplace=True)
+
+# Anything less than 0 means that the stock close was prior to acquisition.
+adj_close_acq_date['Date Delta'] = adj_close_acq_date['Date'] - adj_close_acq_date['Acquisition Date']
+
+adj_close_acq_date['Date Delta'] = adj_close_acq_date[['Date Delta']].apply(pd.to_numeric)
+
+# Modified the dataframe being evaluated to look at highest close which occurred after Acquisition Date (aka, not prior to purchase).
+
+adj_close_acq_date_modified = adj_close_acq_date[adj_close_acq_date['Date Delta']>=0]
+
+# This pivot table will index on the Ticker and Acquisition Date, and find the max adjusted close.
+
+adj_close_pivot = adj_close_acq_date_modified.pivot_table(index=['Ticker', 'Acquisition Date'], values='Adj Close', aggfunc=np.max)
+
+adj_close_pivot.reset_index(inplace=True)
+
+# Merge the adj close pivot table with the adj_close table in order to grab the date of the Adj Close High (good to know).
+
+adj_close_pivot_merged = pd.merge(adj_close_pivot, adj_close
+                                             , on=['Ticker', 'Adj Close'])
+
+# Merge the Adj Close pivot table with the master dataframe to have the closing high since you have owned the stock.
+
+merged_portfolio_sp_latest_YTD_sp_closing_high = pd.merge(merged_portfolio_sp_latest_YTD_sp, adj_close_pivot_merged
+                                             , on=['Ticker', 'Acquisition Date'])
+
+# Renaming so that it's clear that the new columns are two year closing high and two year closing high date.
+merged_portfolio_sp_latest_YTD_sp_closing_high.rename(columns={'Adj Close': 'Closing High Adj Close', 'Date': 'Closing High Adj Close Date'}, inplace=True)
+
+merged_portfolio_sp_latest_YTD_sp_closing_high['Pct off High'] = merged_portfolio_sp_latest_YTD_sp_closing_high['Ticker Adj Close'] / merged_portfolio_sp_latest_YTD_sp_closing_high['Closing High Adj Close'] - 1 
+
+merged_portfolio_sp_latest_YTD_sp_closing_high
+
+```
+
+- Explanation forthcoming.
+
+
+
+
+
+
+
+
+
+
 
 
 
