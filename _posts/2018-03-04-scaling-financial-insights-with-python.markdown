@@ -192,6 +192,75 @@ Depending on your level of familiarity with Python, this will be very straightfo
 <li>Last, you create a new column called 'ticker return'.  This calculates the percent return by dividing the Adj Close by the Unit Cost (initial purchase price for stock) and subtracting 1.  This is similar to calculating a formula in excel and carrying it down, but in pandas this is accomplished with one-line of code.</li>
 </ul>
 
+Now, you will continue to build on top of the 'master' dataframe using pandas ``merge`` function.  Next, we will reset the current dataframe's index and join our smaller dataframes with the master dataframe in order to create our end deliverable.  Once again, the below code block is broken out further in the ``Jupyter`` notebook, but I will take a similar approach where I'll break down the below code block below.
+
+```python
+
+merged_portfolio.reset_index(inplace=True)
+
+# Here we are merging the new dataframe with the sp500 adjusted closes since the sp start price based on 
+# each ticker's acquisition date and sp500 close date.
+
+merged_portfolio_sp = pd.merge(merged_portfolio, sp_500_adj_close, left_on='Acquisition Date', right_on='Date')
+# .set_index('Ticker')
+
+merged_portfolio_sp.head()
+
+# We will delete the additional date column which is created from this merge.
+# We then rename columns to Latest Date and then reflect Ticker Adj Close and SP 500 Initial Close.
+
+del merged_portfolio_sp['Date_y']
+
+merged_portfolio_sp.rename(columns={'Date_x': 'Latest Date', 'Adj Close_x': 'Ticker Adj Close'
+                                    , 'Adj Close_y': 'SP 500 Initial Close'}, inplace=True)
+
+merged_portfolio_sp.head()
+
+# This new column determines what SP 500 equivalent purchase would have been at purchase date of stock.
+merged_portfolio_sp['Equiv SP Shares'] = merged_portfolio_sp['Cost Basis'] / merged_portfolio_sp['SP 500 Initial Close']
+merged_portfolio_sp.head()
+
+# We are joining the developing dataframe with the sp500 closes again, this time with the latest close for SP.
+merged_portfolio_sp_latest = pd.merge(merged_portfolio_sp, sp_500_adj_close, left_on='Latest Date', right_on='Date')
+
+merged_portfolio_sp_latest.head()
+
+# Once again need to delete the new Date column added as it's redundant to Latest Date.  
+# Modify Adj Close from the sp dataframe to distinguish it by calling it the SP 500 Latest Close.
+
+del merged_portfolio_sp_latest['Date']
+
+merged_portfolio_sp_latest.rename(columns={'Adj Close': 'SP 500 Latest Close'}, inplace=True)
+
+merged_portfolio_sp_latest.head()
+
+# Percent return of SP from acquisition date of position through latest trading day.
+merged_portfolio_sp_latest['SP Return'] = merged_portfolio_sp_latest['SP 500 Latest Close'] / merged_portfolio_sp_latest['SP 500 Initial Close'] - 1
+
+# This is a new column which takes the tickers return and subtracts the sp 500 equivalent range return.
+merged_portfolio_sp_latest['Abs. Return Compare'] = merged_portfolio_sp_latest['ticker return'] - merged_portfolio_sp_latest['SP Return']
+
+# This is a new column where we calculate the ticker's share value by multiplying the original quantity by the latest close.
+merged_portfolio_sp_latest['Ticker Share Value'] = merged_portfolio_sp_latest['Quantity'] * merged_portfolio_sp_latest['Ticker Adj Close']
+
+# We calculate the equivalent SP 500 Value if we take the original SP shares * the latest SP 500 share price.
+merged_portfolio_sp_latest['SP 500 Value'] = merged_portfolio_sp_latest['Equiv SP Shares'] * merged_portfolio_sp_latest['SP 500 Latest Close']
+
+# This is a new column where we take the current market value for the shares and subtract the SP 500 value.
+merged_portfolio_sp_latest['Abs Value Compare'] = merged_portfolio_sp_latest['Ticker Share Value'] - merged_portfolio_sp_latest['SP 500 Value']
+
+# This column calculates profit / loss for stock position.
+merged_portfolio_sp_latest['Stock Gain / (Loss)'] = merged_portfolio_sp_latest['Ticker Share Value'] - merged_portfolio_sp_latest['Cost Basis']
+
+# This column calculates profit / loss for SP 500.
+merged_portfolio_sp_latest['SP 500 Gain / (Loss)'] = merged_portfolio_sp_latest['SP 500 Value'] - merged_portfolio_sp_latest['Cost Basis']
+
+merged_portfolio_sp_latest.head()
+
+```
+
+
+
 
 
 
