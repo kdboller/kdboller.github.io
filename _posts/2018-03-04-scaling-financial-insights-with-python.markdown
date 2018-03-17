@@ -229,15 +229,24 @@ merged_portfolio_sp_latest.head()
 ```
 
 -  You use ``reset_index`` on the ``merged_portfolio`` in order to flatten the master dataframe and join on the smaller dataframes' relevant columns.
--  In the ``merged_portfolio_sp`` line, we merge our master dataframe (merged_portfolio) with the ``sp_500_adj_close``; you do this in order to have the S&P's closing price on each position's purchase data -- this allows you to track the S&P performance over the same time period as each position. 
+-  In the ``merged_portfolio_sp`` line, we merge our master dataframe (merged_portfolio) with the ``sp_500_adj_close``; you do this in order to have the S&P's closing price on each position's purchase date -- this allows you to track the S&P performance over the same time period that each position is held (from acquisition date to most recent market close date). 
 -  The merge here is slightly different than before, in that we join on the left dataframe's ``Acquisition Date`` column and on the right dataframe's ``Date`` column.
 -  After completing this merge, you will have extra columns which you do not need -- since our master dataframe will eventually have a considerable number of columns for analysis, it is important to prune duplicative and unnecessary columns along the way.
--  There are several ways to remove unnecessary columns and perform various column name cleanups; for simplicity I use ``python`` ``del`` and then rename a few columns with pandas ``rename`` method, clarifying the ticker's ``Adj Close`` column with ``Ticker Adj Close`` and distinguishing the S&P's adjusted close with ``SP 500 Initial Close``.
--  When you calculate ``merged_portfolio_sp['Equiv SP Shares']``, you do so in order to be able to calculate the S&P 500's equivalent value for the latest close:  if you spend $5,000 on a new stock position, you could have spent an equal amount on the S&P 500; if the S&P 500 was trading at $2,500 per share, you would have purchased 2 shares.  Later, if the S&P 500 is trading for $3,000 per share, your stake would be worth $6,000 and you would have $1,000 in paper profits.
--  In the rest of the code block, we perform a similar merge, this time joining on the S&P 500's latest close -- this provides the the second piece needed to calculate the S&P's return:  S&P 500 price on acquisition day and S&P 500's latest close.
+-  There are several ways to remove unnecessary columns and perform various column name cleanups; for simplicity, I use ``python`` ``del`` and then rename a few columns with pandas ``rename`` method, clarifying the ticker's ``Adj Close`` column by renaming to ``Ticker Adj Close``; and you distinguish the S&P's adjusted close with ``SP 500 Initial Close``.
+-  When you calculate ``merged_portfolio_sp['Equiv SP Shares']``, you do so in order to be able to calculate the S&P 500's equivalent value for the latest close:  if you spend $5,000 on a new stock position, you could have spent $5,000 on the S&P 500; for example, if the S&P 500 was trading at $2,500 per share at the time of purchase, you would have been able to purchase 2 shares.  Later, if the S&P 500 is trading for $3,000 per share, your stake would be worth $6,000 and you would have $1,000 in paper profits over this comparable time period.
+-  In the rest of the code block, we perform a similar merge, this time joining on the S&P 500's latest close -- this provides the the second piece needed to calculate the S&P's comparable return relative to each position's hold period:  the S&P 500 price on acquisition day and the S&P 500's latest close.
 
- 
+You know have a 'master' dataframe with the following:
+-  Each portfolio positions' price, shares and value on the position acquisition day, as well as the latest market's closing price.
+-  An equivalent S&P 500 price, shares and value on the equivalent position acquisition day, as well as the latest market's closing price.
 
+Given the above, you will next perform the requisite calculations in order to compare each position's performance relative to the S&P 500, as well as the overall performance of this strategy / basket of stocks, relative to a comparable dollar investment and holding times of the S&P 500.
+
+I'll quickly summarize below in the relevant groupings the new columns which you are adding to the 'master' dataframe.
+
+-  With the first two columns, ``['SP Return']`` and ``['Abs. Return Compare']``, in the first, you create a column which calculates the absolute percent return of the S&P over the holding period of each position (note, this is an absolute return and is not an annualized return).  In the second column, you compare the ``['ticker return']`` (each position's return) relative to the ``['SP Return']`` over the same time period.
+-  In the next three columns, ``['Ticker Share Value']``, ``['SP 500 Value']`` and ``['Abs Value Compare']``, we calculate the dollar value (market value) equivalent bsed on the shares we hold multiplied by the latest adjusted close price.
+-  Last, the ``['Stock Gain / (Loss)']`` and ``['SP 500 Gain / (Loss)']`` columns calculate our unrealized dollar gain / loss on each position (and comparable S&P 500 gain / loss) in order to compare the value impact of each position versus if we had simply invested those same dollars in the S&P 500.
 
 ```python
 # Percent return of SP from acquisition date of position through latest trading day.
@@ -265,14 +274,44 @@ merged_portfolio_sp_latest.head()
 
 ```
 
+You now have what you need in order to compare your portfolio's performance to a portfolio equally invested in the S&P 500.  The next two code block sections allow you to i) compare YTD performance of each position relative to the S&P 500 (a measure of momentum and how your positions are pacing) and ii) compare most recent closing price for each portfolio position relative to it's most recent closing high (this allows you to assess if a position has triggered a trailing stop, e.g., closed 25% below closing high).
 
+Below, I'll start with the YTD performance code block.
 
+```python
 
+# Merge the overall dataframe with the adj close start of year dataframe for YTD tracking of tickers.
 
+merged_portfolio_sp_latest_YTD = pd.merge(merged_portfolio_sp_latest, adj_close_start, on='Ticker')
+# , how='outer'
 
+# Deleting date again as it's an unnecessary column.  Explaining that new column is the Ticker Start of Year Close.
 
+del merged_portfolio_sp_latest_YTD['Date']
 
+merged_portfolio_sp_latest_YTD.rename(columns={'Adj Close': 'Ticker Start Year Close'}, inplace=True)
 
+# Join the SP 500 start of year with current dataframe for SP 500 ytd comparisons to tickers.
+
+merged_portfolio_sp_latest_YTD_sp = pd.merge(merged_portfolio_sp_latest_YTD, sp_500_adj_close_start
+                                             , left_on='Start of Year', right_on='Date')
+
+# Deleting another unneeded Date column.
+
+del merged_portfolio_sp_latest_YTD_sp['Date']
+
+# Renaming so that it's clear this column is SP 500 start of year close.
+merged_portfolio_sp_latest_YTD_sp.rename(columns={'Adj Close': 'SP Start Year Close'}, inplace=True)
+
+# YTD return for portfolio position.
+merged_portfolio_sp_latest_YTD_sp['Share YTD'] = merged_portfolio_sp_latest_YTD_sp['Ticker Adj Close'] / merged_portfolio_sp_latest_YTD_sp['Ticker Start Year Close'] - 1
+
+# YTD return for SP to run compares.
+merged_portfolio_sp_latest_YTD_sp['SP 500 YTD'] = merged_portfolio_sp_latest_YTD_sp['SP 500 Latest Close'] / merged_portfolio_sp_latest_YTD_sp['SP Start Year Close'] - 1
+
+```
+
+-- Explanation forthcoming.
 
 
 
