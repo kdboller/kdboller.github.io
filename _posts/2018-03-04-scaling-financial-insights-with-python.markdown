@@ -53,7 +53,7 @@ categories:
 
 <h3>Data Import and Dataframe Manipulation</h3>
 
-We will begin by importing the necessary Python libraries, import Plotly's offline module, and read in our sample portfolio dataframe, which, as mentioned previously, can be found here.
+You will begin by importing the necessary Python libraries, import Plotly's offline module, and read in our sample portfolio dataframe, which, as mentioned previously, can be found here.
 
 ```python
 # Import initial libraries
@@ -80,7 +80,7 @@ portfolio_df = pd.read_excel('Sample stocks acquisition dates_costs.xlsx', sheet
 portfolio_df.head(10)
 ```
 
-Now that we have read in our sample portfolio file, we'll create a few variables which capture the date ranges for the S&P 500 and all of the tickers in our sample file.  Note that this is one of the few aspects of this notebook which requires an update each week (adjust the date range to include the most recent trading week).  
+Now that you have read in our sample portfolio file, you'll create a few variables which capture the date ranges for the S&P 500 and all of the tickers in our sample file.  Note that this is one of the few aspects of this notebook which requires an update each week (adjust the date range to include the most recent trading week).  
 
 ```python
 # Date Ranges for SP 500 and for all tickers
@@ -98,7 +98,7 @@ stocks_start = datetime.datetime(2013, 1, 1)
 stocks_end = datetime.datetime(2018, 3, 9)
 ```
 
-As mentioned in the Python Finance training post, the pandas-datareader package enables us to read in data from sources like Google, Yahoo! Finance and the World Bank, among others.  In this post, I'll focus on Yahoo! Finance, although I've worked very preliminarily in Quantopian and have also begun looking into quandl as a data source.  As also mentioned in the DataCamp post, the Yahoo API endpoint recently changed and this requires the installation of a temporary fix in order for Yahoo! Finance to work.  I've made this slight adjustment in the code below, as noted.  I have noticed some minor data issues where the data does not always read in when hitting the endpoint, or the last trading day is sometimes missing.  While these issues have been infrequent, I'm continuing to monitor whether or not Yahoo! is the best and most reliable data source.
+As mentioned in the Python Finance training post, the ``pandas-datareader`` package enables us to read in data from sources like Google, Yahoo! Finance and the World Bank, among others.  In this post, I'll focus on Yahoo! Finance, although I've worked very preliminarily in Quantopian and have also begun looking into quandl as a data source.  As also mentioned in the DataCamp post, the Yahoo API endpoint recently changed and this requires the installation of a temporary fix in order for Yahoo! Finance to work.  I've made this slight adjustment in the code below, as noted.  I have noticed some minor data issues where the data does not always read in when hitting the endpoint, or the last trading day is sometimes missing.  While these issues have been infrequent, I'm continuing to monitor whether or not Yahoo! is the best and most reliable data source.
 
 ```python
 # Leveraged from the helpful Datacamp Python Finance trading blog post.
@@ -119,10 +119,10 @@ If you're following along with your own notebook, you should see something like 
 <img src="/assets/Yahoo Finance_SP500 dataframe head.png" alt="S&P 500 Initial Import">
 <!-- height="200"  style="width: 100%" -->
 
-After loading in the S&P 500 data, you'll see that I inspect the head and tail of the dataframe, as well as condense the dataframe to only include the Adj Close column.  The difference between the adjusted close and the close column is that adjusted close reflects dividends.  When a company issues a dividend, the stock price will adjust down by the size of the dividend per share, as the company is distributing a portion of the company's earnings.  For purposes of this analysis, we will only need to analyze this column.  I also create a dataframe which only includes the S&P's adjusted close on the last day of 2017 (start of 2018); this is in order to run YTD comparisons of individual tickers relative to the S&P 500's performance.
+After loading in the S&P 500 data, you'll see that I inspect the head and tail of the dataframe, as well as condense the dataframe to only include the Adj Close column.  The difference between the adjusted close and the close column is that adjusted close reflects dividends.  When a company issues a dividend, the stock price will adjust down by the size of the dividend per share, as the company is distributing a portion of the company's earnings.  For purposes of this analysis, you will only need to analyze this column.  I also create a dataframe which only includes the S&P's adjusted close on the last day of 2017 (start of 2018); this is in order to run YTD comparisons of individual tickers relative to the S&P 500's performance.
 
 
-In the below code, we create an array of all of the tickers in our sample portfolio dataframe, and then write a function to read in all of the tickers and their relevant data into a new dataframe (this is the same approach we took for the S&P500), but it is applied to all of the tickers.
+In the below code, you create an array of all of the tickers in our sample portfolio dataframe, and then write a function to read in all of the tickers and their relevant data into a new dataframe (this is the same approach you took for the S&P500), but it is applied to all of the tickers.
 
 ```python
 # Generate a dynamic list of tickers to pull from Yahoo Finance API based on the imported file with tickers.
@@ -141,7 +141,7 @@ all_data = get(tickers, stocks_start, stocks_end)
 
 ```
 
-As with the S&P 500 dataframe, we'll create an adj_close dataframe which only has the Adj Close column for all of our stock tickers.  If you look at the notebook in the repo I link to above, this code is chunked out in more code blocks, but for purposes of describing this here, I've included below all of the code which leads up to our initial merged_portfolio dataframe.
+As with the S&P 500 dataframe, you'll create an adj_close dataframe which only has the Adj Close column for all of our stock tickers.  If you look at the notebook in the repo I link to above, this code is chunked out in more code blocks, but for purposes of describing this here, I've included below all of the code which leads up to our initial merged_portfolio dataframe.
 
 ```python
 # Also only pulling the ticker, date and adj. close columns for our tickers.
@@ -185,12 +185,12 @@ merged_portfolio
 Depending on your level of familiarity with Python, this will be very straightforward to slightly overwhelming.  Below, I'll unpack what these lines are doing:
 
 <ul>
-<li>The overall approach we are taking is an example of split-apply-combine.  A helpful overview of this can be found here.</li>
+<li>The overall approach you are taking is an example of split-apply-combine.  A helpful overview of this can be found here.</li>
 <li>The all_data[['Adj Close']] line creates a new <u>dataframe</u> with only the columns provided in the list; here Adj Close is the only item provided in the list.</li>
-<li>Using this line of code, adj_close[adj_close['Date']==end_of_last_year], we are filtering the adj_close dataframe to only the row where the data's Date column equals the date which we earlier specified in the end_of_last_year variable.</li>
-<li>We also set the index of the adj_close_latest and portfolio_df dataframes.  I did this because this is how we'll merge the two dataframes.  The merge function, very similar to SQL joins, is an extremely useful function which I use very often.</li>
-<li>Within the merge function, we specify our left dataframe (portfolio_df) and our right dataframe (adj_close_latest).  By specifying left_index and right_index True, we are stating that the two dataframes share a common index and we will join both on this.</li>
-<li>Last, we create a new column called 'ticker return'.  This calculates the percent return by dividing the Adj Close by the Unit Cost (initial purchase price for stock) and subtracting 1.  This is similar to calculating a formula in excel and carrying it down, but in pandas this is accomplished with one-line of code.</li>
+<li>Using this line of code, adj_close[adj_close['Date']==end_of_last_year], you are filtering the adj_close dataframe to only the row where the data's Date column equals the date which you earlier specified in the end_of_last_year variable.</li>
+<li>You also set the index of the adj_close_latest and portfolio_df dataframes.  I did this because this is how you'll merge the two dataframes.  The merge function, very similar to SQL joins, is an extremely useful function which I use very often.</li>
+<li>Within the merge function, you specify the left dataframe (portfolio_df) and our right dataframe (adj_close_latest).  By specifying left_index and right_index True, you are stating that the two dataframes share a common index and you will join both on this.</li>
+<li>Last, you create a new column called 'ticker return'.  This calculates the percent return by dividing the Adj Close by the Unit Cost (initial purchase price for stock) and subtracting 1.  This is similar to calculating a formula in excel and carrying it down, but in pandas this is accomplished with one-line of code.</li>
 </ul>
 
 
