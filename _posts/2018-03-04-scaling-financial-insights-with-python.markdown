@@ -313,7 +313,7 @@ merged_portfolio_sp_latest_YTD_sp['SP 500 YTD'] = merged_portfolio_sp_latest_YTD
 
 -  When creating the ``merged_portfolio_sp_latest_YTD`` dataframe, you are now merging the 'master' dataframe with the ``adj_close_start`` dataframe; as a quick reminder, you created this dataframe by filtering on the ``adj_close`` dataframe where the ``'Date'`` column equaled the variable ``end_of_last_year``; you do this because it's how YTD (year-to-date) stock and index performances are measured; last year's ending close is the following year's starting price.
 -  From here, we once again use ``del`` to remove unnecessary columns and the ``rename`` method to clarify the 'master' dataframe's newly added columns.
--  Last, we take each Ticker (in the ``['Ticker Adj Close']`` column) and calculate the YTD return for each (we also have an S&P 500 equivalent value for each value in the ``['Ticker Adj Close']`` column).
+-  Last, we take each Ticker (in the ``['Ticker Adj Close']`` column) and calculate the YTD return for each (we also have an S&P 500 equivalent value for each value in the ``'SP 500 Latest Close'`` column).
 
 In the below code block, you use the ``sort_values`` method to re-sort our 'master' dataframe and then you calculate cumulative portfolio investments (sum of position acquisition costs), as well cumulative value of portfolio positions relative to the cumulative value of the S&P 500.  This allows you to be able to see how your total portfolio, with investments in positions made a different times across the total holding period, compares overall to a strategy where you had simply invested in an index.  Last, you'll see the use of the ``['Cum Ticker ROI Mult']`` later, where it helps you visualize how much each investment contributed to or decreased your overall return on investment (ROI).
 
@@ -339,7 +339,7 @@ merged_portfolio_sp_latest_YTD_sp.head()
 
 You are now in the home stretch and almost ready to start visualizing your data and assessing the strengths and weaknesses of your portfolio's performance.
 
-As before, I'll include the main code block for YTD assessment below, and then I'll unpack the code further below.
+As before, I've included the main code block for determining where positions are trading relative to their recent closing high; I'll then unpack the code further below.
 
 ```python
 
@@ -394,7 +394,34 @@ merged_portfolio_sp_latest_YTD_sp_closing_high
 
 ```
 
-- Explanation forthcoming.
+-  To begin, you merge the ``adj_close`` dataframe with the ``portfolio_df`` dataframe; this is the third time that you've leveraged this ``adj_close`` dataframe in order to conduct an insolated analysis which you'll then combine with the overall 'master' dataframe.
+-  This initial merge is not particularly useful, as you have dates and adjusted close prices which pre-date your aquisition date for the position; as a result, we'll subset the data post our acquisition date, and then find the ``max`` closing price post our acquisition date.
+-  Once again, I used ``del`` to delete the merged dataframe's unneeded columns; this is code I should refactor, as creating a list, e.g., ``cols_to_keep``, and then filtering the dataframe with this would be a better approach -- as an FYI, running the ``del`` code block more than once will throw an error and you would need to re-initialize your dataframe then run the ``del`` code block again.
+-  After removing the unnecessary columns, you then use the ``sort_values`` method and sort the values by the ``'Ticker'``, ``'Acquisition Date'``, and ``'Date'`` columns (all ascending); we do this to make sure all of the ticker rows are sorted together, and we sort by Acquisition Date (in case we've purchased the same stock more than once) and Date ascending in order to filter out the dates prior to your positions' acquisition dates.  In other words, you are only concerned with the closing high since you've held the position.
+-  In order to filter our dataframe, you create a new column ``['Date Delta']`` which is calculated by the difference between the Date and Acquisition Date columns.
+-  You then convert this column into a numeric column, and you create a new dataframe called ``adj_close_acq_date_modified`` where the ``['Date Delta']`` is >= 0.  This ensures that you are only evaluating closing highs since the date that you purchased each position.
+-  Now that you have the ``adj_close_acq_date_modified`` dataframe, we'll use a very powerful pandas function called ``pivot_table``.  If you're familiar with pivot tables in Excel, this function is similar in that you can pivot data based on a single or multi-index, specify values to calculate and columns to pivot on, and also use ``agg functions`` (which leverage numpy).
+-  Using the ``pivot_table`` function, we pivot on Ticker and Acquisition Date and specify that we would like to find the maximum (``np.max``) ``Adj Close`` for each position;  this allows you to compare the recent Adjusted Close for each position relative to this High Adjusted Close.
+-  Now you have a ``adj_close_pivot`` dataframe, and you reset the index and join this once again on the ``adj_close`` dataframe.  This creates the ``adj_close_pivot_merged`` dataframe, which tells you when you purchased each position and the date on which it hit its closing high since acquisition.
+-  Finally, we will combine our 'master' dataframe with one last smaller dataframe, ``adj_close_pivot_merged``.  
+-  You are now able to calculate the final column needed, ``['Pct off High']``.  You take the ``['Ticker Adj Close']`` and divide it by the ``['Closing High Adj Close']`` and subtract 1.  Note, that this percentage will always be negative, unless the stock happened to have its highest close on the most recent trading day evaluated (this is generally a very good sign if it's the case).
+
+This has been a pretty significant lift, and it's now time for our long-awaited visualizations.  If you've continued to follow along in your own notebook, you now have a very rich dataframe with a number of portfolio metrics to calculate, as shown in the below:
+
+<img src="/assets/Master Dataframe (incl Closing High).png" alt="Master Dataframe (incl Closing High)">
+
+<h3>Total Return and Cumulative Return Visualizations</h3>
+
+
+
+<h3>Adjusted Close % off of High Comparison</h3>
+
+
+
+
+
+<h3>[Limitations Placeholder]</h3>
+
 
 
 
