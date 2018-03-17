@@ -490,6 +490,7 @@ Please note that while this notebook provides a fairly thorough review of a port
 
 -  [Does not factor in exited positions and overall return].
 -  [Does not take into account dividends].
+-  [Does not take into account reinvestments.]
 -  [Any other considerations].
 
 
