@@ -479,7 +479,7 @@ Your final chart compares how far off each position's latest close price is from
 -  However, TWTR is greater than 25% below its highest close (33% below as of 3/9/2018) and WMT is ~20% below its highest close.
 -  In this case, you might want to sell TWTR and keep a close eye on the performance of WMT. 
 
-<img src="/assets/Adj Close % off of High.png" alt="Adj Close % off of High">
+<img src="/assets/Adj Close pct off of High.png" alt="Adj Close pct off of High">
 
 
 <h2>Limitations to Approach and Closing Summary</h2>
