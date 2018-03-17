@@ -236,7 +236,7 @@ merged_portfolio_sp_latest.head()
 -  When you calculate ``merged_portfolio_sp['Equiv SP Shares']``, you do so in order to be able to calculate the S&P 500's equivalent value for the latest close:  if you spend $5,000 on a new stock position, you could have spent $5,000 on the S&P 500; for example, if the S&P 500 was trading at $2,500 per share at the time of purchase, you would have been able to purchase 2 shares.  Later, if the S&P 500 is trading for $3,000 per share, your stake would be worth $6,000 and you would have $1,000 in paper profits over this comparable time period.
 -  In the rest of the code block, we perform a similar merge, this time joining on the S&P 500's latest close -- this provides the the second piece needed to calculate the S&P's comparable return relative to each position's hold period:  the S&P 500 price on acquisition day and the S&P 500's latest close.
 
-You know have a 'master' dataframe with the following:
+You now have a 'master' dataframe with the following:
 -  Each portfolio positions' price, shares and value on the position acquisition day, as well as the latest market's closing price.
 -  An equivalent S&P 500 price, shares and value on the equivalent position acquisition day, as well as the latest market's closing price.
 
