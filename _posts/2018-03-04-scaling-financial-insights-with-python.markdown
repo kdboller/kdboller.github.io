@@ -474,32 +474,15 @@ Your final chart compares how far off each position's latest close price is from
 
 <h2>Limitations to Approach and Closing Summary</h2>
 
-Now you have a highly flexible Jupyter notebook, which you will be able to use in order to evaluate your personal portfolio and is flexible to add in new metrics and visualizations as you see fit.
+Now you have a relatively extensible Jupyter notebook and portfolio dataset, which you are able to use to evaluate your stock portfolio, as well as add in new metrics and visualizations as you see fit.
 
-Please note that while this notebook provides a fairly thorough review of a portfolio, the following are not taken into consideration, would have an impact on the overall evaluation, and likely present areas for future development:
+Please note that while this notebook provides a fairly thorough review of a portfolio, the below have not yet been taken into consideration, would have an impact on the overall comparison, and likely present great areas for future development:
 
--  [Does not factor in exited positions and overall return].
--  [Does not take into account dividends].
--  [Does not take into account reinvestments.]
--  [Any other considerations].
+-  As noted initially, this notebook focuses on active holdings -- ideally, we would evaluate all positions, but exited and active, in order to have a truly holistic view on one's investment strategy relative to alternatives, such as an index comparison.
+-  The approach in here does not factor in dividends; while we evaluate adjusted close prices (which reflect dividends), total shareholder return combines share price appreciation and dividends to show a stock's total return; while this is more difficult to do, it is something I'll evaluate to include in the future.
+-  On a related note, investors can also reinvestment dividends in a position, rather than take a cash distribution; this is arguably even more complicated than accounting for dividends, as the acquisition costs are low, but over several years you could have four (or more) acquisition dates for stocks where you reinvestment dividends.
 
-
-We accomplished a lot here, including importing S&P 500 and ticker data using Yahoo! Finance's API and creating a master dataframe which combines your portfolio with historical ticker and S&P 500 prices.  In doing this, you are able to calculate the relative % and dollar value returns for each position, as well as the cumulative impact of each position on your overall portfolio's returns.  You can also dynamically monitor your trailing stops, based on your own trading rules, and you have created visualizations which allow you to have much better insight into your master dataframe, focusing on the differnet metrics and each position's contribution within each visualization.
+With those future areas in mind, we accomplished a lot here; this includes importing S&P 500 and ticker data using Yahoo! Finance's API and creating a master dataframe which combines your portfolio with historical ticker and comparative S&P 500 prices.  In doing this, you are able to calculate the relative percent and dollar value returns for each position, as well as the cumulative impact of each position on your overall portfolio's performance.  You can also dynamically monitor your trailing stops, based on your own trading rules, and you have created visualizations which allow you to have much better insight into your master dataframe, focusing on the different metrics and each position's contribution within each visualization.
 
 I hope that you found this tutorial useful, and I welcome any feedback in the comments.  I will continue to build on top of this notebook, and I will also look to incorporate insightful recommendations which will improve and / or advance the notebook's current capabilities.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
