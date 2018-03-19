@@ -21,7 +21,7 @@ In the past, I downloaded historical prices data from Yahoo Finance and used IND
 
 <strong>Disclosure:</strong>  <i>Nothing in this post should be considered investment advice.  Past performance is not necessarily indicative of future returns.  These are general examples about how to import data using pandas for a small sample of stocks across different time intervals and to benchmark their performance against an index.  You should direct all investment related questions that you have to your financial advisor.</i>
 
-I am also not an expert on this topic, am sharing these contributions as I'm willing to collaborate and improve this approach, and I outline some considerations for further development at the end of this post.  I believe this approach should be rather helpful, particularly for novice to intermediate-level professionals, especially since this extends to many other types of financial analyses. <strong>This approach is “PME-like” in the sense that’s it’s measuring investment inflows over equal holding periods.  As public market investments are much more liquid than private equity, and presuming you follow a trailing stop approach, from my perspective it’s more important to focus on active holdings -- it's generally advisable to divest holdings which underperform a benchmark or which you no longer want to own for various reasons, while I take a long-term view and am happy to own outperforming stocks for as long as they’ll have me.</strong>
+In addition to contributing this tutorial, I'm willing to collaborate on and will continue to revise and build upon this approach, and I outline some considerations for further development at the end of this post.  I believe this post will be helpful for novice to intermediate-level data science oriented finance professionals, especially since this extends to many other types of financial analyses. <strong>This approach is “PME-like” in the sense that’s it’s measuring investment inflows over equal holding periods.  As public market investments are much more liquid than private equity, and presuming you follow a trailing stop approach, from my perspective it’s more important to focus on active holdings -- it's generally advisable to divest holdings which underperform a benchmark or which you no longer want to own for various reasons, while I take a long-term view and am happy to own outperforming stocks for as long as they’ll have me.</strong>
 
 <p>Resources:
     <ul>
@@ -51,7 +51,7 @@ I am also not an expert on this topic, am sharing these contributions as I'm wil
 
 <h3>Data Import and Dataframe Manipulation</h3>
 
-You will begin by importing the necessary Python libraries, import the ``Plotly`` offline module, and read in our sample portfolio dataframe, which, as mentioned previously, can be found here.
+You will begin by importing the necessary Python libraries, import the ``Plotly`` offline module, and read in our sample portfolio dataframe.
 
 ```python
 # Import initial libraries
@@ -78,7 +78,7 @@ portfolio_df = pd.read_excel('Sample stocks acquisition dates_costs.xlsx', sheet
 portfolio_df.head(10)
 ```
 
-Now that you have read in our sample portfolio file, you'll create a few variables which capture the date ranges for the S&P 500 and all of the tickers in our sample file.  Note that this is one of the few aspects of this notebook which requires an update each week (adjust the date range to include the most recent trading week).  
+Now that you have read in the sample portfolio file, you'll create a few variables which capture the date ranges for the S&P 500 and all of the portfolio's tickers.  Note that this is one of the few aspects of this notebook which requires an update each week (adjust the date range to include the most recent trading week -- here, we are running this off of prices through 3/9/2018).  
 
 ```python
 # Date Ranges for SP 500 and for all tickers
@@ -96,7 +96,7 @@ stocks_start = datetime.datetime(2013, 1, 1)
 stocks_end = datetime.datetime(2018, 3, 9)
 ```
 
-As mentioned in the Python Finance training post, the ``pandas-datareader`` package enables us to read in data from sources like Google, Yahoo! Finance and the World Bank, among others.  In this post, I'll focus on Yahoo! Finance, although I've worked very preliminarily in Quantopian and have also begun looking into ``quandl`` as a data source.  As also mentioned in the DataCamp post, the Yahoo API endpoint recently changed and this requires the installation of a temporary fix in order for Yahoo! Finance to work.  I've made this slight adjustment in the code below, as noted.  I have noticed some minor data issues where the data does not always read in when hitting the endpoint, or the last trading day is sometimes missing.  While these issues have been infrequent, I'm continuing to monitor whether or not Yahoo! is the best and most reliable data source.
+As mentioned in the Python Finance training post, the ``pandas-datareader`` package enables us to read in data from sources like Google, Yahoo! Finance and the World Bank.  Here I'll focus on Yahoo! Finance, although I've worked very preliminarily with Quantopian and have also begun looking into ``quandl`` as a data source.  As also mentioned in the DataCamp post, the Yahoo API endpoint recently changed and this requires the installation of a temporary fix in order for Yahoo! Finance to work.  I've made the needed slight adjustment in the code below.  I have noticed some minor data issues where the data does not always read in as expected, or the last trading day is sometimes missing.  While these issues have been relatively infrequent, I'm continuing to monitor whether or not Yahoo! Finance will be the best and most reliable data source going forward.
 
 ```python
 # Leveraged from the helpful Datacamp Python Finance trading blog post.
@@ -117,9 +117,9 @@ If you're following along with your own notebook, you should see something like 
 <img src="/assets/Yahoo Finance_SP500 dataframe head.png" alt="S&P 500 Initial Import">
 <!-- height="200"  style="width: 100%" -->
 
-After loading in the S&P 500 data, you'll see that I inspect the head and tail of the dataframe, as well as condense the dataframe to only include the ``Adj Close`` column.  The difference between the adjusted close and the close column is that adjusted close reflects dividends.  When a company issues a dividend, the stock price will adjust down by the size of the dividend per share, as the company is distributing a portion of the company's earnings.  For purposes of this analysis, you will only need to analyze this column.  I also create a dataframe which only includes the S&P's adjusted close on the last day of 2017 (start of 2018); this is in order to run YTD comparisons of individual tickers relative to the S&P 500's performance.
+After loading in the S&P 500 data, you'll see that I inspect the head and tail of the dataframe, as well as condense the dataframe to only include the ``Adj Close`` column.  The difference between the ``Adjusted Close`` and the ``Close`` columns is that an adjusted close reflects dividends (see future areas for development below).  When a company issues a dividend, the share price is reduced by the size of the dividend per share, as the company is distributing a portion of the company's earnings.  For purposes of this analysis, you will only need to analyze this column.  I also create a dataframe which only includes the S&P's adjusted close on the last day of 2017 (start of 2018); this is in order to run YTD comparisons of individual tickers relative to the S&P 500's performance.
 
-In the below code, you create an array of all of the tickers in our sample portfolio dataframe, and then write a function to read in all of the tickers and their relevant data into a new dataframe (this is the same approach you took for the S&P500), but it is applied to all of the tickers.
+In the below code, you create an array of all of the tickers in our sample portfolio dataframe.  You then write a function to read in all of the tickers and their relevant data into a new dataframe, which is essentially the same approach you took for the S&P500 but applied to all of the portfolio's tickers.
 
 ```python
 # Generate a dynamic list of tickers to pull from Yahoo Finance API based on the imported file with tickers.
