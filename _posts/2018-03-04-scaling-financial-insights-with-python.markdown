@@ -232,17 +232,17 @@ merged_portfolio_sp_latest.head()
 -  When you calculate ``merged_portfolio_sp['Equiv SP Shares']``, you do so in order to be able to calculate the S&P 500's equivalent value for the close on the date you acquired each ticker position:  if you spend $5,000 on a new stock position, you could have spent $5,000 on the S&P 500; continuing the example, if the S&P 500 was trading at $2,500 per share at the time of purchase, you would have been able to purchase 2 shares.  Later, if the S&P 500 is trading for $3,000 per share, your stake would be worth $6,000 (2 equivalent shares * $3,000 per share) and you would have $1,000 in paper profits over this comparable time period.
 -  In the rest of the code block, you next perform a similar merge, this time joining on the S&P 500's latest close -- this provides the the second piece needed to calculate the S&P's comparable return relative to each position's holding period:  the S&P 500 price on each ticker's acquisition day and the S&P 500's latest market close.
 
-You have not further developed your 'master' dataframe with the following:
+You have now further developed your 'master' dataframe with the following:
 -  Each portfolio position's price, shares and value on the position acquisition day, as well as the latest market's closing price.
 -  An equivalent S&P 500 price, shares and value on the equivalent position acquisition day for each ticker, as well as the latest S&P 500 closing price.
 
 Given the above, you will next perform the requisite calculations in order to compare each position's performance, as well as the overall performance of this strategy / basket of stocks, relative to comparable dollar investment and holding times of the S&P 500.
 
-I'll quickly summarize below in the relevant groupings the new columns which you are adding to the 'master' dataframe.
+Below is a summary of the new columns which you are adding to the 'master' dataframe.
 
--  In the first column, ``['SP Return']``, you create a column which calculates the absolute percent return of the S&P over the holding period of each position (note, this is an absolute return and is not an annualized return).  In the second column (``['Abs. Return Compare']``), you compare the ``['ticker return']`` (each position's return) relative to the ``['SP Return']`` over the same time period.
--  In the next three columns, ``['Ticker Share Value']``, ``['SP 500 Value']`` and ``['Abs Value Compare']``, we calculate the dollar value (market value) equivalent based on the shares we hold multiplied by the latest adjusted close price.
--  Last, the ``['Stock Gain / (Loss)']`` and ``['SP 500 Gain / (Loss)']`` columns calculate our unrealized dollar gain / loss on each position (and comparable S&P 500 gain / loss) in order to compare the value impact of each position versus if we had simply invested those same dollars in the S&P 500.
+-  In the first column, ``['SP Return']``, you create a column which calculates the absolute percent return of the S&P 500 over the holding period of each position (note, this is an absolute return and is not an annualized return).  In the second column (``['Abs. Return Compare']``), you compare the ``['ticker return']`` (each position's return) relative to the ``['SP Return']`` over the same time period.
+-  In the next three columns, ``['Ticker Share Value']``, ``['SP 500 Value']`` and ``['Abs Value Compare']``, we calculate the dollar value (market value) equivalent based on the shares we hold multiplied by the latest adjusted close price (and subtract the S&P return from the ticker to calculate over / (under) performance).
+-  Last, the ``['Stock Gain / (Loss)']`` and ``['SP 500 Gain / (Loss)']`` columns calculate our unrealized dollar gain / loss on each position and comparable S&P 500 gain / loss; this allows us to compare the value impact of each position versus simply investing those dollars in the S&P 500.
 
 ```python
 # Percent return of SP from acquisition date of position through latest trading day.
@@ -267,12 +267,11 @@ merged_portfolio_sp_latest['Stock Gain / (Loss)'] = merged_portfolio_sp_latest['
 merged_portfolio_sp_latest['SP 500 Gain / (Loss)'] = merged_portfolio_sp_latest['SP 500 Value'] - merged_portfolio_sp_latest['Cost Basis']
 
 merged_portfolio_sp_latest.head()
-
 ```
 
-You now have what you need in order to compare your portfolio's performance to a portfolio equally invested in the S&P 500.  The next two code block sections allow you to i) compare YTD performance of each position relative to the S&P 500 (a measure of momentum and how your positions are pacing) and ii) compare most recent closing price for each portfolio position relative to it's most recent closing high (this allows you to assess if a position has triggered a trailing stop, e.g., closed 25% below closing high).
+You now have what you need in order to compare your portfolio's performance to a portfolio equally invested in the S&P 500.  The next two code block sections allow you to i) compare YTD performance of each position relative to the S&P 500 (a measure of momentum and how your positions are pacing) and ii) compare the most recent closing price for each portfolio position relative to it's most recent closing high (this allows you to assess if a position has triggered a trailing stop, e.g., closed 25% below closing high).
 
-Below, I'll start with the YTD performance code block.
+Below, I'll start with the YTD performance code block and provide details regarding the code further below.
 
 ```python
 
@@ -304,14 +303,13 @@ merged_portfolio_sp_latest_YTD_sp['Share YTD'] = merged_portfolio_sp_latest_YTD_
 
 # YTD return for SP to run compares.
 merged_portfolio_sp_latest_YTD_sp['SP 500 YTD'] = merged_portfolio_sp_latest_YTD_sp['SP 500 Latest Close'] / merged_portfolio_sp_latest_YTD_sp['SP Start Year Close'] - 1
-
 ```
 
 -  When creating the ``merged_portfolio_sp_latest_YTD`` dataframe, you are now merging the 'master' dataframe with the ``adj_close_start`` dataframe; as a quick reminder, you created this dataframe by filtering on the ``adj_close`` dataframe where the ``'Date'`` column equaled the variable ``end_of_last_year``; you do this because it's how YTD (year-to-date) stock and index performances are measured; last year's ending close is the following year's starting price.
 -  From here, we once again use ``del`` to remove unnecessary columns and the ``rename`` method to clarify the 'master' dataframe's newly added columns.
 -  Last, we take each Ticker (in the ``['Ticker Adj Close']`` column) and calculate the YTD return for each (we also have an S&P 500 equivalent value for each value in the ``'SP 500 Latest Close'`` column).
 
-In the below code block, you use the ``sort_values`` method to re-sort our 'master' dataframe and then you calculate cumulative portfolio investments (sum of position acquisition costs), as well cumulative value of portfolio positions relative to the cumulative value of the S&P 500.  This allows you to be able to see how your total portfolio, with investments in positions made a different times across the total holding period, compares overall to a strategy where you had simply invested in an index.  Last, you'll see the use of the ``['Cum Ticker ROI Mult']`` later, where it helps you visualize how much each investment contributed to or decreased your overall return on investment (ROI).
+In the below code block, you use the ``sort_values`` method to re-sort our 'master' dataframe and then you calculate cumulative portfolio investments (sum of your position acquisition costs), as well the cumulative value of portfolio positions and the cumulative value of the theoreticla S&P 500 investments.  This allows you to be able to see how your total portfolio, with investments in positions made a different times across the total holding period, compares overall to a strategy where you had simply invested in an index.  Later on, you'll use the ``['Cum Ticker ROI Mult']`` to help you visualize how much each investment contributed to or decreased your overall return on investment (ROI).
 
 ```python
 
@@ -330,10 +328,9 @@ merged_portfolio_sp_latest_YTD_sp['Cum SP Returns'] = merged_portfolio_sp_latest
 merged_portfolio_sp_latest_YTD_sp['Cum Ticker ROI Mult'] = merged_portfolio_sp_latest_YTD_sp['Cum Ticker Returns'] / merged_portfolio_sp_latest_YTD_sp['Cum Invst']
 
 merged_portfolio_sp_latest_YTD_sp.head()
-
 ```
 
-You are now nearing the home stretch and almost ready to start visualizing your data and assessing the strengths and weaknesses of your portfolio's individual and overall performance.
+You are now nearing the home stretch and almost ready to start visualizing your data and assessing the strengths and weaknesses of your portfolio's individual ticker and overall strategy performance.
 
 As before, I've included the main code block for determining where positions are trading relative to their recent closing high; I'll then unpack the code further below.
 
@@ -387,33 +384,32 @@ merged_portfolio_sp_latest_YTD_sp_closing_high.rename(columns={'Adj Close': 'Clo
 merged_portfolio_sp_latest_YTD_sp_closing_high['Pct off High'] = merged_portfolio_sp_latest_YTD_sp_closing_high['Ticker Adj Close'] / merged_portfolio_sp_latest_YTD_sp_closing_high['Closing High Adj Close'] - 1 
 
 merged_portfolio_sp_latest_YTD_sp_closing_high
-
 ```
 
 -  To begin, you merge the ``adj_close`` dataframe with the ``portfolio_df`` dataframe; this is the third time that you've leveraged this ``adj_close`` dataframe in order to conduct an insolated analysis which you'll then combine with the overall 'master' dataframe.
--  This initial merge is not particularly useful, as you have dates and adjusted close prices which pre-date your aquisition date for the position; as a result, we'll subset the data post our acquisition date, and then find the ``max`` closing price post our acquisition date.
+-  This initial merge is not particularly useful, as you have dates and adjusted close prices which pre-date your aquisition date for each position; as a result, we'll subset the data post our acquisition date, and then find the ``max`` closing price since that time.
 -  Once again, I used ``del`` to delete the merged dataframe's unneeded columns; this is code I should refactor, as creating a list, e.g., ``cols_to_keep``, and then filtering the dataframe with this would be a better approach -- as an FYI, running the ``del`` code block more than once will throw an error and you would need to re-initialize your dataframe then run the ``del`` code block again.
--  After removing the unnecessary columns, you then use the ``sort_values`` method and sort the values by the ``'Ticker'``, ``'Acquisition Date'``, and ``'Date'`` columns (all ascending); we do this to make sure all of the ticker rows are sorted together, and we sort by Acquisition Date (in case we've purchased the same stock more than once) and Date ascending in order to filter out the dates prior to your positions' acquisition dates.  In other words, you are only concerned with the closing high since you've held the position.
+-  After removing the unnecessary columns, you then use the ``sort_values`` method and sort the values by the ``'Ticker'``, ``'Acquisition Date'``, and ``'Date'`` columns (all ascending); you do this to make sure all of the ticker rows are sorted together, and we sort by Acquisition Date (in case we've purchased the same stock more than once) and Date ascending in order to filter out the dates prior to your positions' acquisition dates.  In other words, you are only concerned with the closing high since you've held the position.
 -  In order to filter our dataframe, you create a new column ``['Date Delta']`` which is calculated by the difference between the Date and Acquisition Date columns.
 -  You then convert this column into a numeric column, and you create a new dataframe called ``adj_close_acq_date_modified`` where the ``['Date Delta']`` is >= 0.  This ensures that you are only evaluating closing highs since the date that you purchased each position.
--  Now that you have the ``adj_close_acq_date_modified`` dataframe, we'll use a very powerful pandas function called ``pivot_table``.  If you're familiar with pivot tables in Excel, this function is similar in that you can pivot data based on a single or multi-index, specify values to calculate and columns to pivot on, and also use ``agg functions`` (which leverage numpy).
+-  Now that you have the ``adj_close_acq_date_modified`` dataframe, we'll use a very powerful pandas function called ``pivot_table``.  If you're familiar with pivot tables in Excel, this function is similar in that you can pivot data based on a single or multi-index, specify values to calculate and columns to pivot on, and also use ``agg functions`` (which leverage ``numpy``).
 -  Using the ``pivot_table`` function, we pivot on Ticker and Acquisition Date and specify that we would like to find the maximum (``np.max``) ``Adj Close`` for each position;  this allows you to compare the recent Adjusted Close for each position relative to this High Adjusted Close.
--  Now you have a ``adj_close_pivot`` dataframe, and you reset the index and join this once again on the ``adj_close`` dataframe.  This creates the ``adj_close_pivot_merged`` dataframe, which tells you when you purchased each position and the date on which it hit its closing high since acquisition.
--  Finally, we will combine our 'master' dataframe with one last smaller dataframe, ``adj_close_pivot_merged``.  
--  You are now able to calculate the final column needed, ``['Pct off High']``.  You take the ``['Ticker Adj Close']`` and divide it by the ``['Closing High Adj Close']`` and subtract 1.  Note, that this percentage will always be negative, unless the stock happened to have its highest close on the most recent trading day evaluated (this is generally a very good sign if it's the case).
+-  Now you have an ``adj_close_pivot`` dataframe, and you reset the index and join this once again on the ``adj_close`` dataframe.  This creates the ``adj_close_pivot_merged`` dataframe, which tells you when you purchased each position and the date on which it hit its closing high since acquisition.
+-  Finally, we will combine our 'master' dataframe with this last smaller dataframe, ``adj_close_pivot_merged``.  
+-  After doing so, you are now able to calculate the final column needed, ``['Pct off High']``.  You take the ``['Ticker Adj Close']`` and divide it by the ``['Closing High Adj Close']`` and subtract 1.  Note, that this percentage will always be negative, unless the stock happened to have its highest close (in this case it will be zero) on the most recent trading day evaluated (this is generally a very good sign if it's the case).
 
-This has been a pretty significant lift, and it's now time for our long-awaited visualizations.  If you've continued to follow along in your own notebook, you now have a very rich dataframe with a number of portfolio metrics to calculate, as shown in the below:
+This has been a pretty significant lift, and it's now time for our long-awaited visualizations.  If you've continued to follow along in your own notebook, you now have a very rich dataframe with a number of calculated portfolio metrics, as shown in the below:
 
 <img src="/assets/Master Dataframe (incl Closing High).png" alt="Master Dataframe (incl Closing High)">
 
 <h3>Total Return and Cumulative Return Visualizations</h3>
-For all of these visualizations you'll use ``Plotly``, which will allow you to make D3 charts entirely without code.  While I also use ``Matplotlib`` and ``Seaborn``, I really value the interactivty of ``Plotly``, and once you are use to it, the syntax becomes fairly straightforward and dynamic charts are very easily attainable. 
+For all of these visualizations you'll use ``Plotly``, which allows you to make D3 charts entirely without code.  While I also use ``Matplotlib`` and ``Seaborn``, I really value the interactivty of ``Plotly``; and once you are use to it, the syntax becomes fairly straightforward and dynamic charts are very easily attainable. 
 
 Your first chart below compares each individual position's total return relative to the S&P 500 (same holding periods for the position and hypothetical investment in the S&P 500).  In the below, you'll see that over their distinct holding periods, 6 of the 8 positions outperformed the S&P.  The last two, Twitter (which actually has had a negative return) and Walmart underperformed an equal timed investment in the S&P 500.
 
 <img src="/assets/Total Return versus S&P 500.png" alt="Total Return versus S&P 500">  
 
-As each of these visualizations are relatively similar, I'll explain the code required to generate the above Plotly visualization, and for the remaining ones I'll only summarize observations based on the visualization.
+As each of these visualizations are relatively similar, I'll explain the code required to generate the above Plotly visualization, and for the remaining ones I'll only summarize observations from each visualization.
 
 ```python
 
@@ -438,27 +434,26 @@ layout = go.Layout(title = 'Total Return vs S&P 500'
 
 fig = go.Figure(data=data, layout=layout)
 iplot(fig)
-
 ```
 
 -  When using ``Plotly``, you create ``traces`` which will plot the x and y data you specify.  Here, you specify in trace1 that you want to plot a bar chart, with each Ticker on the x-axis and each ticker's return on the y-axis.
--  In trace2, to break up the data a bit, we'll use a Scatter line chart for the Ticker on the x-axis and the S&P Return on the y-axis.  
+-  In trace2, to break up the data a bit, we'll use a Scatter line chart for the Ticker on the x-axis and the S&P Return on the y-axis.
 -  Where the bar is above the line, the individual ticker (6 of 8 times) has outperformed the S&P 500.
 -  You then create a data object with these traces, and then you provide a layout for the chart; in this case you specify a title, barmode, and the position of the legend; you also pass in a title and tick format (percent format to two decimal places) for the y-axis series.
--  You then create a figure object using ``go.Figure``, specifying the data and layout objects, which you've called `data` and `layout`.
+-  You then create a figure object using ``go.Figure``, specifying the data and layout objects, which you previously named `data` and `layout`.
 
-The next chart below shows the gain / (loss) dollar amount for each position, relative to the S&P 500, as well as shows the Ticker Total Return %.  While it is generally recommended that you allocate an equal position size to your positions, this may not always be the case.  For a less volatile investment, you may purchase invest more than in a riskier position (or you may have additional position sizing rules).  Given this, this visualizations shows both each position's return and the dollar value contribution to your overall portfolio's return.  
+The next chart below shows the gain / (loss) dollar amount for each position, relative to the S&P 500, as well as shows the Ticker Total Return %.  While it is generally recommended that you allocate an equal position size to your positions, this may not always be the case.  For a less volatile investment, you may invest more than in a riskier position (or you may have additional position sizing rules).  Given this, this visualization shows both each position's return and the dollar value contribution to your overall portfolio's return.  
 
-Here, you can see that although you invested slightly less in Facebook (FB), this stock has returned an ~$20k in this mock portfolio, greater than a 4x return relative to an equivalent S&P 500 investment.
+Here, you can see that although you invested slightly less in Facebook (FB) than other positions, this stock has returned an ~$20k in this mock portfolio, greater than a 4x return relative to an equivalent S&P 500 investment over the same holding period.
 
 <img src="/assets/Gain (Loss) Total Return vs S&P 500.png" alt="Gain (Loss) Total Return vs S&P 500">
 
 The next chart below leverages the cumulative columns which you created: ``'Cum Invst'``, ``'Cum SP Returns'``, ``'Cum Ticker Returns'``, and ``'Cum Ticker ROI Mult'``.  
--  Across the x-axis you have sorted the portfolio alphabetically.  Each position shows the investment and total value (investment plus returns or less losses) for that position, combined with the positions preceding it. 
--  To explain further, based on the ~$8k investment in AAPL, this grew to ~$22.5k (>$14k in gains), versus $15k in total value for the S&P.  This is a 2.75x return over the initial investment in AAPL.
+-  Across the x-axis you have sorted the portfolio alphabetically.  Each position shows the initial investment and total value (investment plus returns or less losses) for that position, combined with the positions preceding it. 
+-  To explain further, based on the ~$8k investment in AAPL, this grew to ~$22.5k (>$14k in gains), versus $15k in total value for the S&P.  This is a 2.75x return over the initial investment in AAPL ($22.5k value from $8k investment is ~2.75x ROI).
 -  Continuing to FB, you have invested ~$16k in aggregate ($8k in both positions), and this has grown to over $50k, a greater than 3x return -- this means that FB expanded your overall portfolio ROI.
--  Further down the x-axis, you see that both TWTR and WMT have reduced the overall portfolio ROI -- this is obvious, as both have underperformed the S&P, but the magnitude is clearer with this visualization. 
--  As a caveat, this cumulative approach, given the different holding periods, is a bit of an apples and oranges combination for some positions based on when they were acquired.  However, you can always isolate this analysis by subsetting into smaller dataframes and separately compare positions which have similar holding periods.  To further the example, you could compare your 2016 and 2017 purchases separate of one another.
+-  Further down the x-axis, you see that both TWTR and WMT have reduced the overall portfolio ROI -- this is obvious, as both have underperformed the S&P, but I believe that the magnitude of the contribution is clearer with this visualization. 
+-  As a caveat, this cumulative approach, given the different holding periods, is a bit of an apples and oranges combination for some positions based on when they were acquired.  However, you can always isolate this analysis by subsetting into smaller dataframes and separately compare positions which have similar holding periods.  For example, you could compare your 2016 and 2017 purchases separate of one another.
 
 <img src="/assets/Total Cumulative Investments Over Time.png" alt="Total Cumulative Investments Over Time">
 
@@ -466,17 +461,16 @@ The next chart below leverages the cumulative columns which you created: ``'Cum 
 
 Your final chart compares how far off each position's latest close price is from its adjusted closing high since the position was purchased.  This is generally an important visualization to consider:
 
--  As a stock increasingly closes at a higher price, it's generally recommended to adjust your trailing stop up as well.  To illustrate, here's an example:
+-  When a stock closes at higher prices, it's generally recommended to adjust your trailing stop up as well.  To illustrate, here's an example:
 -  A position is acquired at $10 and doubles to $20 -- using a 25% trailing stop, you would want to consider selling this position the next day if it closed at $15 ($15 / $20 - 1 = (25%)).
 -  If the position increased to $25, you would want to consider moving your trailing stop up to $18.75 ($18.75 / $25 - 1 = (25%)).
--  As initially mentioned before, nothing in here is intended to be financial advice; different trading systems have different rules for trailing stops, and this is an illustrative example.
--  However, trailing stops help preserve gains and generally important in also mitigating the emotions of investing; however, while it's easy to see your position's current return, what tends to be manual (or somewhat expensive if you use a Trailing Stop service) is calculating how close your positions are to your trailing stops.
--  This final visualization makes this easy to evaluate for any date you are reviewing; in the chart, we see that AAPL, MTCH, and NFLX all closed at their closing highs (typically a very good sign).
+-  As mentioned early on, <i>nothing in here is intended to be financial advice</i>; different trading systems have different rules for trailing stops, and this is an illustrative example.
+-  Trailing stops are meant to help preserve gains and are generally important in mitigating the emotions of investing; however, while it's easy to see your position's current return, what tends to be manual (or somewhat expensive if you use a trailing stop service) is calculating how close your positions are to your trailing stops.
+-  This final visualization makes this easy to evaluate for any date you are reviewing; in the chart, we see that AAPL, MTCH, and NFLX all closed on 3/9/2018 at their closing highs (typically a very good sign).
 -  However, TWTR is greater than 25% below its highest close (33% below as of 3/9/2018) and WMT is ~20% below its highest close.
--  In this case, you might want to sell TWTR and keep a close eye on the performance of WMT. 
+-  In this case, you might want to sell TWTR and continue to keep a close eye on the performance of WMT. 
 
 <img src="/assets/Adj Close pct off of High.png" alt="Adj Close pct off of High">
-
 
 <h2>Limitations to Approach and Closing Summary</h2>
 
