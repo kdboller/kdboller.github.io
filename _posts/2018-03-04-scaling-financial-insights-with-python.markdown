@@ -135,10 +135,9 @@ def get(tickers, startdate, enddate):
     return(pd.concat(datas, keys=tickers, names=['Ticker', 'Date']))
                
 all_data = get(tickers, stocks_start, stocks_end)
-
 ```
 
-As with the S&P 500 dataframe, you'll create an ``adj_close`` dataframe which only has the ``Adj Close`` column for all of our stock tickers.  If you look at the notebook in the repo I link to above, this code is chunked out in more code blocks, but for purposes of describing this here, I've included below all of the code which leads up to our initial merged_portfolio dataframe.
+As with the S&P 500 dataframe, you'll create an ``adj_close`` dataframe which only has the ``Adj Close`` column for all of your stock tickers.  If you look at the notebook in the repo I link to above, this code is chunked out in more code blocks than shown below. For purposes of describing this here, I've included below all of the code which leads up to our initial ``merged_portfolio`` dataframe.
 
 ```python
 # Also only pulling the ticker, date and adj. close columns for our tickers.
@@ -179,16 +178,15 @@ merged_portfolio
 
 <img src="/assets/Merged portfolio initial returns.png" alt="Merged Portfolio Initial Returns">
 
-Depending on your level of familiarity with Python, this will be very straightforward to slightly overwhelming.  Below, I'll unpack what these lines are doing:
-
-- The overall approach you are taking is an example of split-apply-combine.  A helpful overview of this can be found here.
+Depending on your level of familiarity with ``pandas``, this will be very straightforward to slightly overwhelming.  Below, I'll unpack what these lines are doing:
+- The overall approach you are taking is an example of <a href="http://www.jstatsoft.org/v40/i01/paper" target="_blank">split-apply-combine</a> (note this downloads a PDF).
 -  The ``all_data[['Adj Close']]`` line creates a new <u>dataframe</u> with only the columns provided in the list; here ``Adj Close`` is the only item provided in the list.
--  Using this line of code, ``adj_close[adj_close['Date']==end_of_last_year]``, you are filtering the ``adj_close`` dataframe to only the row where the data's ``Date`` column equals the date which you earlier specified in the ``end_of_last_year`` variable.
+-  Using this line of code, ``adj_close[adj_close['Date']==end_of_last_year]``, you are filtering the ``adj_close`` dataframe to only the row where the data's ``Date`` column equals the date which you earlier specified in the ``end_of_last_year`` variable (2017, 12, 29).
 -  You also set the index of the ``adj_close_latest`` and ``portfolio_df`` dataframes.  I did this because this is how you'll merge the two dataframes.  The ``merge`` function, very similar to SQL joins, is an extremely useful function which I use very often.
--  Within the ``merge`` function, you specify the left dataframe ( ``portfolio_df`` ) and our right dataframe ( ``adj_close_latest`` ).  By specifying ``left_index`` and ``right_index`` True, you are stating that the two dataframes share a common index and you will join both on this.
--  Last, you create a new column called ``'ticker return'`` .  This calculates the percent return by dividing the ``Adj Close`` by the ``Unit Cost`` (initial purchase price for stock) and subtracting 1.  This is similar to calculating a formula in excel and carrying it down, but in pandas this is accomplished with one-line of code.
+-  Within the ``merge`` function, you specify the left dataframe ( ``portfolio_df`` ) and our right dataframe ( ``adj_close_latest`` ).  By specifying ``left_index`` and ``right_index`` equal True, you are stating that the two dataframes share a common index and you will join both on this.
+-  Last, you create a new column called ``'ticker return'`` .  This calculates the percent return for each stock position by dividing the ``Adj Close`` by the ``Unit Cost`` (initial purchase price for stock) and subtracting 1.  This is similar to calculating a formula in excel and carrying it down, but in ``pandas`` this is accomplished with one-line of code.
 
-You have started to take the individual dataframes for the S&P and individual stocks, and you are beginning to develop a 'master' dataframe which we'll use for calculations, visualizations and any further analysis.  Next, you continue to build on this 'master' dataframe using pandas ``merge`` function.  Below, you reset the current dataframe's index and begin joining your smaller dataframes with the master one.  Once again, the below code block is broken out further in the ``Jupyter`` notebook; here I take a similar approach to before where I'll share the code below and then break down the key callouts below the code block.
+You are taking the individual dataframes for the S&P 500 and individual stocks, and you are beginning to develop a 'master' dataframe which we'll use for calculations, visualizations and any further analysis.  Next, you continue to build on this 'master' dataframe with further use of pandas ``merge`` function.  Below, you reset the current dataframe's index and begin joining your smaller dataframes with the master one.  Once again, the below code block is broken out further in the ``Jupyter`` notebook; here I take a similar approach to before where I'll share the code below and then break down the key callouts below the code block.
 
 ```python
 
@@ -227,18 +225,18 @@ merged_portfolio_sp_latest.head()
 ```
 
 -  You use ``reset_index`` on the ``merged_portfolio`` in order to flatten the master dataframe and join on the smaller dataframes' relevant columns.
--  In the ``merged_portfolio_sp`` line, we merge our master dataframe (merged_portfolio) with the ``sp_500_adj_close``; you do this in order to have the S&P's closing price on each position's purchase date -- this allows you to track the S&P performance over the same time period that each position is held (from acquisition date to most recent market close date). 
+-  In the ``merged_portfolio_sp`` line, you merge the current master dataframe (merged_portfolio) with the ``sp_500_adj_close``; you do this in order to have the S&P's closing price on each position's purchase date -- this allows you to track the S&P performance over the same time period that each position is held (from acquisition date to most recent market close date). 
 -  The merge here is slightly different than before, in that we join on the left dataframe's ``Acquisition Date`` column and on the right dataframe's ``Date`` column.
 -  After completing this merge, you will have extra columns which you do not need -- since our master dataframe will eventually have a considerable number of columns for analysis, it is important to prune duplicative and unnecessary columns along the way.
--  There are several ways to remove unnecessary columns and perform various column name cleanups; for simplicity, I use ``python`` ``del`` and then rename a few columns with pandas ``rename`` method, clarifying the ticker's ``Adj Close`` column by renaming to ``Ticker Adj Close``; and you distinguish the S&P's adjusted close with ``SP 500 Initial Close``.
--  When you calculate ``merged_portfolio_sp['Equiv SP Shares']``, you do so in order to be able to calculate the S&P 500's equivalent value for the latest close:  if you spend $5,000 on a new stock position, you could have spent $5,000 on the S&P 500; for example, if the S&P 500 was trading at $2,500 per share at the time of purchase, you would have been able to purchase 2 shares.  Later, if the S&P 500 is trading for $3,000 per share, your stake would be worth $6,000 and you would have $1,000 in paper profits over this comparable time period.
--  In the rest of the code block, we perform a similar merge, this time joining on the S&P 500's latest close -- this provides the the second piece needed to calculate the S&P's comparable return relative to each position's hold period:  the S&P 500 price on acquisition day and the S&P 500's latest close.
+-  There are several ways to remove unnecessary columns and perform various column name cleanups; for simplicity, I use ``python`` ``del`` and then rename a few columns with pandas ``rename`` method, clarifying the ticker's ``Adj Close`` column by renaming to ``Ticker Adj Close``; and you distinguish the S&P's initial adjusted close with ``SP 500 Initial Close``.
+-  When you calculate ``merged_portfolio_sp['Equiv SP Shares']``, you do so in order to be able to calculate the S&P 500's equivalent value for the close on the date you acquired each ticker position:  if you spend $5,000 on a new stock position, you could have spent $5,000 on the S&P 500; continuing the example, if the S&P 500 was trading at $2,500 per share at the time of purchase, you would have been able to purchase 2 shares.  Later, if the S&P 500 is trading for $3,000 per share, your stake would be worth $6,000 (2 equivalent shares * $3,000 per share) and you would have $1,000 in paper profits over this comparable time period.
+-  In the rest of the code block, you next perform a similar merge, this time joining on the S&P 500's latest close -- this provides the the second piece needed to calculate the S&P's comparable return relative to each position's holding period:  the S&P 500 price on each ticker's acquisition day and the S&P 500's latest market close.
 
-You now have a 'master' dataframe with the following:
--  Each portfolio positions' price, shares and value on the position acquisition day, as well as the latest market's closing price.
--  An equivalent S&P 500 price, shares and value on the equivalent position acquisition day, as well as the latest market's closing price.
+You have not further developed your 'master' dataframe with the following:
+-  Each portfolio position's price, shares and value on the position acquisition day, as well as the latest market's closing price.
+-  An equivalent S&P 500 price, shares and value on the equivalent position acquisition day for each ticker, as well as the latest S&P 500 closing price.
 
-Given the above, you will next perform the requisite calculations in order to compare each position's performance relative to the S&P 500, as well as the overall performance of this strategy / basket of stocks, relative to a comparable dollar investment and holding times of the S&P 500.
+Given the above, you will next perform the requisite calculations in order to compare each position's performance, as well as the overall performance of this strategy / basket of stocks, relative to comparable dollar investment and holding times of the S&P 500.
 
 I'll quickly summarize below in the relevant groupings the new columns which you are adding to the 'master' dataframe.
 
