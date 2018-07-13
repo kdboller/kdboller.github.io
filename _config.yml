@@ -28,8 +28,7 @@ github_username:  kdboller
 # Build settings
 markdown: kramdown
 
-# theme: minima
-theme: slate
+theme: minima
 exclude:
 - Gemfile
 - Gemfile.lock
