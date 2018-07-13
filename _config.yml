@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: KB's Data Informed Blog
+title: Data Informed Anecdotes
 email: kdboller@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   This is a blog created by a sports nut and product guy; my content is focused on building a data informed culture in sports, 
