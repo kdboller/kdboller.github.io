@@ -8,26 +8,37 @@ As mentioned on my home page, I am passionate about the analytical revolution un
 
 On this page you'll find my generally up-to-date, traditionally formatted resume.  
 
-Please feel free to download my resume [here](/assets/Boller_Kevin_Resume_2017.pdf) directly.
+Please feel free to download my resume [here](/assets/Boller_Kevin_Resume_2018_vDistribute.pdf) directly.
 
-My resume has also been included below in markdown format (note that this needs to be updated post my recent transition).   
+My resume has also been included below in markdown format below.   
 
 <hr>
 
 # EXPERIENCE
+<hr>
+### AMAZON – global e-commerce, cloud computing and digital entertainment company
+#### Sr. Product Manager, Amazon Kindle, Publisher Experience
+Nov 2017 - present,  Seattle, WA
+<hr>
+
+* Lead a high visibility, global Kindle program focused on providing and measuring optimal CX 
+  * Interface with content leads across ~10 marketplaces; provide daily insights and lead weekly business update reviews
+  * Define and execute on scalable reporting infrastructure which drives KPIs measurement and business goal pacing
+  * Manage internal dashboard rollout with development team, used by Vendor Managers to inform publisher strategies
+  * Originate reporting views and automated email summary notifications, leveraging Redshift, ETL and Python - Partner with managed publisher business intelligence team to integrate proprietary data streams across initiatives
 
 ### FLOSPORTS – OTT sports media provider of live streaming events and video on-demand
 #### VP Product (Revenue and Analytics)
-Jan 2016 – Present,  Austin, TX
+Jan 2016 – Nov 2017,  Austin, TX
+<hr>
 
-* Oversee overall product revenue roadmap and company-wide analytics while serving as product owner of data warehouse
-  * Manage a team of data engineers, data analysts, revenue-focused product developers and a senior product manager
-  * Lead data warehouse roll-out since conception stage to present; expanded from one to ten data sources in ~one year
-  * Assess most effective technologies for overall strategy, present to management and negotiate third party contracts
-* Create business rules reflecting economic model, direct dashboard development and drive key metrics tracking
-  * Design specifications and logic for aggregate fact tables which serve as the foundation for multi-source reporting
-  * Spearhead live event subscriber attribution data modeling; enables net cash share deals with governing bodies
-  * Data modeling captures 95%+ of total event subscriber attribution and automates a previously 8-hour task
+* Oversaw overall product revenue roadmap and company-wide analytics while serving as product owner of data warehouse
+  * Managed a team of data engineers, data analysts, revenue-focused product developers and a senior product manager
+  * Lead data warehouse roll-out from concept stage; expanded from one to ten data sources in ~one year
+  * Assessed most effective technologies for overall strategy, presented to management and negotiated third party contracts
+* Created business rules reflecting economic model, directed dashboard development and drove key metrics tracking
+  * Designed specifications and logic for aggregate fact tables which served as the foundation for multi-source reporting
+  * Data modeling captured 95%+ of total event subscriber attribution and automated a previously 8-hour task
 * Overhauling department workflows to build a data informed culture focused on transparency and process optimization
   * Built multi-scenario, bottoms-up forecast model for 20+ verticals based on historical analysis and benchmarking
   * Leveraged combined model forecasts and Periscope’s views + cache, creating a quarterly pacing dashboard
@@ -35,10 +46,6 @@ Jan 2016 – Present,  Austin, TX
 * Conduct A/B, multivariate and multi-page experiments and feed experiment results into pro-forma financial models
   * Created scenario-based model to reflect different pricing and plan offering structure test results across several verticals
   * Winning experiment variant is forecast to increase top-line growth by 20% - 40% over the next two years
-* Identify strategic opportunities through ad-hoc analysis and proof-of-concepts utilizing Postgres, Python and Excel
-  * Orchestrating revised VOD inventory approach based on video engagement and subscription revenue findings
-  * Split monthly sub cohorts into segments, using pandas, and evaluated monthly LTV composition by sub type
-
 
 
 
