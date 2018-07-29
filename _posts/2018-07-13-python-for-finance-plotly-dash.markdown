@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "Python for Finance:  Plotly Dash"
+title:  "Python for Finance:  Dash by Plotly"
 date:   2018-07-13 12:00:00 -0500
 categories: 
 ---
 
-## Expanding Jupyter Notebook Stock Portolio Analyses with Interactive Charting in Plotly Dash.
+## Expanding Jupyter Notebook Stock Portolio Analyses with Interactive Charting in Dash by Plotly.
 
 <img src="/assets/plotly_dash_dashboard_hero.png" alt="Python Finance" height="500"  style="width: 100%">
 
@@ -31,12 +31,12 @@ To short circuit the time that it would have taken for me to read through and ex
 As provided in [part 1](https://towardsdatascience.com/python-for-finance-stock-portfolio-analyses-6da4c3e61054), I have created [a repo on GitHub](https://github.com/kdboller/pythonsp500-plotly-dash) with all of the files and code required to create the final ``Dash`` dashboard. 
 
 Below is a summary of what is included and how to get started:
-1. Investment Portfolio Python Notebook_Dash_blog_example.ipynb -- this is very similar to the Jupyter notebook from part 1; the additions include the final two sections: a 'Stock Return Comparisons' section, which I built as a proof-of-concept prior to using ``Dash``, and 'Data Outputs', where I create csv files of the data generated which will be the data sources used in the ``Dash`` dashboard.
-2. Sample stocks acquisition dates_costs.xlsx -- this is the toy portfolio file, which you will use or modify for your portfolio assessments.
-3. requirements.txt -- this should have all of the libraries you will need.  I recommend creating a virtual environment in Anaconda, discussed further below.
-4. Mock_Portfolio_Dash.py -- this has the code for the ``Dash`` dashboard which we'll cover below.
+1. **Investment Portfolio Python Notebook_Dash_blog_example.ipynb** -- this is very similar to the Jupyter notebook from part 1; the additions include the final two sections: a 'Stock Return Comparisons' section, which I built as a proof-of-concept prior to using ``Dash``, and 'Data Outputs', where I create csv files of the data generated which will be the data sources used in the ``Dash`` dashboard.
+2. **Sample stocks acquisition dates_costs.xlsx** -- this is the toy portfolio file, which you will use or modify for your portfolio assessments.
+3. **requirements.txt** -- this should have all of the libraries you will need.  I recommend creating a virtual environment in Anaconda, discussed further below.
+4. **Mock_Portfolio_Dash.py** -- this has the code for the ``Dash`` dashboard which we'll cover below.
 
-As per my repo's [README file](https://github.com/kdboller/pythonsp500-plotly-dash/blob/master/README.md), I recommend using a virtual environment using Anaconda.  Here's a quick explanation and a link to more detail on Anaconda virtual environments:
+As per my repo's [README file](https://github.com/kdboller/pythonsp500-plotly-dash/blob/master/README.md), I recommend creating a virtual environment using Anaconda.  Here's a quick explanation and a link to more detail on Anaconda virtual environments:
 
 I recommend Python 3.6 or greater so that you can run the Dash dashboard locally with the provided csv files.
 [Here](https://medium.freecodecamp.org/why-you-need-python-environments-and-how-to-manage-them-with-conda-85f155f4353c) is a very thorough explanation on how to set up virtual environments within Anaconda.
@@ -44,7 +44,7 @@ I recommend Python 3.6 or greater so that you can run the Dash dashboard locally
 Last, as mentioned in part 1, once your environment is set up, in addition to the libraries in the requirements file, if you want the Yahoo Finance datareader piece to run in the notebook, you will also need to ``pip install fix-yahoo-finance`` within your virtual environment. 
 
 ### Working with Dash
-[Assume everything is set up and you've generated your files by running the below code]
+If you have followed along thus far in setting up a virtual environment using Python 3.6, and have installed the necessary libraries, you should be able to run the ``Python`` file with the Dash dashboard code.
 
 If you would like the full explanation on the Jupyter notebook and generating the portfolio data set, please refer to [part 1](https://towardsdatascience.com/python-for-finance-stock-portfolio-analyses-6da4c3e61054).  At the end of the Jupyter notebook, you will see the below code in the 'Data Outputs' section.  These minor additions will send CSV files into your local directory.  The first is the full portfolio dataset, from which we can generate all of the visualizations, and the second provides the list of tickers will use in the first, new stock chart's dropdown.
 
@@ -54,7 +54,16 @@ If you would like the full explanation on the Jupyter notebook and generating th
 merged_portfolio_sp_latest_YTD_sp_closing_high.to_csv('analyzed_portfolio.csv')
 ```
 
-Now, I'll highlight the key aspects of the Mock Portfolio Python file and share how to run the dashboard locally and provide an image of what you should see when running this ``Dash`` dashboard.
+I'll highlight some key aspects of the Mock Portfolio Python file and share how to run the dashboard locally.  
+
+For reference while we breakdown the .py file, below is a screen grab of what you should see when running this ``Dash`` dashboard.
+
+
+
+At the beginning of the .py file, you import the libraries included in the requirements.txt file, and then write ```python app = dash.Dash() ``` in order to run the dashboard from the command line.
+You then create two dataframe objects, ``tickers`` and ``data``.  Tickers will be used for the stock tickers in one of chart's dropdowns, and the data dataframe is the final data set which is used for all of the visualization evaluations.
+
+You wrap the entire dashboard in a div, and then 
 
 
 * analyzed query csv generated by Jupyter notebook.
