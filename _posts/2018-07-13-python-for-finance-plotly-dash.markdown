@@ -5,7 +5,7 @@ date:   2018-07-13 12:00:00 -0500
 categories: 
 ---
 
-## Expanding Jupyter Notebook Stock Portolio Analyses with Interactive Charting in Dash by Plotly.
+## Expanding Jupyter Notebook Stock Portfolio Analyses with Interactive Charting in Dash by Plotly.
 
 <img src="/assets/carlos-muza-84523-unsplash.jpg" alt="Python Finance" height="500"  style="width: 100%">
 
