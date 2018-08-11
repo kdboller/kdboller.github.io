@@ -13,8 +13,8 @@ permalink: /about/
 </center>
 
 <center><h3>TECHNICAL SKILLS</h3></center>
-<p><strong>Programming/Analytics:</strong> SQL (Postgres, MySQL), Python (pandas, numpy, scikit-learn), R</p>
-<p><strong>Databases/Warehouses:</strong> Periscope Data (Cache/Views), Mode Analytics, Segment (warehouse and platform), Redshift
+<p><strong>Programming/Data Science:</strong> SQL (Postgres, MySQL), Python (pandas, numpy, scikit-learn), R, Dash by Plotly</p>
+<p><strong>Databases/Warehouses/BI:</strong> Periscope Data (Cache/Views), Mode Analytics, Segment (warehouse and platform), Redshift and Tableau
 
 <hr>
 
@@ -30,21 +30,16 @@ permalink: /about/
 <hr>
 <br />
 
-<p> My professional experience spans software consulting, investment banking, consumer-facing product management and data warehouse ownership, as well as product and data analytics leadership. </p>
+<p> My professional experience spans software consulting, investment banking, product management (consumer and enterprise), data warehouse product ownership, and data analytics leadership. </p>
 
-<p>
-  Most recently I served as VP Product (Revenue and Analytics) at FloSports in Austin, TX; I spearheaded subscription revenue generation, the data warehouse development and our data and analytics roadmaps; during my tenure, we started from scratch and built a data warehouse with 15+ daily refreshed data sources and grew to ~150 company users on our business intelligence dashboards. I selected Periscope Data, Mode Analytics and Segment (customer data platform and unlimited sources), while also conducting extensive price testing which led to a significant modification in our pricing strategy. 
-</p>
+  I am a PM in Amazon’s Kindle Content group. I work with the Enterprise Publisher Experience (EPX) dev team, driving new features which support growth in our Publisher Experience (PX) offering. Prior to this, I served as VP Product (Revenue and Analytics) at FloSports in Austin, TX. 
+When I started at FloSports, the company had no data warehouse and no business intelligence dashboarding. I selected Amazon Redshift and Periscope Data, and during my tenure we developed a data warehouse with 15+ daily refreshed data sources while empowering 100 company users with BI dashboards. 
 
 <p>Prior to this, I was a Vice President in Blackstone's Advisory Partners (M&A) group. From 2011-2012, I was a member of the deal team which advised the Los Angeles Dodgers’ former owner and management on the $2.3 billion sale of the team, stadium, media rights and real estate to Magic Johnson and Guggenheim Partners.</p>
 
 <p>
 After graduating from the University of Chicago Booth School of Business, I worked at Rothschild and was a member of the deal team who sold a minority stake in Creative Artists Agency to TPG Capital. 
 </p>
-
-<p>Before business school, I was a healthcare IT consultant, leveraging SQL and implementing software in a client-facing role. </p>
-
-
 
 
 {% comment %} 
