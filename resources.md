@@ -5,9 +5,9 @@ permalink: /resources/
 ---
 
 <p>
-This resources page is intended to serve as an index for people who are looking to expand their skill set and learn more about data analytics and data science.
+This resources page can serve as a starting point for people who are looking to expand their skill set and learn more about data analytics and data science.
 
-Further, it also helps me catalog and organize all of the helpful resources I've leveraged, as well as those which I may have started working with or intend to in the future.
+Further, I intend to use this page to catalog and organize all of the helpful resources I've leveraged, as well as those I'm starting to work with or plan to in the future.
 </p>
 
 <p>
