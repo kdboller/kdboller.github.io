@@ -30,9 +30,9 @@ permalink: /about/
 <hr>
 <br />
 
-<p> My professional experience spans software consulting, investment banking, product management (consumer and enterprise), data warehouse product ownership, and data analytics leadership. </p>
+My professional experience spans software consulting, investment banking, product management (consumer and enterprise), data warehouse product ownership, and data analytics leadership.
 
-  I am a PM in Amazon’s Kindle Content group. I work with the Enterprise Publisher Experience (EPX) dev team, driving new features which support growth in our Publisher Experience (PX) offering. Prior to this, I served as VP Product (Revenue and Analytics) at FloSports in Austin, TX. 
+I am a PM in Amazon’s Kindle Content group. I work with the Enterprise Publisher Experience (EPX) dev team, driving new features which support growth in our Publisher Experience (PX) offering. Prior to this, I served as VP Product (Revenue and Analytics) at FloSports in Austin, TX. 
 When I started at FloSports, the company had no data warehouse and no business intelligence dashboarding. I selected Amazon Redshift and Periscope Data, and during my tenure we developed a data warehouse with 15+ daily refreshed data sources while empowering 100 company users with BI dashboards. 
 
 Prior to this, I was a Vice President in Blackstone's Advisory Partners (M&A) group. From 2011-2012, I was a member of the deal team which advised the Los Angeles Dodgers’ former owner and management on the $2.3 billion sale of the team, stadium, media rights and real estate to Magic Johnson and Guggenheim Partners.
