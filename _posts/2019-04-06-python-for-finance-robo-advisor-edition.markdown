@@ -21,19 +21,29 @@ This post is the third installment in my series on leveraging ``Python`` for fin
 
 In this series continuation, I will provide an overview of Robo Advisors and then share additional code and details on how to evaluate a diversified index strategy.  This strategy can be used for several personal finance uses cases, including as part of a holistic approach that combines ETFs with individual stocks and bonds.  It could also be used to evaluate the efficacy of a Robo Advisor alongside a personally managed ETF strategy.  
 
-Finally, one of the largest limitations from my initial approach was that the analyses did not account for dividends and compare <a href="https://www.investopedia.com/terms/t/tsr.asp" target="_blank">total shareholder return</a>.  Total shareholder return is now incorporated -- in my view, this is one of the largest gaps I've seen in retail personal portfolio apps.  It is extremely difficult to get an all-up view of portfolio performance, including investment timings and earned dividends.  My approach now accounts for both of these, which is a personal pain point that led me to solve this with my own product.  I will continue to evolve this portfolio performance web app; and I'll share future updates to see if there is a market for this approach in a consumer-facing app.     
+Finally, one of the largest limitations from my initial approach was that the analyses did not account for dividends and compare <a href="https://www.investopedia.com/terms/t/tsr.asp" target="_blank">total shareholder return</a>.  Total shareholder return is now incorporated -- in my view, this is one of the largest gaps I've seen in retail investor personal portfolio apps.  It is extremely difficult to get an all-up view of portfolio performance, including investment timings and earned dividends.  My approach now accounts for both of these, which was a personal pain point that led me to solve this with my own product.  I will continue to evolve this portfolio performance web app; and I'll share future updates to see if there is a potential market for this approach as a consumer-facing app.     
 
 ### Overview of Robo Advisor.
 
-[Placeholder]
+Per <a href="https://www.nerdwallet.com/blog/investing/best-robo-advisors/" target="_blank">NerdWallet</a>, a robo-advisor is "an online, automated portfolio management service".  Robo Advisors use algorithms, which are based on rules that the individual user inputs and drive investment selection for the individual based on her risk tolerance and investment horizon (aka, time to retirement and/or financial objectives).  Robo Advisors offer much lower costs than traditional human financial advisory, with the tradeoff being that you generally do not have anyone to personally consult with regarding your financial objectives.  Robo Advisors are typically best suited for passive investors, who are comfortable with someone else building and optimizing a personal portfolio, and who also do not have complex financial situations.
+
+Some of the major and most well known Robo Advisors include Wealthfront, SoFi and Betterment.  Personal Capital is another option in this space, although the company does not believe it should be classified as a Robo Advisor -- this is due to the fact that Personal Capital combines a sophisticated budgeting and portfolio monitoring application with virtual human financial advisors.  Personal Capital markets itself as a financial technology platform that can also advise higher net worth individuals and families who have more complicated financial situations.  
+
+In this post, we will leverage a diversified ETF example that Personal Capital provides on its <a href="https://www.personalcapital.com/wealth-management/performance" target="_blank">Wealth Management performance page</a>.  I believe this is informative because I respect Personal Capital's approach, they're very transparent with their performance relative to benchmarks, and in my view the representative ETFs in the footnotes could be used to construct a sound investment strategy.
+
+### Why Implement a Passive Investment Strategy.
+
+[Active managers lose]...
+
+[Don't try and time the market]... 
 
 Outline.
 
-1. Intro [draft complete] -- this is the third installment of a series on how to leverage ``Python``, ``pandas``, ``Dash`` and financial data APIs in order to automate personal portfolio tracking.
+1. Intro [**draft complete**] -- this is the third installment of a series on how to leverage ``Python``, ``pandas``, ``Dash`` and financial data APIs in order to automate personal portfolio tracking.
 
-1. Overview of what a Robo Advisor is; i) passive versus active investing. ii) who are the main Robo Advisors; iii) how you can decently replicate their strategies bsaed on what's provided in this post.
+1. Overview Robo Advisor [**draft complete**]; i) passive versus active investing. ii) who are the main Robo Advisors; iii) how you can decently replicate their strategies bsaed on what's provided in this post.
 
-1. Recent data points:  https://www.cnbc.com/2019/03/15/active-fund-managers-trail-the-sp-500-for-the-ninth-year-in-a-row-in-triumph-for-indexing.html; active fund managers trail; Bogle's recent book and quote on 'top decile returns when you invest in index funds'; Howard Marks book on where we are at in the credit cycle. 
+Recent data points:  https://www.cnbc.com/2019/03/15/active-fund-managers-trail-the-sp-500-for-the-ninth-year-in-a-row-in-triumph-for-indexing.html; active fund managers trail; Bogle's recent book and quote on 'top decile returns when you invest in index funds'; Howard Marks book on where we are at in the credit cycle. 
 
 1. Personal Capital benchmarking, which we'll use as our example. 
 
