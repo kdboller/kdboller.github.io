@@ -32,7 +32,7 @@ In this post, we will leverage a diversified ETF example that Personal Capital p
 ### Passive versus Active Investment Strategies.
 Over the years since I initially started investing, **I've focused more and more on making my investing strategy as boring as possible**.  This means that I've subscribed to more of a passive investment strategy and I acknowledge that attempting to time the market is nearly impossible.  In Part 1 of this series, I noted that over the long-term 1 in 20 actively managed domestic funds beat index funds (<a href="https://www.marketwatch.com/story/why-way-fewer-actively-managed-funds-beat-the-sp-than-we-thought-2017-04-24" target="_blank">link</a>).  Outperformance over a prolonged period is very difficult to maintain and previous outperformers tend to revert to the mean of benchmark performance over the long term.  Further emphasizing this point, it was recently announced that, for the 9th year in a row, <a href="https://www.cnbc.com/2019/03/15/active-fund-managers-trail-the-sp-500-for-the-ninth-year-in-a-row-in-triumph-for-indexing.html" target="_blank">active fund managers trailed the S&P 500</a>.  Active managers, who previously claimed they would do better during periods of increased volatility, will have to go back to the drawing board once again.
 
-Given this, I now focus a majority of my assets in a diversified ETF strategy -- my core strategy employs high quality ETFs that have a very low cost structure and provide diversification across asset classes.  These include US and international equities, investment grade bonds, commodities, gold and real estate.  While I continue to prefer that my investment strategy is as boring as possible, I continue to also invest in individual stocks that meet several investment criteria, including accelerating revenue growth, earnings outperformance and, ideally, the development of products that I personally love.  Part 1 and Part 2 of this series cover in detail how to track individual stock performance relative to the S&P 500, which is similar to how we'll evaluate a diversified ETF strategy in this post.    
+Given this, I now focus a majority of my assets in a diversified ETF strategy -- my core strategy employs high quality ETFs that have a very low cost structure and provide diversification across asset classes.  These include US and international equities, investment grade bonds, commodities, gold and real estate.  While I prefer that my investment strategy is as boring as possible, I continue to also invest in individual stocks that meet several investment criteria, including accelerating revenue growth, earnings outperformance and, ideally, the development of products that I personally love.  Part 1 and Part 2 of this series cover in detail how to track individual stock performance relative to the S&P 500, which is similar to how we'll evaluate a diversified ETF strategy in this post.    
 
 ### Part 3 Code Implementation.
 **Setup.**  Similar to Parts 1 and 2, I created <a href="https://github.com/kdboller/pythonsp500-robo-advisor-edition" target="_blank">a repo on GitHub </a>with all files and code required to create the final ``Dash`` dashboard.  For this post, I will explain the following aspects of the code:
@@ -45,7 +45,9 @@ The Jupyter notebook in the repo for this post has all the code needed from star
 
 As discussed at the end of Part 2, the limitations to the previous approach were i) it did not account for dividends, ii) it evaluated active positions and did not include previously divested ones, and iii) there were opportunities to automate the overall process by generating data pipelines that could feed into a live web application.
 
-In my view, missing dividends was the largest gap and this updated approach now accounts for them.  I'm less concerned with divested positions, because this evaluation is most useful for evaluating how well your strategy is performing and if there are positions you continue to hold that you probably should not, e.g., lagging benchmark and therefore representing both overall performnace drag and opportunity cost of holding a better investment.  While I would like to fully automate this process, I've de-prioritized that in favor of refining my overall strategy.  If I do decide to pursue a fully automated approach, I may or may not write a detailed post about that automation.
+In my view, missing dividends was the largest gap and this updated approach now accounts for them.  I'm less concerned with divested positions, because this evaluation is most useful for evaluating how well your strategy is performing and if there are positions you continue to hold that you probably should not, e.g., lagging benchmark and therefore representing both overall performance drag and opportunity cost from holding a better investment.  While I would like to fully automate this process, I've de-prioritized that in favor of refining my overall strategy.  If I do decide to pursue a fully automated approach, I may or may not write a detailed post about that automation.
+
+Note:  make sure that you append SPY to the list of tickers.
 
 **Target Allocation.**
 [Placeholder]
@@ -55,7 +57,7 @@ In my view, missing dividends was the largest gap and this updated approach now 
 [Placeholder]
 
 
-**Portfolio Return Compare to Benchmark.**
+**Portfolio Return Comparison to Benchmark.**
 [Placeholder]
 
 ### Conclusion.
