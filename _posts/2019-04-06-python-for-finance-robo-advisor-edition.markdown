@@ -9,7 +9,7 @@ categories:
 
 <img src="/assets/aditya-vyas-783075-unsplash.jpg" alt="Wall St Stock Exchange" height="500"  style="width: 100%"> 
 
-<> Photo by Aditya Vyas on Unsplash https://unsplash.com/photos/6Ih4UoqzaAs
+Photo by Aditya Vyas on Unsplash.
 
 ## Part 3 of Leveraging Python for Stock Portfolio Analyses.
 
@@ -88,11 +88,111 @@ merged_portfolio_sp_latest_YTD_sp_contr_subset_pivot
 * We then sum up each position's total market value (Ticker Share Value) and divide it by the total market value of the portfolio; this allows you to compare current allocation, based on market price changes, relative to your target allocations. 
 
 **Total Shareholder Return.**
-Above line 54 in the notebook, you'll see a Dividends section.  Here I've gathered dividend data for each position and 
+Above line 54 in the notebook, you'll see a Dividends section.  Here I've gathered dividend data for each position and you'll see the URLs for the sites where you can gather the dividend information.  Here, I'll be self-critical in that this section of the code has some room for improvement.  I've investigated accessing Quandl's API to automate dividend information, but decided to not pay for a subscription.  I'm also looking into developing a scraper for these sites; but for now I'm copying/pasting data from the sites into the Historical Dividends excel file.  This is generally fine as dividends tend to be paid quarterly and model portfolio has 7 total positions, but I definitely welcome suggestions on how to improve this section of the code.  Note, however you decide to aggregate dividend data, you should make sure that you only account for dividends where your acquisition date of the position is <= to the Ex-Div Date (see function, from line 60, shown as the first code block below).  
+
+```python 
+# This function determines if you owned the stock and were eligible to be paid the dividend.
+
+def dividend_post_acquisition(df):
+    if df['Ex-Div. Date'] > df['Acquisition Date'] and df['Ex-Div. Date'] <= stocks_end:
+        val = 1
+    elif df['Ex-Div. Date'] <= df['Acquisition Date']:
+        val = 0
+    else:
+        val = 0
+    return val
+```
+
+```python
+
+# subset the df with the needed columns that includes total dividends received for each position.
+
+merged_subsets_eligible_total = merged_subsets_eligible.pivot_table(index=['Ticker #', 'Ticker', 'Acquisition Date', 'Quantity'
+                                                                           , 'Latest Date', 'Equiv SP Shares']
+                                                                          , values='Dividend Amt', aggfunc=sum)
+
+merged_subsets_eligible_total.reset_index(inplace=True)
+
+merged_subsets_eligible_total
+
+```
+
+* Once you have created the eligible dividends dataframe, based on the ex-div dates for the stock since you've held it, the above code aggregates the total dividends received for each and also includes the Equiv SP Shares column; this is needed to compare each position's dividends received relative to what an equal SP500 investment returned.
+
+```python
+
+# This df adds all of the columns with the SP500 dividends paid during the range that each stock position was held.
+# For comparative holding period purposes.
+
+dividend_df_sp500_2 = dividend_df_sp500
+
+agg0_start_date = datetime.datetime(2014, 4, 21)
+dbc1_start_date = datetime.datetime(2014, 4, 21)
+igov3_start_date = datetime.datetime(2014, 4, 21)
+veu4_start_date = datetime.datetime(2014, 4, 21)
+vnq5_start_date = datetime.datetime(2014, 4, 21)
+vti6_start_date = datetime.datetime(2014, 4, 21)
+vti7_start_date = datetime.datetime(2014, 5, 5)
+
+dividend_df_sp500_2.loc[:, 'agg0_sum'] = dividend_df_sp500_2[(dividend_df_sp500_2['Ex-Div. Date'] > agg0_start_date) & (dividend_df_sp500_2['Ex-Div. Date'] <= stocks_end)].sum()['Amount']
+dividend_df_sp500_2.loc[:, 'dbc1_sum'] = dividend_df_sp500_2[(dividend_df_sp500_2['Ex-Div. Date'] > dbc1_start_date) & (dividend_df_sp500_2['Ex-Div. Date'] <= stocks_end)].sum()['Amount']
+dividend_df_sp500_2.loc[:, 'igov3_sum'] = dividend_df_sp500_2[(dividend_df_sp500_2['Ex-Div. Date'] > igov3_start_date) & (dividend_df_sp500_2['Ex-Div. Date'] <= stocks_end)].sum()['Amount']
+dividend_df_sp500_2.loc[:, 'veu4_sum'] = dividend_df_sp500_2[(dividend_df_sp500_2['Ex-Div. Date'] > veu4_start_date) & (dividend_df_sp500_2['Ex-Div. Date'] <= stocks_end)].sum()['Amount']
+dividend_df_sp500_2.loc[:, 'vnq5_sum'] = dividend_df_sp500_2[(dividend_df_sp500_2['Ex-Div. Date'] > vnq5_start_date) & (dividend_df_sp500_2['Ex-Div. Date'] <= stocks_end)].sum()['Amount']
+dividend_df_sp500_2.loc[:, 'vti6_sum'] = dividend_df_sp500_2[(dividend_df_sp500_2['Ex-Div. Date'] > vti6_start_date) & (dividend_df_sp500_2['Ex-Div. Date'] <= stocks_end)].sum()['Amount']
+dividend_df_sp500_2.loc[:, 'vti7_sum'] = dividend_df_sp500_2[(dividend_df_sp500_2['Ex-Div. Date'] > vti7_start_date) & (dividend_df_sp500_2['Ex-Div. Date'] <= stocks_end)].sum()['Amount']
+
+dividend_df_sp500_2.head()
+
+# Subset the above df and re-label the SP500 total dividend amount column.
+
+dividend_df_sp500_2 = dividend_df_sp500_2.iloc[0, 10:]
+
+dividend_df_sp500_2 = dividend_df_sp500_2.to_frame().reset_index()
+
+dividend_df_sp500_2.rename(columns={213: 'SP500 Div Amt'}, inplace=True)
+
+dividend_df_sp500_2
+
+# This function is used to assign the Ticker # column so that this df can be joined with the master df.
+
+def ticker_assigner(df):
+    if df['index'] == 'agg0_sum':
+        val = 'AGG 0'
+    elif df['index'] == 'dbc1_sum':
+        val = 'DBC 1'
+    elif df['index'] == 'igov3_sum':
+        val = 'IGOV 3'
+    elif df['index'] == 'veu4_sum':
+        val = 'VEU 4'
+    elif df['index'] == 'vnq5_sum':
+        val = 'VNQ 5'
+    elif df['index'] == 'vti6_sum':
+        val = 'VTI 6'
+    elif df['index'] == 'vti7_sum':
+        val = 'VTI 7'
+    else:
+        val = 0
+    return val
+
+```
+**The above code is the least elegant and in most need of improvement, but it gets the job done for the time being.**
+
+* In the first code block (line 68), you set a variable for each position based on each position's acquisition date. 
+* You then create a new column that sums the dividends paid for the SP500 during an equivalent holding period as each position.
+* In the next code block, you grab the first row and column 11 and after, .iloc[0, 10:]. This removes the duplication from the inelegant solution for grabbing the SP500 dividend for each position.
+* In the last code block above, you're assigning the sum of the SP500 dividends to each relevant position, in order to calculate TSR for each holding.  For example, agg0_sum tracks the sum of all SP500 dividends since you held your first AGG investment.  You're assigning this to the 'AGG 0' row in your master dataframe.
+
+In line 74, you'll see some familiar calculations, as well as some new ones, in order to create the key metrics we'll compare for each position relative to the SP500.
+
+* SP500 Tot Div - this takes the total SP500 dividend amount and multiplies it by the number of shares you could have purchased in the SP500 for the dollars you instead invested in each position.
+* There are total Gain / (Loss) columns added that sum the gain or loss from each position, aka the percent a stock went up or down since purchase, with the total dividends received since you bought the position.  These metrics therefore allow you to calculate TSR for both your individual positions and comparable SP500 holdings.
+* As always, your returns are determined by dividing the value of the holding by its original cost basis.
+* Similar to that seen in parts 1 and 2, we calculate cumulative returns in order to look at, in addition to individual performance, the performance of our total portfolio return relative to the SP500 benchmark.
+
+### Brief Observations for Dashboard Outputs.
 
 
-**Portfolio Return Comparison to Benchmark.**
-[Placeholder]
 
 ### Conclusion.
 [Placeholder]
