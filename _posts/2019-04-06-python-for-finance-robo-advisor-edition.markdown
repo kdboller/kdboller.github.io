@@ -45,12 +45,15 @@ The Jupyter notebook in the repo for this post has all the code needed from star
 
 As discussed at the end of Part 2, the limitations to the previous approach were i) it did not account for dividends, ii) it evaluated active positions and did not include previously divested ones, and iii) there were opportunities to automate the overall process by generating data pipelines that could feed into a live web application.
 
-In my view, missing dividends was the largest gap and this updated approach now accounts for them.  I'm less concerned with divested positions, because this evaluation is most useful for evaluating how well your strategy is performing and if there are positions you continue to hold that you probably should not, e.g., lagging benchmark and therefore representing both overall performance drag and opportunity cost from holding a better investment.  While I would like to fully automate this process, I've de-prioritized that in favor of refining my overall strategy.  If I do decide to pursue a fully automated approach, I may or may not write a detailed post about that automation.
-
-Note:  make sure that you append SPY to the list of tickers.
+In my view, not including dividends and evaluating total shareholder return (TSR) was the largest gap; and this updated approach now evaluates TSR.  I'm less concerned with divested positions, because this evaluation is most useful for evaluating how well your strategy is performing and if there are positions you continue to hold that you probably should not, e.g., lagging benchmark and therefore representing both overall performance drag and opportunity cost from holding a better investment.  While I would like to fully automate this process, I've de-prioritized that in favor of refining my overall strategy.  If I do decide to pursue a fully automated approach, I may or may not write a detailed post about that automation.
 
 **Target Allocation.**
-[Placeholder]
+For the code discussion, we'll begin with the Jupyter notebook - an interactive version can be found <a href="https://towardsdatascience.com/python-for-finance-stock-portfolio-analyses-6da4c3e61054" target="_blank">here</a>.  If you would like details on the dataframe development and closing high evaluation, please review <a href="https://towardsdatascience.com/python-for-finance-stock-portfolio-analyses-6da4c3e61054" target="_blank">part 1</a>.  Below I'll highlight the primary addition to the dataframe development, which is understanding and comparing target allocation versus actual allocation.  In our model portfolio, we would like to have 50% of our investment allocated to VTI, which is a total stock index ETF for US equities.  As prices change post investment, our allocation will shift away from 50% based on the movement of this asset, as well as the other assets in our model portfolio.  For that reason, we should monitor this movement and adjust the assets held in order to get back to our target allocation.  If VIT increases above 50% and VEU dips below 25%, then we should sell down some of VTI and/or purchase more of VEU to get back to our targets.
+
+```python
+
+
+```
 
 
 **Total Shareholder Return.**
