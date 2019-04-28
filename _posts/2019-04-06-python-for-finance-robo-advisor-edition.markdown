@@ -191,7 +191,7 @@ In line 74, you'll see some familiar calculations, as well as some new ones, in 
 * Similar to that seen in parts 1 and 2, we calculate cumulative returns in order to look at, in addition to individual performance, the performance of our total portfolio return relative to the SP500 benchmark.
 
 ### Brief Observations for Dashboard Outputs.
-
+<img src="/assets/robo_advisor_percent allocation.png" alt="Percent Allocation" height="500"  style="width: 100%">
 
 
 ### Conclusion.
