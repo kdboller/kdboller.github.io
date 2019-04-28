@@ -13,8 +13,6 @@ categories:
 
 ## Part 3 of Leveraging Python for Stock Portfolio Analyses.
 
-**As of early April 2019, this post is a work in progress.**
-
 ### Introduction.
 This post is the third installment in my series on leveraging ``Python`` for finance, specifically stock portfolio analyses.  In <a href="https://towardsdatascience.com/python-for-finance-stock-portfolio-analyses-6da4c3e61054" target="_blank">part 1</a>, I reviewed a Jupyter notebook with all of the code needed to extract financial time series data from the Yahoo Finance API and create a rich dataframe for analyzing portfolio performance across individual tickers.  The code also included a review of some key portfolio metrics with several visualizations created using the ``Plotly`` library.  In <a href="https://towardsdatascience.com/python-for-finance-dash-by-plotly-ccf84045b8be" target="_blank">part 2</a>, I extended Part 1's analyses and visualizations by providing the code needed to take the data sets generated and visualize them in a ``Dash by Plotly`` (``Dash``) web app.  
 
@@ -48,16 +46,49 @@ As discussed at the end of Part 2, the limitations to the previous approach were
 In my view, not including dividends and evaluating total shareholder return (TSR) was the largest gap; and this updated approach now evaluates TSR.  I'm less concerned with divested positions, because this evaluation is most useful for evaluating how well your strategy is performing and if there are positions you continue to hold that you probably should not, e.g., lagging benchmark and therefore representing both overall performance drag and opportunity cost from holding a better investment.  While I would like to fully automate this process, I've de-prioritized that in favor of refining my overall strategy.  If I do decide to pursue a fully automated approach, I may or may not write a detailed post about that automation.
 
 **Target Allocation.**
-For the code discussion, we'll begin with the Jupyter notebook - an interactive version can be found <a href="https://towardsdatascience.com/python-for-finance-stock-portfolio-analyses-6da4c3e61054" target="_blank">here</a>.  If you would like details on the dataframe development and closing high evaluation, please review <a href="https://towardsdatascience.com/python-for-finance-stock-portfolio-analyses-6da4c3e61054" target="_blank">part 1</a>.  Below I'll highlight the primary addition to the dataframe development, which is understanding and comparing target allocation versus actual allocation.  In our model portfolio, we would like to have 50% of our investment allocated to VTI, which is a total stock index ETF for US equities.  As prices change post investment, our allocation will shift away from 50% based on the movement of this asset, as well as the other assets in our model portfolio.  For that reason, we should monitor this movement and adjust the assets held in order to get back to our target allocation.  If VIT increases above 50% and VEU dips below 25%, then we should sell down some of VTI and/or purchase more of VEU to get back to our targets.
+For the code discussion, we'll begin with the Jupyter notebook - an interactive version can be found <a href="https://towardsdatascience.com/python-for-finance-stock-portfolio-analyses-6da4c3e61054" target="_blank">here</a>.  If you would like details on the dataframe development and closing high evaluation, please review <a href="https://towardsdatascience.com/python-for-finance-stock-portfolio-analyses-6da4c3e61054" target="_blank">part 1</a>.  Below I'll highlight the primary addition to the dataframe development, which is understanding and comparing target allocation versus actual allocation.  In our model portfolio, we would like to have 50% of our investment allocated to VTI, which is a total stock index ETF for US equities.  As prices change post investment, our allocation will shift away from 50% based on the movement of this asset, as well as the other assets in our model portfolio.  For that reason, we should monitor this movement and adjust the assets held in order to get back to our target allocation.  For example, if VTI increases above 50% and VEU dips below 25%, then we should sell down some of VTI and/or purchase more of VEU to get back to our targets.  The below starts on line 32 and stops on line 36 in the notebook.
 
 ```python
+# This dataframe will only look at the positions with an intended contribution, if applicable.
 
+merged_portfolio_sp_latest_YTD_sp_contr = merged_portfolio_sp_latest_YTD_sp[merged_portfolio_sp_latest_YTD_sp['Target_Alloc']>0]
 
+merged_portfolio_sp_latest_YTD_sp_contr
+
+# Shorten dataframe to focus on columns that will be used to look at intended versus current allocations.
+
+merged_portfolio_sp_latest_YTD_sp_contr_subset = merged_portfolio_sp_latest_YTD_sp_contr[['Ticker', 'Target_Alloc', 'Cost Basis', 'Ticker Share Value']]
+
+merged_portfolio_sp_latest_YTD_sp_contr_subset
+
+# If you've bought multiple positions at different times, this pivot table will aggregate the sums for each position.
+
+merged_portfolio_sp_latest_YTD_sp_contr_subset_pivot = merged_portfolio_sp_latest_YTD_sp_contr_subset.pivot_table(
+    index=['Ticker', 'Target_Alloc'], values='Ticker Share Value', aggfunc='sum')
+
+merged_portfolio_sp_latest_YTD_sp_contr_subset_pivot.reset_index(inplace=True)
+
+merged_portfolio_sp_latest_YTD_sp_contr_subset_pivot
+
+# These new columns calculate the actual allocation to compare to the target allocation.
+
+merged_portfolio_sp_latest_YTD_sp_contr_subset_pivot['Total'] = merged_portfolio_sp_latest_YTD_sp_contr_subset_pivot.loc[:, 'Ticker Share Value'].cumsum()
+
+merged_portfolio_sp_latest_YTD_sp_contr_subset_pivot['Allocation'] = merged_portfolio_sp_latest_YTD_sp_contr_subset_pivot['Ticker Share Value'] / merged_portfolio_sp_latest_YTD_sp_contr_subset_pivot.iloc[-1, -1]
+
+merged_portfolio_sp_latest_YTD_sp_contr_subset_pivot
+
+merged_portfolio_sp_latest_YTD_sp_contr_subset_pivot.sort_values(by='Target_Alloc', ascending=False, inplace=True)
+
+merged_portfolio_sp_latest_YTD_sp_contr_subset_pivot
 ```
 
+* In the file we read in, we look at all positions that we have noted with have a Target Allocation; this provides flexibility in the event you want to track positions but are not actively investing in them while evaluating.
+* We subset the dataframe, and then use the pivot_table method to aggregate total market value of holding.  As noted in the code, we run this pivot due to the fact that, over several years, you'll invest in the positions in this model portfolio a number of different times - this pivot lets you look at your all-up allocation given current market prices for each, and as the allocation evolves over time.
+* We then sum up each position's total market value (Ticker Share Value) and divide it by the total market value of the portfolio; this allows you to compare current allocation, based on market price changes, relative to your target allocations. 
 
 **Total Shareholder Return.**
-[Placeholder]
+Above line 54 in the notebook, you'll see a Dividends section.  Here I've gathered dividend data for each position and 
 
 
 **Portfolio Return Comparison to Benchmark.**
