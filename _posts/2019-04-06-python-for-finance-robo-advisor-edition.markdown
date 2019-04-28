@@ -192,6 +192,12 @@ In line 74, you'll see some familiar calculations, as well as some new ones, in 
 
 ### Brief Observations for Dashboard Outputs.
 <img src="/assets/robo_advisor_percent allocation.png" alt="Percent Allocation" height="500"  style="width: 100%">
+* In the visualization above, you can see your current allocation for each position in this model portfolio relative to your target allocation.
+* These positions have all been held since April 2014, and VTI has returned around 70% during that time (thru 4/18/2019).
+* Since VTI has returned more than other positions, it now represents nearly 60% of your portfolio -- this is where portfolio re-balancing comes in.  To keep the same amount invested in the portfolio, you would want to sell down some of VTI and use the proceeds to purchase the other positions, in order to get back to your target allocation.
+* The benefit of robo-advisors such as Betterment and Wealthfront, is that they'll automatically re-balance for you. The caveat is that there are obviously fees you incur for them to perform this service, while the robo-advisors may save you on transaction costs associated with making these trades. 
+
+<img src="/assets/robo_advisor_tsr by ticker and tsr pct overall.png" alt="Percent Allocation" height="500"  style="width: 100%">
 
 
 ### Conclusion.
