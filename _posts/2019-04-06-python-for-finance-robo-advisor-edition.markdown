@@ -191,6 +191,8 @@ In line 74, you'll see some familiar calculations, as well as some new ones, in 
 * Similar to that seen in parts 1 and 2, we calculate cumulative returns in order to look at, in addition to individual performance, the performance of our total portfolio return relative to the SP500 benchmark.
 
 ### Brief Observations for Dashboard Outputs.
+Both of the below visualizations can be see in the Jupyter notebook, as well as running the ``Dash`` dashboard locally.  For instructions on how to start working with ``Dash``, please see <a href="https://towardsdatascience.com/python-for-finance-dash-by-plotly-ccf84045b8be" target="_blank">part 2's</a> **Working with Dash** section.  
+
 <img src="/assets/robo_advisor_percent allocation.png" alt="Percent Allocation" height="500"  style="width: 100%">
 * In the visualization above, you can see your current allocation for each position in this model portfolio relative to your target allocation.
 * These positions have all been held since April 2014, and VTI has returned around 70% during that time (thru 4/18/2019).
@@ -198,27 +200,27 @@ In line 74, you'll see some familiar calculations, as well as some new ones, in 
 * The benefit of robo-advisors such as Betterment and Wealthfront, is that they'll automatically re-balance for you. The caveat is that there are obviously fees you incur for them to perform this service, while the robo-advisors may save you on transaction costs associated with making these trades. 
 
 <img src="/assets/robo_advisor_tsr by ticker and tsr pct overall.png" alt="Percent Allocation" height="500"  style="width: 100%">
+* This visualization combines TSR comparisons and TSR percent comparisons, relative to the benchmark SP500 returns.
+* Note that head-to-head performance for each position can be found in the 'Ticker versus SP500' visualization.
+* From the head-to-head, we know that on a TSR basis, both VNQ and VTI outperformed SP500 over the past ~5 years.
+* However, on an all-up basis, the SP500 outperformed the model portfolio by about 13 percentage points.
 
+Does this mean you have a poor model portfolio?  In my view, no.  The reasons include the following:
+* A five year holding period is a relatively short timeframe.  I believe most investors should have investment horizons all the way out until retirement, which for some is 30 - 40 years from now.
+* This strategy is intended to provide diversification outside of US equities.
+* A more precise comparison would include benchmarks that are better comps for each ETF, e.g., AGG provides exposure to investment grade debt.  It's not intended to beat the SP500 and offers lower risk and lower return than an equity strategy.
+* Diversification allows you to have a better chance to participate in asset classes that are in favor without having to time the market.  
+* A large portion of this model portfolio, VTI, actually outperformed the SP500.
+* Achieving index-like returns is what you want to achieve, from my perspective.  **As Jack Bogle says:  "Index funds don’t provide average performance: they give the investor top decile returns."**
 
 ### Conclusion.
-[Placeholder]
+I've not found a service out there that replicates this type of analysis, which I believe is imperative to make sure you're properly investing your money -- just tells you absolute portfolio return, doesn't effectively compare to benchmarks, and does not show total shareholder return.  A robo-advisor can do this for you, but every dollar you invest is subject to their fee structure, versus your time.  Still have a strategy that focuses on stocks with accelerating revenue growth and are industry leaders in high growth industries; for long-term portfolio strategy, believe a robo advisor / gone fishing is very sensible approach as part of an overall holistic strategy.  
 
 If you enjoyed this post, it would be awesome if you would click the "claps" icon to let me know and to help increase circulation of my work.
 
 Feel free to also reach out to me on twitter, <a href="https://twitter.com/kevinboller" target="_blank">@kevinboller</a>, and my personal blog can be found <a href="https://kdboller.github.io/" target="_blank">here</a>.  Thanks for reading!
 
-Outline.
 
-1. Intro [**draft complete**] -- this is the third installment of a series on how to leverage ``Python``, ``pandas``, ``Dash`` and financial data APIs in order to automate personal portfolio tracking.
 
-1. Overview Robo Advisor [**draft complete**]; i) passive versus active investing. ii) who are the main Robo Advisors; iii) how you can decently replicate their strategies bsaed on what's provided in this post.
-
-1. Why Implement a Passive Investment Strategy [**draft complete**].  Recent data points:  https://www.cnbc.com/2019/03/15/active-fund-managers-trail-the-sp-500-for-the-ninth-year-in-a-row-in-triumph-for-indexing.html; active fund managers trail; Bogle's recent book and quote on 'top decile returns when you invest in index funds'; Howard Marks book on where we are at in the credit cycle. 
-
-1. Limitations from prior time and how they've been addressed [**draft complete**].; the limitations from prior time included i) not including dividends and total shareholder return (addressed here); ii) not looking at divested positions (to be decided how I'll handle); iii) automate data pipelines to feed a live web dashboard (de-prioritized in order to focus on the right overall investment strategy).
-
-1. Code -- only need to highlight the additions, which are focused on pulling in dividends, allocation comparison, comparing total shareholder return and then rolling up total return versus benchmark.
-
-1. Conclusion -- I've not found a service out there that replicates this type of analysis, which I believe is imperative to make sure you're properly investing your money -- just tells you absolute portfolio return, doesn't effectively compare to benchmarks, and does not show total shareholder return.  A robo-advisor can do this for you, but every dollar you invest is subject to their fee structure, versus your time.  Still have a strategy that focuses on stocks with accelerating revenue growth and are industry leaders in high growth industries; for long-term portfolio strategy, believe a robo advisor / gone fishing is very sensible approach as part of an overall holistic strategy.  
 
 
