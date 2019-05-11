@@ -17,8 +17,8 @@
 title: Data Informed Narratives
 email: kdboller@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  This is a blog created by a sports nut and product guy; my content is focused on building a data informed culture in sports, 
-  media and technology focused companies.  Topics include experimentation, analytics, growth and (attempts at) optimization.
+  I'm a sports nut, product guy and relentless investor. Topics include being data informed in sports,
+  media and technology. I share tactics for growth and analytics, and my personal approach to public equity and and review select angel investments.
 # baseurl: "/datainformed/" # the subpath of your site, e.g. /blog
 url:  https://kdboller.github.io/ # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: kevinboller
