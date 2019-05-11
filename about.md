@@ -14,7 +14,7 @@ permalink: /about/
 
 <center><h3>TECHNICAL SKILLS</h3></center>
 <p><strong>Programming/Data Science:</strong> SQL (Postgres, MySQL), Python (pandas, numpy, scikit-learn), R, Dash by Plotly</p>
-<p><strong>Databases/Warehouses/BI:</strong> Periscope Data (Cache/Views), Mode Analytics, Segment (warehouse and platform), Redshift and Tableau
+<p><strong>Databases/Warehouses/BI:</strong> Periscope Data (Cache/Views), Mode Analytics, Segment (warehouse and platform), Redshift, Tableau and AWS QuickSight.
 
 <hr>
 
@@ -32,8 +32,7 @@ permalink: /about/
 
 <p>My professional experience spans software consulting, investment banking, product management (consumer and enterprise), data warehouse product ownership, and data analytics leadership.</p>
 
-<p>I am a PM in Amazon’s Kindle Content group. I work with the Enterprise Publisher Experience (EPX) dev team, driving new features which support growth in our Publisher Experience (PX) offering. Prior to this, I served as VP Product (Revenue and Analytics) at FloSports in Austin, TX. 
-When I started at FloSports, the company had no data warehouse and no business intelligence dashboarding. I selected Amazon Redshift and Periscope Data, and during my tenure we developed a data warehouse with 15+ daily refreshed data sources while empowering 100 company users with BI dashboards. </p>
+<p>I am a PM on Amazon’s single threaded Publisher Analytics team. I work with a dedicated reporting and analytics dev team, driving new reporting and analytics features to support growth in our Publisher Experience (PX) offering. I previously served as VP Product (Revenue and Analytics) at FloSports in Austin, TX, where I selected Amazon Redshift and Periscope Data for our warehouse and BI reporting. During my tenure we developed a data warehouse with 15+ daily refreshed data sources while empowering 100 company users with BI dashboards. </p>
 
 <p>Prior to this, I was a Vice President in Blackstone's Advisory Partners (M&A) group. From 2011-2012, I was a member of the deal team which advised the Los Angeles Dodgers’ former owner and management on the $2.3 billion sale of the team, stadium, media rights and real estate to Magic Johnson and Guggenheim Partners.</p>
 
