@@ -6,7 +6,7 @@ permalink: /investing/
 
 I'm ramping up my activity in the PNW as an active angel investor and advisor to early-stage companies.
 
-In the spirit of being a founder-friendly investor and advisor, below are a few very helpful founder resources:
+In the spirit of being a founder-friendly investor and advisor, below are some helpful founder resources:
 * **[Grubstakes](http://grubstakes.vc)** -- 20+ individual investors in Seattle that fund and mentor startups in the Pacific Northwest.
 * **[Seattle Angel](http://www.seattleangel.com)** -- Seattle Angel is a not for profit organization, focused on educating angel investors, entrepreneurs, and prospective team members about the ins and outs of raising startup capital, scaling business operations, and related legal and financial issues.
 * **[UW Comotion](https://comotion.uw.edu)** -- CoMotion® is UW’s collaborative innovation hub dedicated to expanding the economic and societal impact of the UW community and beyond.
