@@ -1,7 +1,8 @@
 ---
 layout: page
 title: Resume
-permalink: /resume/
+<!-- permalink: /resume/
+Commenting this page out as not prioritizing keeping it updated-->
 ---
 
 As mentioned on my home page, I am passionate about the analytical revolution unfolding across sports media and digital technology and I am interested in consulting, advisory and board member work.
