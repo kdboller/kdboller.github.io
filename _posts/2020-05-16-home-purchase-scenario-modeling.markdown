@@ -7,7 +7,7 @@ categories:
 
 ## Evaluating Home Purchase Scenarios and associated investment opportunity costs.
 
-<img src="/assets/home_purchase_post/aditya-vyas-783075-unsplash.jpg" alt="Wall St Stock Exchange" height="500"  style="width: 100%"> 
+<img src="/assets/home_purchase_post/breno-assis-r3WAWU5Fi5Q-unsplash.jpg" alt="Wall St Stock Exchange" height="500"  style="width: 100%"> 
 
 Photo by Breno Assis on Unsplash.
 
