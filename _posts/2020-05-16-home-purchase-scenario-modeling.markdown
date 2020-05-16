@@ -14,9 +14,11 @@ Photo by Breno Assis on Unsplash.
 
 ## Part 1 of Home Purchase Scenario Model Analyses.
 
+**# [Note: as of 5/16/2020, this post is a work in progress].**
+
 ### Introduction.
 
-For those who have considered or are considering the purchase of a home, then I hope that you find this post helpful. Given my avid interest in investing and the fact that my wife and I purchased a home in 2018, I recently revised my approach to modeling out our monthly expenses, long-term savings plan and forecasting additional funds we'll have to allocate to our family's investment strategies. Also, given the lasting Covid-19 situation, this topic is a bit timely in the sense that more millenials could be considering home ownership given the evolving viewpoints many have experienced in part due to shelter-in-place requirements throughout the US and globally.
+For those who have considered or are considering the purchase of a home, then I hope that you find this post helpful. Given my avid interest in investing and the fact that my wife and I purchased a home in 2018, I recently revised my approach to modeling out our monthly expenses, long-term savings plan and forecasting additional funds we'll have to allocate to our family's investment strategies. Also, with the enduring Covid-19 situation, this topic is a bit timely in the sense that more millenials could be considering home ownership given the evolving viewpoints many have experienced in part due to shelter-in-place requirements throughout the US and globally.
 
 In this post I provide context and a recently developed, scenario-based model that you can use to evaluate different home purchase options, including variable purchase prices, down payment amounts, and lending terms, among several others. The scenario-based model has flexible inputs, allowing you to customize it based on your current income(s), monthly expenses, and your personal financial situation, such as money currently set aside for a down payment.
 
