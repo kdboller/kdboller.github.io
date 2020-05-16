@@ -16,7 +16,7 @@ Photo by Breno Assis on Unsplash.
 
 ### Introduction.
 
-For those who have considered or are considering the purchase of a home, then I hope that you find this post helpful. Given my avid interest in investing and the fact that my wife and I purchased a home in 2018, I recently revised my approach to modeling out our monthly expenses, long-term savings plan and forecasting additional funds we'll have to allocate to our family's investment strategies. Also, given the Covid-19 scenario, this topic is a bit timely in the sense that more millenials could be considering home ownership given the experience many have had with the self-imposed state shutdowns many have experienced in the US and globally.
+For those who have considered or are considering the purchase of a home, then I hope that you find this post helpful. Given my avid interest in investing and the fact that my wife and I purchased a home in 2018, I recently revised my approach to modeling out our monthly expenses, long-term savings plan and forecasting additional funds we'll have to allocate to our family's investment strategies. Also, given the lasting Covid-19 situation, this topic is a bit timely in the sense that more millenials could be considering home ownership given the evolving viewpoints many have experienced in part due to shelter-in-place requirements throughout the US and globally.
 
 In this post I provide context and a recently developed, scenario-based model that you can use to evaluate different home purchase options, including variable purchase prices, down payment amounts, and lending terms, among several others. The scenario-based model has flexible inputs, allowing you to customize it based on your current income(s), monthly expenses, and your personal financial situation, such as money currently set aside for a down payment.
 
@@ -29,18 +29,21 @@ In tandem with this post, my other related posts that talk further about establi
 
 **Disclosure:** Nothing in this post should be considered investment advice. Past performance is not necessarily indicative of future returns. I am writing about generalized examples and show how to evaluate home purchase scenarios and the relative opportunity cost to allocating some/all of this capital to other investment opportunities. You should direct all investment related questions that you have to your financial advisor and perform your own due diligence on any investments mentioned in this post.  Therefore, I assume no liability for any losses that may be sustained by the use of the method described in this post, and any such liability is hereby expressly disclaimed.
 
-### [Rent versus Buy].
+### Rent versus Buy.
+
+<a href="https://twitter.com/travisdevitt?lang=en" target="_blank">Travis Devitt on Twitter</a>.
+<a href="https://twitter.com/travisdevitt/status/1106668029369290755" target="_blank">Travis Devitt on Twitter in response to Noah Kagan re rent versus buy</a>.
 
 
-### [Resources].
+### Resources.
+
+1. <a href="https://www.wealthfront.com/home-guide" target="_blank">Wealthfront Home Planning Guide</a>.
 
 
+### Getting Started with the model.
+**Introduction and assumptions.**
 
-### Getting Started.
 
-
-
-### [Overview of the model and key assumptions].
 
 
 ### Conclusion.
