@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Home Purchase Scenario Modeling"
+title:  "Economics of Home Ownership Deep Dive"
 date:   2020-05-16 12:00:00 -0500
 categories: 
 ---
