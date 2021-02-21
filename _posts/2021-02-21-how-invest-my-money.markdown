@@ -22,9 +22,15 @@ Inspired by <a href="https://www.amazon.com/How-Invest-My-Money-Finance/dp/08571
 
 **Outline.**
 
-1. 
-1. <a href="https://www.betterment.com/resources/buying-home-good-investment/" target="_blank">Betterment - is buying a home a good investment?</a>.
-1. <a href="https://www.betterment.com/resources/buying-home-good-investment/" target="_blank">Article on home ownership gap in America.</a>.
+1. Diversified ETF strategy.
+1. Single stock portfolio, creating basket of stocks.
+1. Speculative options, very small % of total assets.
+1. Earlier stage investments; primarily AL and also look at EZ.
+1. Real Estate - VNQ and Fundrise.
+1. Home ownership.
+1. 401k and Roth 401k.
+1. HSA.
+1. Bitcoin/Cryptocurrecy - DCA approach and generate some interest/staking. Small % of total assets.
 
 <a href="https://www.wealthfront.com/home-guide" target="_blank">Wealthfront Home Planning Guide</a>.
 
