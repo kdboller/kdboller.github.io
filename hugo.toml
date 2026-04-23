@@ -2,7 +2,7 @@ baseURL = "https://kdboller.github.io/"
 languageCode = "en-us"
 title = "Data Informed Narratives"
 theme = "PaperMod"
-paginate = 10
+paginate = 5
 
 enableRobotsTXT = true
 buildDrafts = false
