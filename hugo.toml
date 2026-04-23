@@ -1,0 +1,64 @@
+baseURL = "https://kdboller.github.io/"
+languageCode = "en-us"
+title = "Data Informed Narratives"
+theme = "PaperMod"
+paginate = 10
+
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+
+[params]
+  env = "production"
+  author = "Kevin Boller"
+  description = "Sports, technology, data analytics, and personal finance."
+  defaultTheme = "auto"
+  disableThemeToggle = false
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowRssButtonInSectionTermList = true
+  ShowToc = true
+
+  [params.homeInfoParams]
+    Title = "Hi, I'm Kevin Boller"
+    Content = "Sports enthusiast, data-driven product leader, and angel investor. Writing about analytics, sports technology, and personal finance."
+
+  [[params.socialIcons]]
+    name = "twitter"
+    url = "https://twitter.com/kevinboller"
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/kdboller"
+
+  [[params.socialIcons]]
+    name = "linkedin"
+    url = "https://www.linkedin.com/in/kevinboller"
+
+[menu]
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 10
+  [[menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts/"
+    weight = 20
+  [[menu.main]]
+    identifier = "investing"
+    name = "Investing"
+    url = "/investing/"
+    weight = 30
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    noClasses = false
