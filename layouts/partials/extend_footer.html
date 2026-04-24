@@ -1,0 +1,24 @@
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.post-content img').forEach(function (img) {
+    if (img.parentElement.tagName === 'A') return;
+
+    var caption = '';
+    var sibling = img.nextElementSibling;
+    if (!sibling) sibling = img.parentElement.nextElementSibling;
+    if (sibling && /^Photo by/i.test(sibling.textContent.trim())) {
+      caption = sibling.textContent.trim();
+    }
+
+    var a = document.createElement('a');
+    a.href = img.src;
+    a.className = 'glightbox';
+    if (caption) a.setAttribute('data-description', caption);
+    img.parentNode.insertBefore(a, img);
+    a.appendChild(img);
+  });
+
+  GLightbox({ touchNavigation: true });
+});
+</script>
