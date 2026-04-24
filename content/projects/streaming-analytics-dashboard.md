@@ -1,5 +1,5 @@
 ---
-title: "Streaming Analytics Dashboard"
+title: "Streaming Analytics Dashboard using Claude Code"
 date: 2026-04-23
 description: "Interactive KPI & cohort analysis dashboard built with Claude Code."
 link: "https://claude.ai/public/artifacts/173fba93-84f6-41f4-b877-75485535b268"
