@@ -47,19 +47,14 @@ buildExpired = false
     url = "/about/"
     weight = 10
   [[menu.main]]
-    identifier = "posts"
-    name = "Posts"
-    url = "/posts/"
-    weight = 20
-  [[menu.main]]
     identifier = "projects"
     name = "Projects"
     url = "/projects/"
-    weight = 25
+    weight = 20
   [[menu.main]]
-    identifier = "investing"
-    name = "Investing"
-    url = "/investing/"
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts/"
     weight = 30
 
 [markup]

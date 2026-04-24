@@ -8,39 +8,7 @@
 
 <div class="projects-list">
   {{- range .Pages.ByDate.Reverse }}
-  <article class="project-card">
-    <div class="project-header">
-      <h2 class="project-title">
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-      </h2>
-      <span class="project-date">{{ .Date.Format "January 2, 2006" }}</span>
-    </div>
-
-    <div class="project-body">
-      {{ .Content }}
-    </div>
-
-    <div class="project-footer">
-      <div class="project-links">
-        {{- if .Params.link }}
-        <a href="{{ .Params.link }}" target="_blank" rel="noopener" class="project-link">View Project →</a>
-        {{- end }}
-        {{- if .Params.linkedin }}
-        <a href="{{ .Params.linkedin }}" target="_blank" rel="noopener" class="project-link">LinkedIn Post →</a>
-        {{- end }}
-        {{- if .Params.post }}
-        <a href="{{ .Params.post }}" class="project-link">Related Post →</a>
-        {{- end }}
-      </div>
-      {{- if .Params.tags }}
-      <div class="project-tags">
-        {{- range .Params.tags }}
-        <span class="project-tag">{{ . }}</span>
-        {{- end }}
-      </div>
-      {{- end }}
-    </div>
-  </article>
+  {{- partial "project-card.html" (dict "page" . "open" true) }}
   {{- end }}
 </div>
 {{- end }}

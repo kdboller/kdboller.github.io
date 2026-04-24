@@ -1,0 +1,35 @@
+{{- $page := .page }}
+{{- $open := .open }}
+<article class="project-card">
+  <details{{ if $open }} open{{ end }}>
+    <summary>
+      <div class="project-header">
+        <h2 class="project-title">{{ $page.Title }}</h2>
+        <span class="project-date">{{ $page.Date.Format "January 2, 2006" }}</span>
+      </div>
+    </summary>
+    <div class="project-body">
+      {{ $page.Content }}
+    </div>
+    <div class="project-footer">
+      <div class="project-links">
+        {{- if $page.Params.link }}
+        <a href="{{ $page.Params.link }}" target="_blank" rel="noopener" class="project-link">View Project →</a>
+        {{- end }}
+        {{- if $page.Params.linkedin }}
+        <a href="{{ $page.Params.linkedin }}" target="_blank" rel="noopener" class="project-link">LinkedIn Post →</a>
+        {{- end }}
+        {{- if $page.Params.post }}
+        <a href="{{ $page.Params.post }}" class="project-link">Related Post →</a>
+        {{- end }}
+      </div>
+      {{- if $page.Params.tags }}
+      <div class="project-tags">
+        {{- range $page.Params.tags }}
+        <span class="project-tag">{{ . }}</span>
+        {{- end }}
+      </div>
+      {{- end }}
+    </div>
+  </details>
+</article>
