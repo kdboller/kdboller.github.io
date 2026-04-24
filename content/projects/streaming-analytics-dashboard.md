@@ -2,9 +2,10 @@
 title: "Streaming Analytics Dashboard"
 date: 2026-04-23
 description: "Interactive KPI & cohort analysis dashboard built with Claude Code."
-link: "https://lnkd.in/gsz6KStm"
-linkedin: ""
+link: "https://claude.ai/public/artifacts/173fba93-84f6-41f4-b877-75485535b268"
+linkedin: "https://www.linkedin.com/posts/kevinboller_streaming-analytics-dashboard-interactive-activity-7452871557216903168-4396"
 post: ""
+image: "/assets/projects/streaming-analytics-dashboard.png"
 tags: ["Claude Code", "Python", "Analytics", "Dashboard"]
 ---
 

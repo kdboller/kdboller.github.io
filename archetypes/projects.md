@@ -5,6 +5,7 @@ description: ""
 link: ""
 linkedin: ""
 post: ""
+image: ""
 tags: []
 draft: true
 ---

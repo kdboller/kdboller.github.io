@@ -1,11 +1,18 @@
 {{- $page := .page }}
 {{- $open := .open }}
 <article class="project-card">
+  {{- if $page.Params.image }}
+  <a href="{{ $page.Params.image }}" class="glightbox project-thumbnail-wrap" data-description="{{ $page.Title }}">
+    <img src="{{ $page.Params.image }}" alt="{{ $page.Title }}" class="project-thumbnail">
+  </a>
+  {{- end }}
   <details{{ if $open }} open{{ end }}>
     <summary>
       <div class="project-header">
-        <h2 class="project-title">{{ $page.Title }}</h2>
-        <span class="project-date">{{ $page.Date.Format "January 2, 2006" }}</span>
+        <div class="project-header-text">
+          <h2 class="project-title"><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h2>
+          <span class="project-date">{{ $page.Date.Format "January 2, 2006" }}</span>
+        </div>
       </div>
     </summary>
     <div class="project-body">

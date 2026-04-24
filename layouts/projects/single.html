@@ -6,6 +6,12 @@
     <div class="post-meta">{{ .Date.Format "January 2, 2006" }}</div>
   </header>
 
+  {{- if .Params.image }}
+  <a href="{{ .Params.image }}" class="glightbox" data-description="{{ .Title }}">
+    <img src="{{ .Params.image }}" alt="{{ .Title }}" class="project-hero-image">
+  </a>
+  {{- end }}
+
   {{- if .Content }}
   <div class="post-content md-content">
     {{ .Content }}
