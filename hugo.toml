@@ -40,6 +40,10 @@ buildExpired = false
     name = "linkedin"
     url = "https://www.linkedin.com/in/kevinboller"
 
+  [[params.socialIcons]]
+    name = "medium"
+    url = "https://medium.com/@kevinboller"
+
 [menu]
   [[menu.main]]
     identifier = "about"
