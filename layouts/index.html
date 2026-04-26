@@ -13,6 +13,19 @@
 {{- end }}
 
 {{- if eq $paginator.PageNumber 1 }}
+{{- $featured := where site.RegularPages "Params.featured" true }}
+{{- with index $featured 0 }}
+<section class="home-featured">
+  <div class="featured-label">Featured</div>
+  <a href="{{ .Permalink }}" class="featured-title">{{ .Title }}</a>
+  <div class="featured-meta">{{ .Date.Format "January 2, 2006" }}{{ if .ReadingTime }} &middot; {{ .ReadingTime }} min read{{ end }}</div>
+  {{- if .Summary }}
+  <p class="featured-summary">{{ .Summary | plainify | htmlUnescape | truncate 200 }}</p>
+  {{- end }}
+  <a href="{{ .Permalink }}" class="featured-link">Read article →</a>
+</section>
+{{- end }}
+
 {{- $projects := (where site.RegularPages "Type" "projects").ByDate.Reverse }}
 {{- if $projects }}
 <section class="home-projects">
