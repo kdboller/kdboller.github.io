@@ -1,7 +1,6 @@
 ---
 title:  "Economics of Home Ownership Deep Dive"
 date:   2020-08-10 12:00:00 -0500
-featured: true
 ---
 
 ## Evaluating home purchase scenarios and associated investment opportunity costs.

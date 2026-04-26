@@ -6,6 +6,7 @@ link: "https://kdboller.github.io"
 linkedin: ""
 post: ""
 image: "/assets/projects/claude-code-desktop.png"
+featured: true
 tags: ["Hugo", "GitHub Actions", "GLightbox", "Web Development", "Claude Code"]
 ---
 
