@@ -14,23 +14,28 @@
 
 {{- if eq $paginator.PageNumber 1 }}
 {{- $featured := where site.RegularPages "Params.featured" true }}
-{{- with index $featured 0 }}
-<section class="home-featured">
-  <div class="featured-body">
+{{- if $featured }}
+<div class="home-featured-grid">
+  {{- range first 2 $featured }}
+  <section class="home-featured">
     <div class="featured-label">Featured</div>
-    <a href="{{ .Permalink }}" class="featured-title">{{ .Title }}</a>
-    <div class="featured-meta">{{ .Date.Format "January 2, 2006" }}{{ if .ReadingTime }} &middot; {{ .ReadingTime }} min read{{ end }}</div>
-    {{- if .Summary }}
-    <p class="featured-summary">{{ .Summary | plainify | htmlUnescape | truncate 200 }}</p>
+    {{- if .Params.image }}
+    <a href="{{ .Permalink }}" class="featured-image-wrap">
+      <img src="{{ .Params.image }}" alt="{{ .Title }}" class="featured-image">
+    </a>
     {{- end }}
-    <a href="{{ .Permalink }}" class="featured-link">{{ if eq .Type "projects" }}View Project{{ else }}Read article{{ end }} →</a>
-  </div>
-  {{- if .Params.image }}
-  <a href="{{ .Permalink }}" class="featured-image-wrap">
-    <img src="{{ .Params.image }}" alt="{{ .Title }}" class="featured-image">
-  </a>
+    <div class="featured-body">
+      <a href="{{ .Permalink }}" class="featured-title">{{ .Title }}</a>
+      <div class="featured-meta">{{ .Date.Format "January 2, 2006" }}{{ if .ReadingTime }} &middot; {{ .ReadingTime }} min read{{ end }}</div>
+      {{- if .Summary }}
+      {{- $firstSentence := index (split (.Summary | plainify | htmlUnescape) ".") 0 }}
+      <p class="featured-summary">{{ $firstSentence }}.</p>
+      {{- end }}
+      <a href="{{ .Permalink }}" class="featured-link">{{ if eq .Type "projects" }}View Project{{ else }}Read article{{ end }} →</a>
+    </div>
+  </section>
   {{- end }}
-</section>
+</div>
 {{- end }}
 
 {{- $projects := (where site.RegularPages "Type" "projects").ByDate.Reverse }}

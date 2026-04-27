@@ -6,6 +6,7 @@ link: "https://www.flosports.tv/newsroom/flosports-launches-hockey-and-racing-fa
 linkedin: "https://www.linkedin.com/feed/update/urn:li:activity:7402496276661252096/"
 post: ""
 image: "/assets/projects/prime_video_fast.jpg"
+featured: true
 tags: ["SportsStreaming", "LiveToFAST", "FASTChannels"]
 ---
 
