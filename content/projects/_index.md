@@ -1,4 +1,4 @@
 ---
 title: "Projects"
-description: "Analyses, dashboards, and tools I've built."
+description: "Analyses, dashboards, growth strategies, and tools that I've conceived and executed."
 ---
