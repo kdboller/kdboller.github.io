@@ -26,7 +26,7 @@ buildExpired = false
 
   [params.homeInfoParams]
     Title = "Hi, I'm Kevin Boller"
-    Content = "Advisor, operator, investor, and sports fanatic. Deep financial and analytical background, working at the intersection of data, analytics, and AI for several years.\n\nMy focus is on building the data and AI infrastructure that grows revenue, generates operational efficiency, and drives enterprise-wide adoption.\n\nHaving executed at the intersection of finance, product, and business intelligence, I understand what it takes to move from insight to action at scale."
+    Content = Having executed across finance, product, and business intelligence, I understand what it takes to move from insight to action at scale.
 
   [[params.socialIcons]]
     name = "twitter"
