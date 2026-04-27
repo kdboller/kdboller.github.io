@@ -5,7 +5,7 @@ description: "Interactive KPI & cohort analysis dashboard built with Claude Code
 link: "https://claude.ai/public/artifacts/173fba93-84f6-41f4-b877-75485535b268"
 linkedin: "https://www.linkedin.com/posts/kevinboller_streaming-analytics-dashboard-interactive-activity-7452871557216903168-4396"
 post: ""
-image: "/assets/projects/streaming-analytics-dashboard.png"
+image: "/assets/projects/streaming-analytics-dashboard-v2.png"
 tags: ["Claude Code", "Python", "Analytics", "Dashboard"]
 ---
 
