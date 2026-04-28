@@ -7,6 +7,7 @@ linkedin: ""
 post: ""
 image: "/assets/projects/agentic-demand-forecasting.png"
 featured: true
+weight: 1
 tags: ["Python", "Sigma", "Snowflake", "Agentic AI", "Forecasting"]
 ---
 
