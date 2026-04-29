@@ -1,6 +1,6 @@
 ---
 title: "Personal Website Overhaul"
-date: 2026-04-24
+date: 2026-04-19
 description: "Migrated personal website from Jekyll to Hugo with a full redesign and new Projects section."
 link: "https://kdboller.github.io"
 linkedin: ""
