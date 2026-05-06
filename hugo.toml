@@ -3,6 +3,7 @@ languageCode = "en-us"
 title = "Data Informed Narratives"
 theme = "PaperMod"
 enableRobotsTXT = true
+googleAnalytics = "G-4Z5WDRZPV1"
 buildDrafts = false
 buildFuture = false
 buildExpired = false
