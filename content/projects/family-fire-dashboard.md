@@ -1,5 +1,5 @@
 ---
-title: "Family FIRE Dashboard"
+title: "Family FIRE Dashboard (Streamlit + PostgreSQL)"
 date: 2026-05-30
 description: "Built a multi-page financial planning dashboard in Streamlit + PostgreSQL to model a 40-year household projection, replacing a multi-scenario Excel model with a fully interactive, scenario-driven application."
 link: ""

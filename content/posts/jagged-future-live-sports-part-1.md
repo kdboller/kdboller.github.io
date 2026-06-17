@@ -4,8 +4,6 @@ date: 2026-04-27
 description: "An examination of the current state of live sports distribution, new and emergent leagues, and why a jagged frontier remains despite growing opportunity."
 image: "/assets/unsplash_part%201_sports.jpg"
 tags: ["Live Sports", "Streaming", "FAST", "SVOD", "Sports Media"]
-featured: true
-weight: 2
 cover:
   image: "/assets/unsplash_part%201_sports.jpg"
   alt: "People watching sports at a bar"
