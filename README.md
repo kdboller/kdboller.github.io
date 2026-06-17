@@ -1,6 +1,6 @@
 # kdboller.github.io
 
-Personal website for Kevin Boller — advisor, operator, and investor focused on data, analytics, and AI.
+Personal website for Kevin Boller. Advisor, operator, and investor focused on data, analytics, and applied AI strategy and implementation.
 
 **Stack:** Hugo 0.160.1 + PaperMod theme, deployed via GitHub Actions to GitHub Pages.
 
