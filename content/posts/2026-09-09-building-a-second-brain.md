@@ -56,6 +56,8 @@ Yes, and it's becoming one of Reader's most powerful features. The [Readwise MCP
 
 Here is a quick summary of my setup and a diagram that outlines the workflows.
 
+<img src="/assets/projects/second-brain-architecture.png" alt="Two loops: one repo, one portfolio - Second Brain system architecture diagram" style="width: 100%">
+
 **Summary:** A git-backed repo with a capture layer, a compilation layer, and a cross-project operating layer.
 
 **Capture:** Readwise Reader is my inbox and ingestion layer for everything I consume: articles, highlights, forwarded emails, uploaded PDFs, plus Google Drive for working docs; live external tools (DataCamp, Sigma, Snowflake, Gmail, Calendar) get queried on demand via MCP rather than statically stored, so structured, dynamic data sits alongside all ingested document knowledge.
