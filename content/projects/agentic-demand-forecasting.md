@@ -6,8 +6,6 @@ link: "https://claude.ai/public/artifacts/4e7e8f7c-b8bc-49ec-8076-8f5673d8beb2"
 linkedin: ""
 post: ""
 image: "/assets/projects/agentic-demand-forecasting.png"
-featured: true
-weight: 1
 tags: ["Python", "Sigma", "Snowflake", "Agentic AI", "Forecasting"]
 ---
 
