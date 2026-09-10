@@ -3,7 +3,7 @@
 ## Stack
 - **Hugo** 0.160.1 Extended + **PaperMod** theme (git submodule at `themes/PaperMod`)
 - Deployed to **kdboller.github.io** via GitHub Actions (`.github/workflows/deploy.yml`) — push to `main` auto-deploys
-- Hugo binary: `hugo` (available on PATH after shell restart, or full path at `C:\Users\kdbol\AppData\Local\Microsoft\WinGet\Packages\Hugo.Hugo.Extended_Microsoft.Winget.Source_8wekyb3d8bbwe\hugo.exe`)
+- Hugo binary: `hugo` (available on PATH after shell restart, or via the WinGet-installed Hugo.Hugo.Extended package if PATH isn't set up yet)
 
 ## Local Preview
 ```
